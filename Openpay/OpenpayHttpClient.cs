@@ -101,6 +101,7 @@ namespace Openpay
         {
             string result = null;
             string endpoint = APIEndpoint + MerchantId + path;
+            Console.WriteLine("Request to: " + endpoint);
             WebRequest req = SetupRequest(method.ToString(), endpoint);
             if (body != null)
             {
@@ -141,7 +142,5 @@ namespace Openpay
         {
             GET, POST, DELETE, PUT,
         }
-
-
     }
 }

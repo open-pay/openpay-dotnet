@@ -53,11 +53,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BankAccountServiceTest.cs" />
     <Compile Include="CardServiceTest.cs" />
     <Compile Include="ChargeServiceTest.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomerServiceTest.cs" />
+    <Compile Include="PayoutServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FeeServiceTest.cs" />
+    <Compile Include="TransferServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Openpay\Openpay.csproj">

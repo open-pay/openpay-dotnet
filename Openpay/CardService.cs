@@ -1,4 +1,5 @@
 ﻿using Openpay.Entities;
+using Openpay.Entities.Request;
 using Openpay.Utils;
 using System;
 using System.Collections.Generic;
@@ -7,34 +8,58 @@ using System.Text;
 
 namespace Openpay
 {
-    public class CardService : ResourceService<Card, Card>
+    public class CardService : OpenpayResourceService<Card, Card>
     {
-
-        static readonly string merchant_path = "/cards";
-
-        static readonly string customer_path = "/customers/{0}/cards";
-
-        private OpenpayHttpClient httpClient;
-
         public CardService(string api_key, string merchant_id, bool production = false)
             : base(api_key, merchant_id, production)
         {
+            ResourceName = "cards";
         }
 
         internal CardService(OpenpayHttpClient opHttpClient)
             : base(opHttpClient)
         {
+            ResourceName = "cards";
         }
 
-        public override String GetMerchantPath()
+        public Card Create(Card card)
         {
-            return merchant_path;
+            return base.Create(null, card);
         }
 
-        public override String GetCustomerPath()
+        public Card Create(string customer_id, Card card)
         {
-            return customer_path;
+            return base.Create(customer_id, card);
         }
 
+        public void Delete(string customer_id, string card_id)
+        {
+            base.Delete(customer_id, card_id);
+        }
+
+        public void Delete(string card_id)
+        {
+            base.Delete(null, card_id);
+        }
+
+        public Card Get(string customer_id, string card_id)
+        {
+            return base.Get(customer_id, card_id);
+        }
+
+        public Card Get(string card_id)
+        {
+            return base.Get(null, card_id);
+        }
+
+        public List<Card> List(string customer_id, SearchParams filters = null)
+        {
+            return base.List(customer_id, filters);
+        }
+
+        public List<Card> List(SearchParams filters = null)
+        {
+            return base.List(null, filters);
+        }
     }
 }

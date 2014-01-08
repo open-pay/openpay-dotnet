@@ -7,26 +7,27 @@ using Openpay.Entities.Request;
 
 namespace Openpay
 {
-    public class ChargeService : ResourceService<ChargeRequest, Charge>
+    public class ChargeService : OpenpayResourceService<ChargeRequest, Charge>
     {
-
-        static readonly string merchant_path = "/charges";
-
-        static readonly string customer_path = "/customers/{0}/charges";
 
         public ChargeService(string api_key, string merchant_id, bool production = false)
             : base(api_key, merchant_id, production)
         {
-
+            ResourceName = "charges";
         }
 
         internal ChargeService(OpenpayHttpClient opHttpClient)
             : base(opHttpClient)
         {
-
+            ResourceName = "charges";
         }
 
-        public Charge Refund(string charge_id, string customer_id = null, string description = null, string order_id = null)
+        public Charge Refund(string charge_id, string description, string order_id)
+        {
+            return this.Refund(null, charge_id, description, order_id);
+        }
+
+        public Charge Refund(string customer_id, string charge_id, string description, string order_id)
         {
             if (charge_id == null)
                 throw new ArgumentNullException("charge_id cannot be null");
@@ -37,7 +38,12 @@ namespace Openpay
             return this.httpClient.Post<Charge>(ep, request);
         }
 
-        public Charge Capture(string charge_id, string customer_id = null, Decimal amount = 0.0M)
+        public Charge Capture(string charge_id, Decimal? amount)
+        {
+            return this.Capture(null, charge_id, amount);
+        }
+
+        public Charge Capture(string customer_id , string charge_id, Decimal? amount)
         {
             if (charge_id == null)
                 throw new ArgumentNullException("charge_id cannot be null");
@@ -47,14 +53,35 @@ namespace Openpay
             return this.httpClient.Post<Charge>(ep, request);
         }
 
-        public override String GetMerchantPath()
+        public Charge Create(ChargeRequest charge_request)
         {
-            return merchant_path;
+            return base.Create(null, charge_request);
         }
 
-        public override String GetCustomerPath()
+        public Charge Create(string customer_id, ChargeRequest charge_request)
         {
-            return customer_path;
+            return base.Create(customer_id, charge_request);
         }
+
+        public Charge Get(string customer_id, string charge_id)
+        {
+            return base.Get(customer_id, charge_id);
+        }
+
+        public Charge Get(string charge_id)
+        {
+            return base.Get(null, charge_id);
+        }
+
+        public List<Charge> List(string customer_id, SearchParams filters = null)
+        {
+            return base.List(customer_id, filters);
+        }
+
+        public List<Charge> List(SearchParams filters = null)
+        {
+            return base.List(null, filters);
+        }
+      
     }
 }

@@ -41,13 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SubscriptionService.cs" />
+    <Compile Include="PlanService.cs" />
+    <Compile Include="Entities\Request\FeeRequest.cs" />
+    <Compile Include="PayoutService.cs" />
     <Compile Include="ChargeService.cs" />
     <Compile Include="BankAccountService.cs" />
+    <Compile Include="Entities\Request\PayoutRequest.cs" />
+    <Compile Include="Entities\Request\TransferRequest.cs" />
+    <Compile Include="FeeService.cs" />
+    <Compile Include="TransferService.cs" />
     <Compile Include="Entities\Request\CaptureRequest.cs" />
     <Compile Include="Entities\Request\RefundRequest.cs" />
     <Compile Include="Entities\Request\ChargeRequest.cs" />
+    <Compile Include="Entities\Request\SearchParams.cs" />
     <Compile Include="Entities\ResourceObject.cs" />
-    <Compile Include="ResourceService.cs" />
+    <Compile Include="OpenpayResourceService.cs" />
     <Compile Include="CardService.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="Entities\Address.cs" />

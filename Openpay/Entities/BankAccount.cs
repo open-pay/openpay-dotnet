@@ -16,7 +16,7 @@ namespace Openpay.Entities
         public String Alias { get; set; }
 
         [JsonProperty(PropertyName = "clabe")]
-        public Boolean CLABE { get; set; }
+        public String CLABE { get; set; }
 
         [JsonProperty(PropertyName = "holder_name")]
         public String HolderName { get; set; }

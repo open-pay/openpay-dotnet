@@ -10,6 +10,6 @@ namespace Openpay.Entities.Request
     internal class CaptureRequest : OpenpayObject
     {
         [JsonProperty(PropertyName = "amount")]
-        public Decimal Amount { set; get; }
+        public Decimal? Amount { set; get; }
     }
 }

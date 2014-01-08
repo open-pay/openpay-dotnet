@@ -31,6 +31,7 @@ namespace OpenpayTest
         [TestMethod]
         public void TestCard_CreateAsCustomer()
         {
+            string customer_id = "adyytoegxm6boiusecxm";
             Card card = new Card();
             card.CardNumber = "5243385358972033";
             card.HolderName = "Juanito Pérez Nuñez";
@@ -40,14 +41,15 @@ namespace OpenpayTest
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 
-            card = openpayAPI.CardService.Create(card, "adyytoegxm6boiusecxm");
+            card = openpayAPI.CardService.Create(customer_id, card);
             Assert.IsNotNull(card.Id);
-            openpayAPI.CardService.Delete(card.Id, "adyytoegxm6boiusecxm");
+            openpayAPI.CardService.Delete(customer_id, card.Id);
         }
 
         [TestMethod]
         public void TestCard_Get()
         {
+            string customer_id = "adyytoegxm6boiusecxm";
             string card_id = "kwkoqpg6fcvfse8k8mg2";
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             try
@@ -58,10 +60,10 @@ namespace OpenpayTest
             catch (OpenpayException e)
             {
                 Assert.AreEqual(1005, e.ErrorCode);
-                Card card = openpayAPI.CardService.Get(card_id, "adyytoegxm6boiusecxm");
+                Card card = openpayAPI.CardService.Get(customer_id, card_id);
                 Assert.AreEqual(card_id, card.Id);
 
-                List<Card> cards = openpayAPI.CardService.List("adyytoegxm6boiusecxm");
+                List<Card> cards = openpayAPI.CardService.List(customer_id);
                 Assert.IsNotNull(cards);
                 Assert.AreEqual(1, cards.Count);
             }

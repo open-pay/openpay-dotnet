@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Openpay;
 using Openpay.Entities;
+using Openpay.Entities.Request;
+using System;
 using System.Collections.Generic;
 
 namespace OpenpayTest
@@ -20,15 +21,16 @@ namespace OpenpayTest
             Assert.IsNotNull(customer.Name);
             Assert.IsNotNull(customer.CreationDate);
             Assert.IsNull(customer.Address);
-            Assert.IsTrue(customer.Balance.CompareTo(8499.00) > 0);
+            Assert.IsTrue(customer.Balance.CompareTo(8499.00M) > 0);
         }
 
         [TestMethod]
         public void TestCustomer_List()
         {
-
+            SearchParams search = new SearchParams();
+            search.Limit = 3;
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-            List<Customer> customers = openpayAPI.CustomerService.List(3, 0);
+            List<Customer> customers = openpayAPI.CustomerService.List(search);
             Assert.IsNotNull(customers);
             Assert.AreEqual(3, customers.Count);
         }
