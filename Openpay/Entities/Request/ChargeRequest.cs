@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Openpay.Entities.Request
 {
      [JsonObject(MemberSerialization.OptIn)]
-    public class ChargeRequest : OpenpayObject
+    public class ChargeRequest : JsonObject
     {
          public ChargeRequest()
          {

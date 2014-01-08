@@ -6,8 +6,8 @@
     <ProjectGuid>{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenpayTest</RootNamespace>
-    <AssemblyName>OpenpayTest</AssemblyName>
+    <RootNamespace>OpenpayTests</RootNamespace>
+    <AssemblyName>OpenpayTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,6 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SubscriptionServiceTest.cs" />
+    <Compile Include="PlanServiceTest.cs" />
     <Compile Include="BankAccountServiceTest.cs" />
     <Compile Include="CardServiceTest.cs" />
     <Compile Include="ChargeServiceTest.cs" />

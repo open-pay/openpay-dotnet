@@ -28,9 +28,9 @@ namespace Openpay
             return base.Create(null, plan);
         }
 
-        public Plan Update(string plan_id, Plan plan)
+        public Plan Update(Plan plan)
         {
-            return base.Update(null, plan_id, plan);
+            return base.Update(null, plan);
         }
 
         public void Delete(string plan_id)

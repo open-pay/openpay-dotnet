@@ -7,7 +7,7 @@ using System.Text;
 namespace Openpay.Entities
 {
 
-    public class Card : ResourceObject
+    public class Card : OpenpayResourceObject
     {
         [JsonProperty(PropertyName = "creation_date")]
         public DateTime? CreationDate { get; set; }

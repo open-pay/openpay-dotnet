@@ -33,7 +33,7 @@ namespace OpenpayTest
            
         }
 
-        [TestMethod]
+       // [TestMethod]
         public void TestAsMerchant_CreateGetDelete()
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);

@@ -7,12 +7,9 @@ using Newtonsoft.Json;
 namespace Openpay.Entities.Request
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class RefundRequest : OpenpayObject
+    internal class RefundRequest : JsonObject
     {
         [JsonProperty(PropertyName = "description")]
         public String Description { set; get; }
-
-        [JsonProperty(PropertyName = "order_id")]
-        public String OrderId { set; get; }
     }
 }

@@ -95,7 +95,7 @@ namespace OpenpayTest
             Assert.IsNotNull(charge.CreationDate);
             Assert.AreEqual("completed", charge.Status);
 
-            Charge chargeWithrefund = openpayAPI.ChargeService.Refund(customer_id, charge.Id, "refund desc", null);
+            Charge chargeWithrefund = openpayAPI.ChargeService.Refund(customer_id, charge.Id, "refund desc");
             Assert.IsNotNull(chargeWithrefund);
             Assert.IsNotNull(chargeWithrefund.Refund);
         }
@@ -152,7 +152,7 @@ namespace OpenpayTest
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
 
-            Charge refund = openpayAPI.ChargeService.Refund(charge.Id, "Merchant Refund", null);
+            Charge refund = openpayAPI.ChargeService.Refund(charge.Id, "Merchant Refund");
             Assert.IsNotNull(refund);
             Assert.IsNotNull(refund.Refund);
         }
@@ -173,7 +173,7 @@ namespace OpenpayTest
             Assert.IsNotNull(charge.Id);
             Assert.AreEqual("in_progress", charge.Status);
 
-            Charge refund = openpayAPI.ChargeService.Refund(charge.Id, "Merchant Refund", null);
+            Charge refund = openpayAPI.ChargeService.Refund(charge.Id, "Merchant Refund");
             Assert.IsNotNull(refund);
             Assert.IsNull(refund.Refund);
             Assert.AreEqual("cancelled", refund.Status);

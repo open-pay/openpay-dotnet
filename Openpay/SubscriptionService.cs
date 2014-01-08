@@ -14,13 +14,13 @@ namespace Openpay
         public SubscriptionService(string api_key, string merchant_id, bool production = false)
             : base(api_key, merchant_id, production)
         {
-            ResourceName = "susbcriptions";
+            ResourceName = "subscriptions";
         }
 
         internal SubscriptionService(OpenpayHttpClient opHttpClient)
             : base(opHttpClient)
         {
-            ResourceName = "susbcriptions";
+            ResourceName = "subscriptions";
         }
 
         public Subscription Create(string customer_id, Subscription subscription)
@@ -28,14 +28,14 @@ namespace Openpay
             return base.Create(customer_id, subscription);
         }
 
-        public Subscription Update(string customer_id, string subscription_id, Subscription subscription)
+        public Subscription Update(string customer_id, Subscription subscription)
         {
-            return base.Update(customer_id, subscription_id, subscription);
+            return base.Update(customer_id, subscription);
         }
 
-        public void Delete(string subscription_id)
+        public void Delete(string customer_id, string subscription_id)
         {
-            base.Delete(null, subscription_id);
+            base.Delete(customer_id, subscription_id);
         }
 
         public Subscription Get(string customer_id, string subscription_id)

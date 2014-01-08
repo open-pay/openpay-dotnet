@@ -74,7 +74,7 @@ namespace Openpay
             }
         }
 
-        public T Post<T>(string endpoint, OpenpayObject obj)
+        public T Post<T>(string endpoint, JsonObject obj)
         {
             var json = DoRequest(endpoint, HttpMethod.POST, obj.ToJson());
             return JsonConvert.DeserializeObject<T>(json);
@@ -86,7 +86,7 @@ namespace Openpay
             return JsonConvert.DeserializeObject<T>(json);
         }
 
-        public T Put<T>(string endpoint, OpenpayObject obj)
+        public T Put<T>(string endpoint, JsonObject obj)
         {
             var json = DoRequest(endpoint, HttpMethod.PUT, obj.ToJson());
             return JsonConvert.DeserializeObject<T>(json);

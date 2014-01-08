@@ -22,19 +22,18 @@ namespace Openpay
             ResourceName = "charges";
         }
 
-        public Charge Refund(string charge_id, string description, string order_id)
+        public Charge Refund(string charge_id, string description)
         {
-            return this.Refund(null, charge_id, description, order_id);
+            return this.Refund(null, charge_id, description);
         }
 
-        public Charge Refund(string customer_id, string charge_id, string description, string order_id)
+        public Charge Refund(string customer_id, string charge_id, string description)
         {
             if (charge_id == null)
                 throw new ArgumentNullException("charge_id cannot be null");
             string ep = GetEndPoint(customer_id, charge_id) + "/refund";
             RefundRequest request = new RefundRequest();
             request.Description = description;
-            request.OrderId = order_id;
             return this.httpClient.Post<Charge>(ep, request);
         }
 

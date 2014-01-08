@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Openpay", "Openpay\Openpay.csproj", "{29A0AB02-4D5D-42F7-8F6E-A10BAD672DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenpayTest", "OpenpayTest\OpenpayTest.csproj", "{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenpayTests", "OpenpayTest\OpenpayTests.csproj", "{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

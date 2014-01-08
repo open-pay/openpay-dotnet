@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Openpay.Entities.Request
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public class TransferRequest : OpenpayObject
+    public class TransferRequest : JsonObject
     {
         [JsonProperty(PropertyName = "customer_id")]
         public String CustomerId { set; get; }

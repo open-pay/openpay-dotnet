@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Openpay.Entities.Request
 {
     [JsonObject(MemberSerialization.OptIn)]
-    internal class CaptureRequest : OpenpayObject
+    internal class CaptureRequest : JsonObject
     {
         [JsonProperty(PropertyName = "amount")]
         public Decimal? Amount { set; get; }

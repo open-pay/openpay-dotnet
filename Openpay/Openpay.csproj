@@ -55,7 +55,7 @@
     <Compile Include="Entities\Request\RefundRequest.cs" />
     <Compile Include="Entities\Request\ChargeRequest.cs" />
     <Compile Include="Entities\Request\SearchParams.cs" />
-    <Compile Include="Entities\ResourceObject.cs" />
+    <Compile Include="Entities\OpenpayResourceObject.cs" />
     <Compile Include="OpenpayResourceService.cs" />
     <Compile Include="CardService.cs" />
     <Compile Include="CustomerService.cs" />
@@ -67,7 +67,7 @@
     <Compile Include="Entities\BankAccount.cs" />
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\Customer.cs" />
-    <Compile Include="Entities\OpenpayObject.cs" />
+    <Compile Include="Entities\JsonObject.cs" />
     <Compile Include="OpenpayAPI.cs" />
     <Compile Include="OpenpayHttpClient.cs" />
     <Compile Include="OpenpayException.cs" />

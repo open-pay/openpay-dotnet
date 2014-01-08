@@ -8,7 +8,9 @@ using System.Text;
 
 namespace Openpay
 {
-    public abstract class OpenpayResourceService<T, R> where T : OpenpayObject
+    public abstract class OpenpayResourceService<T, R>
+        where T : JsonObject
+        where R : OpenpayResourceObject
     {
         protected OpenpayHttpClient httpClient;
 
@@ -33,7 +35,7 @@ namespace Openpay
             string ep = "/" + ResourceName.ToLower();
             if (customer_id != null)
             {
-                ep = String.Format("/customers/{0}" + ep , customer_id);
+                ep = String.Format("/customers/{0}" + ep, customer_id);
             }
             if (resource_id != null)
             {
@@ -50,14 +52,14 @@ namespace Openpay
             return this.httpClient.Post<R>(ep, obj);
         }
 
-        protected R Update(string customer_id, string resource_id, T obj)
+        protected R Update(string customer_id, R obj)
         {
-            if (String.IsNullOrEmpty(resource_id))
+            if (String.IsNullOrEmpty(obj.Id))
                 throw new ArgumentNullException("resource_id");
             if (obj == null)
                 throw new ArgumentNullException("Object is null");
 
-            string ep = GetEndPoint(customer_id, resource_id);
+            string ep = GetEndPoint(customer_id, obj.Id);
             return this.httpClient.Put<R>(ep, obj);
         }
 

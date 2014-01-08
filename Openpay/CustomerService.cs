@@ -28,9 +28,9 @@ namespace Openpay
             return base.Create(null, customer);
         }
 
-        public Customer Update(string customer_id, Customer customer)
+        public Customer Update(Customer customer)
         {
-            return base.Update(null, customer_id, customer);
+            return base.Update(null, customer);
         }
 
         public void Delete(string customer_id)

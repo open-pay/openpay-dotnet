@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Openpay.Entities
 {
-    public class ResourceObject : OpenpayObject
+    public class OpenpayResourceObject : JsonObject
     {
         [JsonProperty(PropertyName = "id")]
         public String Id { get; set; }

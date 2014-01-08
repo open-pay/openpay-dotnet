@@ -7,7 +7,7 @@ using System.Text;
 namespace Openpay.Entities
 {
 
-    public class Subscription : ResourceObject
+    public class Subscription : OpenpayResourceObject
     {
         [JsonProperty(PropertyName = "creation_date")]
         public DateTime? CreationDate { get; set; }
@@ -19,7 +19,7 @@ namespace Openpay.Entities
         public DateTime? ChargeDate { get; set; }
 
         [JsonProperty(PropertyName = "current_period_number")]
-        public String CurrentPeriod { get; set; }
+        public int CurrentPeriod { get; set; }
 
         [JsonProperty(PropertyName = "period_end_date")]
         public DateTime? PeriodEndDate { get; set; }
@@ -28,7 +28,7 @@ namespace Openpay.Entities
         public DateTime? TrialEndDate { get; set; }
 
         [JsonProperty(PropertyName = "plan_id")]
-        public int PlanId { get; set; }
+        public String PlanId { get; set; }
 
         [JsonProperty(PropertyName = "customer_id")]
         public String CustomerId { get; set; }
@@ -36,6 +36,10 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "card_id")]
         public String CardId { get; set; }
 
-       
+        [JsonProperty(PropertyName = "status")]
+        public String Status { get; set; }
+
+        [JsonProperty(PropertyName = "card")]
+        public Card Card { get; set; }
     }
 }

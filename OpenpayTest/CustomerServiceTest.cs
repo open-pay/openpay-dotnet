@@ -94,7 +94,7 @@ namespace OpenpayTest
             Customer customer = openpayAPI.CustomerService.Get(customer_id);
             customer.Name = newName;
 
-            customer = openpayAPI.CustomerService.Update(customer.Id, customer);
+            customer = openpayAPI.CustomerService.Update(customer);
             Assert.IsNotNull(customer);
             Assert.IsNotNull(customer.Name);
             Assert.AreEqual(newName, customer.Name);

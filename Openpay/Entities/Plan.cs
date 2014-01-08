@@ -7,7 +7,7 @@ using System.Text;
 namespace Openpay.Entities
 {
 
-    public class Plan : ResourceObject
+    public class Plan : OpenpayResourceObject
     {
         [JsonProperty(PropertyName = "creation_date")]
         public DateTime? CreationDate { get; set; }
@@ -25,7 +25,7 @@ namespace Openpay.Entities
         public int RepeatEvery { get; set; }
 
         [JsonProperty(PropertyName = "repeat_unit")]
-        public int RepeatUnit { get; set; }
+        public String RepeatUnit { get; set; }
 
         [JsonProperty(PropertyName = "retry_times")]
         public int RetryTimes { get; set; }
