@@ -22,7 +22,7 @@ namespace Openpay
             ResourceName = "bankaccounts";
         }
 
-        public BankAccount Create(string customer_id, BankAccount bankAccount)
+        public new BankAccount Create(string customer_id, BankAccount bankAccount)
         {
             return base.Create(customer_id, bankAccount);
         }
@@ -34,7 +34,7 @@ namespace Openpay
 
        
 
-        public void Delete(string customer_id, string bankAccount_id)
+        public new void Delete(string customer_id, string bankAccount_id)
         {
             base.Delete(customer_id, bankAccount_id);
         }
@@ -44,7 +44,7 @@ namespace Openpay
             base.Delete(null, bankAccount_id);
         }
 
-        public BankAccount Get(string customer_id, string bankAccount_id)
+        public new BankAccount Get(string customer_id, string bankAccount_id)
         {
             return base.Get(customer_id, bankAccount_id);
         }
@@ -54,7 +54,7 @@ namespace Openpay
             return base.Get(null, bankAccount_id);
         }
 
-        public List<BankAccount> List(string customer_id, SearchParams filters = null)
+        public new List<BankAccount> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
         }

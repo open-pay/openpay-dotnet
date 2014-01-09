@@ -27,12 +27,12 @@ namespace Openpay
             return base.Create(null, card);
         }
 
-        public Card Create(string customer_id, Card card)
+        public new Card Create(string customer_id, Card card)
         {
             return base.Create(customer_id, card);
         }
 
-        public void Delete(string customer_id, string card_id)
+        public new void Delete(string customer_id, string card_id)
         {
             base.Delete(customer_id, card_id);
         }
@@ -42,7 +42,7 @@ namespace Openpay
             base.Delete(null, card_id);
         }
 
-        public Card Get(string customer_id, string card_id)
+        public new Card Get(string customer_id, string card_id)
         {
             return base.Get(customer_id, card_id);
         }
@@ -52,7 +52,7 @@ namespace Openpay
             return base.Get(null, card_id);
         }
 
-        public List<Card> List(string customer_id, SearchParams filters = null)
+        public new List<Card> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
         }

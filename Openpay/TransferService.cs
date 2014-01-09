@@ -23,17 +23,17 @@ namespace Openpay
             ResourceName = "transfers";
         }
 
-        public Transfer Create(string customer_id, TransferRequest request)
+        public new Transfer Create(string customer_id, TransferRequest request)
         {
             return base.Create(customer_id, request);
         }
 
-        public Transfer Get(string customer_id, string transfer_id)
+        public new Transfer Get(string customer_id, string transfer_id)
         {
             return base.Get(customer_id, transfer_id);
         }
 
-        public List<Transfer> List(string customer_id, SearchParams filters = null)
+        public new List<Transfer> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
         }

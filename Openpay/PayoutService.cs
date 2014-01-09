@@ -27,12 +27,12 @@ namespace Openpay
             return base.Create(null, payout_request);
         }
 
-        public Payout Create(string customer_id, PayoutRequest payout_request)
+        public new Payout Create(string customer_id, PayoutRequest payout_request)
         {
             return base.Create(customer_id, payout_request);
         }
 
-        public Payout Get(string customer_id, string payout_id)
+        public new Payout Get(string customer_id, string payout_id)
         {
             return base.Get(customer_id, payout_id);
         }
@@ -42,7 +42,7 @@ namespace Openpay
             return base.Get(null, payout_id);
         }
 
-        public List<Payout> List(string customer_id, SearchParams filters = null)
+        public new List<Payout> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
         }

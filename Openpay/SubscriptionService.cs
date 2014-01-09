@@ -23,27 +23,27 @@ namespace Openpay
             ResourceName = "subscriptions";
         }
 
-        public Subscription Create(string customer_id, Subscription subscription)
+        public new Subscription Create(string customer_id, Subscription subscription)
         {
             return base.Create(customer_id, subscription);
         }
 
-        public Subscription Update(string customer_id, Subscription subscription)
+        public new Subscription Update(string customer_id, Subscription subscription)
         {
             return base.Update(customer_id, subscription);
         }
 
-        public void Delete(string customer_id, string subscription_id)
+        public new void Delete(string customer_id, string subscription_id)
         {
             base.Delete(customer_id, subscription_id);
         }
 
-        public Subscription Get(string customer_id, string subscription_id)
+        public new Subscription Get(string customer_id, string subscription_id)
         {
             return base.Get(customer_id, subscription_id);
         }
 
-        public List<Subscription> List(string customer_id, SearchParams filters = null)
+        public new List<Subscription> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
         }

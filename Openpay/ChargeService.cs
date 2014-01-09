@@ -57,12 +57,12 @@ namespace Openpay
             return base.Create(null, charge_request);
         }
 
-        public Charge Create(string customer_id, ChargeRequest charge_request)
+        public new Charge Create(string customer_id, ChargeRequest charge_request)
         {
             return base.Create(customer_id, charge_request);
         }
 
-        public Charge Get(string customer_id, string charge_id)
+        public new Charge Get(string customer_id, string charge_id)
         {
             return base.Get(customer_id, charge_id);
         }
@@ -72,7 +72,7 @@ namespace Openpay
             return base.Get(null, charge_id);
         }
 
-        public List<Charge> List(string customer_id, SearchParams filters = null)
+        public new List<Charge> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
         }
