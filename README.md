@@ -34,8 +34,8 @@ OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID);
 By convenience and security, the sandbox mode is activated by default in the client library. This allows you to test your own code when implementing Openpay, before charging any credit card in production environment. Once you have finished your integration, create OpenpayAPI object like this:
 
 ```cs
-Boolean active_production = true;
-OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID, active_production);
+Boolean production = true;
+OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID, production);
 ```
 or use Production property:
 ```cs
