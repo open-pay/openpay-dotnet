@@ -18,12 +18,7 @@ Quick Start
 ----------------
 #### Installation #####
 
-* [Recommended] 
-Use [Nuget](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog)
-
-or 
-
-* Fork the code
+It is recommended that you us [NuGet](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) for install this library. Or you can fork the code and build it.
 
 #### Configuration #####
 
