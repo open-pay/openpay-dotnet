@@ -18,6 +18,13 @@ Quick Start
 ----------------
 #### Installation #####
 
+* [Recommended] 
+Use [Nuget](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog)
+
+or 
+
+* Fork the code
+
 #### Configuration #####
 
 Before use the library will be necessary to set up your Merchant ID and
