@@ -20,5 +20,11 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "name")]
         public String Name { get; set; }
+        
+        [JsonProperty(PropertyName = "reference")]
+        public String Reference { get; set; }
+        
+        [JsonProperty(PropertyName = "barcode_url")]
+        public String BarcodeURL { get; set; }
     }
 }
