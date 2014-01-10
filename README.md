@@ -18,7 +18,7 @@ Quick Start
 ----------------
 #### Installation #####
 
-It is recommended that you us [NuGet](http://docs.nuget.org) for install this library. Or you can fork the code and build it.
+It is recommended that you use [NuGet](http://docs.nuget.org) for install this library. Or you can fork the code and build it.
 
 #### Configuration #####
 
