@@ -117,6 +117,25 @@ namespace OpenpayTest
             Assert.IsNotNull(charge.PaymentMethod);
             Assert.AreEqual("in_progress", charge.Status);
         }
+        
+        [TestMethod]
+        public void TestChargeToCustomerWithStore()
+        {
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "store";
+            request.Description = "Testing from .Net [STORE]";
+            request.Amount = new Decimal(9.99);
+
+            Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CreationDate);
+            Assert.IsNotNull(charge.PaymentMethod);
+            Assert.IsNotNull(charge.PaymentMethod.Reference);
+            Assert.AreEqual("in_progress", charge.Status);
+        }
 
         [TestMethod]
         public void TestChargeToMerchant()
