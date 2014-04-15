@@ -34,5 +34,8 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "creation_date")]
         public DateTime? CreationDate { get; set; }
+        
+        [JsonProperty(PropertyName = "requires_account")]
+        public Boolean RequiresAccount { get; set; }
     }
 }
