@@ -34,5 +34,8 @@ namespace Openpay.Entities.Request
 
          [JsonProperty(PropertyName = "capture")]
          public Boolean Capture { set; get; }
+
+		 [JsonProperty(PropertyName = "device_session_id")]
+		 public String DeviceSessionId { set; get; }
     }
 }
