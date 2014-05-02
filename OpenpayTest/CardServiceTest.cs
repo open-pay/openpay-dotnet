@@ -13,7 +13,7 @@ namespace OpenpayTest
         public void TestCard_CreateAsMerchant()
         {
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "4111111111111111";
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
@@ -33,7 +33,7 @@ namespace OpenpayTest
         {
             string customer_id = "adyytoegxm6boiusecxm";
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "4111111111111111";
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
