@@ -212,7 +212,7 @@ namespace OpenpayTest
         public Card GetCardInfo()
         {
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "5555555555554444";
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
