@@ -27,7 +27,7 @@ namespace OpenpayTest
             plan = openpayAPI.PlanService.Create(plan);
 
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "4242424242424242";
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
