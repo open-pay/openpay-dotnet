@@ -11,7 +11,7 @@ namespace Openpay
 {
     public class OpenpayHttpClient
     {
-        private static readonly string api_endpoint = "https://api.openpay.com/v1/";
+        private static readonly string api_endpoint = "https://api.openpay.mx/v1/";
         private static readonly string api_endpoint_sandbox = "https://sandbox-api.openpay.mx/v1/";
         private static readonly string user_agent = "Openpay .NET v1";
         private static readonly Encoding encoding = Encoding.UTF8;
