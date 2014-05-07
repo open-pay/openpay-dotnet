@@ -21,7 +21,7 @@ namespace OpenpayTest
             BankAccount bankAccountCreated = openpayAPI.BankAccountService.Create(customer_id, bankAccount);
             Assert.IsNotNull(bankAccountCreated.Id);
             Assert.IsNull(bankAccountCreated.Alias);
-            Assert.AreEqual(bankAccount.CLABE, bankAccountCreated.CLABE);
+            Assert.AreEqual("012XXXXXXXXXX24616", bankAccountCreated.CLABE);
 
             BankAccount bankAccountGet = openpayAPI.BankAccountService.Get(customer_id, bankAccountCreated.Id);
             Assert.AreEqual("012XXXXXXXXXX24616", bankAccountGet.CLABE);

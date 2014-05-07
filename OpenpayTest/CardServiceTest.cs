@@ -20,7 +20,7 @@ namespace OpenpayTest
             card.ExpirationYear = "15";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-           
+
             card = openpayAPI.CardService.Create(card);
             Assert.IsNotNull(card.Id);
             Assert.IsNotNull(card.CreationDate);
@@ -51,6 +51,7 @@ namespace OpenpayTest
         {
             string customer_id = "adyytoegxm6boiusecxm";
             string card_id = "kwkoqpg6fcvfse8k8mg2";
+            
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             try
             {
