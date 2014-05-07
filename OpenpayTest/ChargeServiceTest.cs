@@ -158,6 +158,28 @@ namespace OpenpayTest
         }
 
         [TestMethod]
+        public void TestChargeToMerchantAndGetByOrderId()
+        {
+            Random random = new Random();
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "card";
+            request.Card = GetCardInfo();
+            request.OrderId = random.Next(0, 10000000).ToString();
+            request.Description = "Testing from .Net with new card";
+            request.Amount = new Decimal(9.99);
+
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+
+            SearchParams search = new SearchParams();
+            search.OrderId = request.OrderId;
+            List<Charge> charges = openpayAPI.ChargeService.List(search);
+            Assert.AreEqual(1, charges.Count);
+            Assert.AreEqual(charge.Id, charges[0].Id);
+        }
+
+        [TestMethod]
         public void TestChargeToMerchantAndRefund()
         {
             ChargeRequest request = new ChargeRequest();

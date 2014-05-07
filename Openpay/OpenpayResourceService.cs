@@ -97,6 +97,9 @@ namespace Openpay
                 url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "limit", searchParams.Limit.ToString());
                 url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "offset", searchParams.Offset.ToString());
 
+                if (searchParams.OrderId != null)
+                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "order_id", searchParams.OrderId);
+
                 if (searchParams.Creation != DateTime.MinValue)
                     url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "creation", searchParams.Creation.ToString(filter_date_format));
 
