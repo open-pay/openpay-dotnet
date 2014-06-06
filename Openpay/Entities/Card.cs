@@ -9,6 +9,9 @@ namespace Openpay.Entities
 
     public class Card : OpenpayResourceObject
     {
+        [JsonProperty(PropertyName = "token_id")]
+        public String TokenId { get; set; }
+
         [JsonProperty(PropertyName = "creation_date")]
         public DateTime? CreationDate { get; set; }
 
