@@ -25,6 +25,8 @@ namespace Openpay
 
         public SubscriptionService SubscriptionService { get; internal set; }
 
+		public OpenpayFeesService OpenpayFeesService { get; internal set; }
+
         private OpenpayHttpClient httpClient;
 
         public OpenpayAPI( string api_key, string merchant_id,bool production = false)
@@ -39,6 +41,7 @@ namespace Openpay
             FeeService = new FeeService(this.httpClient);
             PlanService = new PlanService(this.httpClient);
             SubscriptionService = new SubscriptionService(this.httpClient);
+			OpenpayFeesService = new OpenpayFeesService(this.httpClient);
         }
 
         public bool Production {
