@@ -229,6 +229,10 @@ namespace OpenpayTest
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             List<Charge> charges= openpayAPI.ChargeService.List(search);
             Assert.AreEqual(3, charges.Count);
+            foreach (Charge charge in charges)
+            {
+                Assert.AreEqual(true, charge.Conciliated);
+            }
         }
 
         public Card GetCardInfo()

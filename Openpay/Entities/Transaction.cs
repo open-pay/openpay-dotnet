@@ -47,6 +47,9 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "customer_id")]
         public String CustomerId { get; set; }
+
+        [JsonProperty(PropertyName = "conciliated")]
+        public Boolean Conciliated { get; set; }
     }
 
     public class Refund : Transaction { }
