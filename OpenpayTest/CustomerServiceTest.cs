@@ -19,6 +19,7 @@ namespace OpenpayTest
             Customer customer = openpayAPI.CustomerService.Get(customer_id);
             Assert.IsNotNull(customer);
             Assert.IsNotNull(customer.Name);
+            Assert.IsNotNull(customer.Store);
             Assert.IsNotNull(customer.CreationDate);
             Assert.IsNull(customer.Address);
             Assert.IsTrue(customer.Balance.CompareTo(8499.00M) > 0);
@@ -45,6 +46,7 @@ namespace OpenpayTest
 
             customer = openpayAPI.CustomerService.Create(customer);
             Assert.IsNotNull(customer);
+            Assert.IsNotNull(customer.Store);
             Assert.IsFalse(String.IsNullOrEmpty(customer.Id));
             openpayAPI.CustomerService.Delete(customer.Id);
         }

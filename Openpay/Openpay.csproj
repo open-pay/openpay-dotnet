@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Store.cs" />
+    <Compile Include="Entities\CodeFile1.cs" />
     <Compile Include="Entities\OpenpayFeesSummary.cs" />
     <Compile Include="Entities\Request\PaginationParams.cs" />
     <Compile Include="OpenpayFeesService.cs" />

@@ -40,5 +40,8 @@ namespace Openpay.Entities
         
         [JsonProperty(PropertyName = "requires_account")]
         public Boolean RequiresAccount { get; set; }
+
+        [JsonProperty(PropertyName = "store")]
+        public Store Store  { get; set; }
     }
 }
