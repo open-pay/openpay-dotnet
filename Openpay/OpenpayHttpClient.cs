@@ -80,6 +80,11 @@ namespace Openpay
             return JsonConvert.DeserializeObject<T>(json);
         }
 
+		public void Post<T>(string endpoint)
+		{
+			DoRequest(endpoint, HttpMethod.POST, null);
+		}
+
         public T Get<T>(string endpoint)
         {
             var json = DoRequest(endpoint, HttpMethod.GET, null);

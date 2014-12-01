@@ -24,7 +24,6 @@
  */
 using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,9 +38,6 @@ namespace Openpay.Entities
 	 */
 	public class Webhook : OpenpayResourceObject
 	{
-		[JsonProperty(PropertyName = "id")]
-		public String Id { get; set;}
-
 		[JsonProperty(PropertyName = "url")]
 		public String Url { get; set;}
 
@@ -59,7 +55,7 @@ namespace Openpay.Entities
 
 		public void AddEventType(String eventType) {
 			if (this.EventTypes == null) {
-				this.EventTypes = new ArrayList();
+				this.EventTypes = new List<string>();
 			}
 			this.EventTypes.Add(eventType);
 		}
