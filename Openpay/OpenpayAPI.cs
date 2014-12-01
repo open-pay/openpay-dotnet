@@ -27,7 +27,7 @@ namespace Openpay
 
 		public OpenpayFeesService OpenpayFeesService { get; internal set; }
 
-		public WebhookService WebhookService { get; set; }
+		public WebhookService WebhooksService { get; set; }
 
         private OpenpayHttpClient httpClient;
 
@@ -44,6 +44,7 @@ namespace Openpay
             PlanService = new PlanService(this.httpClient);
             SubscriptionService = new SubscriptionService(this.httpClient);
 			OpenpayFeesService = new OpenpayFeesService(this.httpClient);
+			WebhooksService = new WebhookService (this.httpClient);
         }
 
         public bool Production {
