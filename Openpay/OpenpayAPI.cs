@@ -27,6 +27,8 @@ namespace Openpay
 
 		public OpenpayFeesService OpenpayFeesService { get; internal set; }
 
+		public WebhookService WebhookService { get; set; }
+
         private OpenpayHttpClient httpClient;
 
         public OpenpayAPI( string api_key, string merchant_id,bool production = false)

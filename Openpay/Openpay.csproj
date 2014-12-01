@@ -80,6 +80,8 @@
     <Compile Include="OpenpayException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ParameterBuilder.cs" />
+    <Compile Include="Entities\Webhook.cs" />
+    <Compile Include="WebhookService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
