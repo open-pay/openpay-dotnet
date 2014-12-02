@@ -43,7 +43,7 @@ namespace OpenpayTest
 			Assert.AreEqual(2, webhookGet.EventTypes.Count);
 
 			List<Webhook> webhooksList = openpayAPI.WebhooksService.List();
-			Assert.AreEqual(1, webhooksList.Count);
+			Assert.AreEqual(2, webhooksList.Count);
 
 			openpayAPI.WebhooksService.Delete(webhookGet.Id);
 		}
