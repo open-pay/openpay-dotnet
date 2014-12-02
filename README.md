@@ -1,14 +1,15 @@
 Openpay.Net 
 ==============
 
-Build status client
--------------
-[![Build status](https://ci.appveyor.com/api/projects/status/1nqfx672p641x792)](https://ci.appveyor.com/project/darkaz/open-pay-openpay-dotnet) - by darkaz<br>
-[![Build status](https://ci.appveyor.com/api/projects/status/1nqfx672p641x792)](https://ci.appveyor.com/project/mecoronado/openpay-dotnet) - by mecoronado<br>
-
 Openpay .NET Client
 
 This is a client implementing the payment services for Openpay at openpay.mx
+
+
+Build status client
+-------------
+[![Build status](https://ci.appveyor.com/api/projects/status/1nqfx672p641x792)](https://ci.appveyor.com/project/darkaz/open-pay-openpay-dotnet) - by darkaz<br>
+[![Build status](https://ci.appveyor.com/api/projects/status/o8ivc5myofhx2kxm)](https://ci.appveyor.com/project/mecoronado/openpay-dotnet) - by mecoronado<br>
 
 Compatibility
 -------------
