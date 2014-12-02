@@ -42,7 +42,7 @@ namespace OpenpayTest
 			Assert.AreEqual("verified", webhookGet.Status);
 			Assert.AreEqual(2, webhookGet.EventTypes.Count);
 
-			List<webhook> webhooksList = openpayAPI.WebhooksService.List(webhookCreated.Id);
+			List<Webhook> webhooksList = openpayAPI.WebhooksService.List(webhookCreated.Id);
 			Assert.AreEqual(1, webhooksList.Count);
 
 			openpayAPI.WebhooksService.Delete(webhookGet.Id);
@@ -56,7 +56,7 @@ namespace OpenpayTest
 			req.Method = "POST";
 			if (req is HttpWebRequest)
 			{
-				((HttpWebRequest)req).UserAgent = user_agent;
+				((HttpWebRequest)req).UserAgent = "Openpay .NET v1";
 			}
 			//req.Credentials = credential;
 			req.PreAuthenticate = false;
@@ -66,34 +66,16 @@ namespace OpenpayTest
 			// Obteniendo respuesta
 			string result = null;
 
-			try
+			using (WebResponse resp = (WebResponse)req.GetResponse())
 			{
-				using (WebResponse resp = (WebResponse)req.GetResponse())
-				{
-					result = GetResponseAsString(resp);
-				}
-			}
-			catch (WebException wexc)
-			{
-				if (wexc.Response != null)
-				{
-					string json_error = GetResponseAsString(wexc.Response);
-					HttpStatusCode status_code = HttpStatusCode.BadRequest;
-					HttpWebResponse resp = wexc.Response as HttpWebResponse;
-					if (resp != null)
-						status_code = resp.StatusCode;
-
-					if ((int)status_code <= 500)
-						throw OpenpayException.GetFromJSON(status_code, json_error);
-				}
-				throw;
+				result = GetResponseAsString(resp);
 			}
 			return result.Substring (result.IndexOf ("verification_code") + 28, 8);
 		}
 
 		private string GetResponseAsString(WebResponse response)
 		{
-			using (StreamReader sr = new StreamReader(response.GetResponseStream(), encoding))
+			using (StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
 			{
 				return sr.ReadToEnd();
 			}
