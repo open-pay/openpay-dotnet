@@ -34,7 +34,7 @@ namespace OpenpayTest
 			Assert.AreEqual("unverified", webhookGet.Status);
 			Assert.AreEqual(2, webhookGet.EventTypes.Count);
 
-			openpayAPI.WebhooksService.Verify(webhookGet.Id, webhookGet.Url);
+			openpayAPI.WebhooksService.Verify(webhookGet.Id, this.GetVerificationCode(webhookGet.Url));
 
 			webhookGet = openpayAPI.WebhooksService.Get(webhookCreated.Id);
 			Assert.IsNotNull(webhookGet.Id);
