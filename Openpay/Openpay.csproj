@@ -81,6 +81,7 @@
     <Compile Include="Utils\ParameterBuilder.cs" />
     <Compile Include="Entities\Webhook.cs" />
     <Compile Include="WebhookService.cs" />
+    <Compile Include="Entities\ExchangeRate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

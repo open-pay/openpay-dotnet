@@ -61,6 +61,12 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "payment_method")]
         public PaymentMethod PaymentMethod { get; set; }
+
+		[JsonProperty(PropertyName = "exchange_rate")]
+		public ExchangeRate ExchangeRate { get; set; }
+
+		[JsonProperty(PropertyName = "metadata")]
+		public Dictionary<String, String> Metadata { set; get; }
     }
 
     public class Payout : Transaction { }

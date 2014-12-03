@@ -37,5 +37,11 @@ namespace Openpay.Entities.Request
 
 		 [JsonProperty(PropertyName = "device_session_id")]
 		 public String DeviceSessionId { set; get; }
+
+		[JsonProperty(PropertyName = "currency")]
+		public String Currency { set; get; }
+
+		[JsonProperty(PropertyName = "metadata")]
+		public Dictionary<String, String> Metadata { set; get; }
     }
 }
