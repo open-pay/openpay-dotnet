@@ -52,6 +52,30 @@ namespace OpenpayTest
             Assert.AreEqual("completed", charge.Status);
         }
 
+		[TestMethod]
+		public void TestChargeToCustomerWithCard_metdatata_USD()
+		{
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+
+			ChargeRequest request = new ChargeRequest();
+			request.Method = "card";
+			request.Card = GetCardInfo();
+			request.Description = "Testing from .Net";
+			request.Amount = new Decimal(9.99);
+			request.Metadata = new Dicionary<string, string> ();
+			request.Metadata.Add ("test_key1", "pruebas");
+			request.Metadata.Add ("test_key2", "123456");
+			request.Currency = "USD";
+
+			Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
+			Assert.IsNotNull(charge);
+			Assert.IsNotNull(charge.Id);
+			Assert.IsNotNull(charge.CreationDate);
+			Assert.AreEqual("completed", charge.Status);
+			Assert.IsNotNull(charge.Metadata);
+			Assert.IsNotNull(charge.ExchangeRate);
+		}
+
         [TestMethod]
         public void TestChargeToCustomer_AndCapture()
         {
