@@ -62,7 +62,7 @@ namespace OpenpayTest
 			request.Card = GetCardInfo();
 			request.Description = "Testing from .Net";
 			request.Amount = new Decimal(9.99);
-			request.Metadata = new Dicionary<string, string> ();
+			request.Metadata = new Dictionary<string, string> ();
 			request.Metadata.Add ("test_key1", "pruebas");
 			request.Metadata.Add ("test_key2", "123456");
 			request.Currency = "USD";
