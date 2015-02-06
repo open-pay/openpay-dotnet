@@ -10,8 +10,9 @@ namespace Openpay.Entities.Request
     public class ChargeRequest : JsonObject
     {
          public ChargeRequest()
-         {
+         { 
              Capture = true;
+                                                                                                                                                                                                        
          }
 
          [JsonProperty(PropertyName = "method")]
@@ -40,6 +41,9 @@ namespace Openpay.Entities.Request
 
 		[JsonProperty(PropertyName = "currency")]
 		public String Currency { set; get; }
+
+        [JsonProperty(PropertyName = "due_date", NullValueHandling=NullValueHandling.Ignore)]
+        public DateTime? DueDate { set; get; }
 
 		[JsonProperty(PropertyName = "metadata")]
 		public Dictionary<String, String> Metadata { set; get; }

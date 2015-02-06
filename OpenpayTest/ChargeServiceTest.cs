@@ -108,7 +108,7 @@ namespace OpenpayTest
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 
             ChargeRequest request = new ChargeRequest();
-            request.Method = "card";
+            request.Method = "card";                                                                                                                                                                                                                                                                                                    
             request.SourceId = "kwkoqpg6fcvfse8k8mg2";
             request.Description = "Testing from .Net";
             request.Amount = new Decimal(9.99);
@@ -133,6 +133,7 @@ namespace OpenpayTest
             request.Method = "bank_account";
             request.Description = "Testing from .Net [BankAccount]";
             request.Amount = new Decimal(9.99);
+            request.DueDate = new DateTime(2015, 12, 6, 11, 50, 0);
 
             Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
             Assert.IsNotNull(charge);
@@ -151,6 +152,7 @@ namespace OpenpayTest
             request.Method = "store";
             request.Description = "Testing from .Net [STORE]";
             request.Amount = new Decimal(9.99);
+            request.DueDate = new DateTime(2015,12,6,11,50,0);
 
             Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
             Assert.IsNotNull(charge);
@@ -266,7 +268,7 @@ namespace OpenpayTest
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "15";
+            card.ExpirationYear = "18";
             return card;
         }
     }
