@@ -50,6 +50,7 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "conciliated")]
         public Boolean Conciliated { get; set; }
+
     }
 
     public class Refund : Transaction { }

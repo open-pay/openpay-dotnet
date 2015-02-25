@@ -19,22 +19,22 @@ namespace OpenpayTest
 		{
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 			Webhook webhook = new Webhook();
-			webhook.Url = "http://requestb.in/1eu2wmg1";
+            webhook.Url = "http://postcatcher.in/catchers/54ed226514a1a60300001ab8";
 			webhook.AddEventType("charge.refunded");
 			webhook.AddEventType("charge.failed");
 
 			Webhook webhookCreated = openpayAPI.WebhooksService.Create(webhook);
 			Assert.IsNotNull(webhookCreated.Id);
 			Assert.IsNotNull(webhookCreated.Status);
-			Assert.AreEqual("unverified", webhookCreated.Status);
+			Assert.AreEqual("verified", webhookCreated.Status);
 
 			Webhook webhookGet = openpayAPI.WebhooksService.Get(webhookCreated.Id);
 			Assert.IsNotNull(webhookGet.Id);
 			Assert.IsNotNull(webhookGet.Status);
-			Assert.AreEqual("unverified", webhookGet.Status);
+			Assert.AreEqual("verified", webhookGet.Status);
 			Assert.AreEqual(2, webhookGet.EventTypes.Count);
 
-			openpayAPI.WebhooksService.Verify(webhookGet.Id, this.GetVerificationCode(webhookGet.Url));
+			//openpayAPI.WebhooksService.Verify(webhookGet.Id, this.GetVerificationCode(webhookGet.Url));
 
 			webhookGet = openpayAPI.WebhooksService.Get(webhookCreated.Id);
 			Assert.IsNotNull(webhookGet.Id);

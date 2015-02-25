@@ -23,6 +23,7 @@ namespace OpenpayTest
             request.Amount = new Decimal(9.99);
 
             Charge charge = openpayAPI.ChargeService.Create(customer_id, request);
+            
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
             Assert.IsNotNull(charge.CreationDate);
@@ -172,6 +173,14 @@ namespace OpenpayTest
             request.Description = "Testing from .Net with new card";
             request.Amount = new Decimal(9.99);
 
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+
+            request.Customer = customer;
+
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             Charge charge = openpayAPI.ChargeService.Create(request);
             Assert.IsNotNull(charge);
@@ -193,6 +202,14 @@ namespace OpenpayTest
             request.OrderId = random.Next(0, 10000000).ToString();
             request.Description = "Testing from .Net with new card";
             request.Amount = new Decimal(9.99);
+
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+
+            request.Customer = customer;
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             Charge charge = openpayAPI.ChargeService.Create(request);

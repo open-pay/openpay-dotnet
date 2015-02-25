@@ -31,7 +31,7 @@ namespace OpenpayTest
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "15";
+            card.ExpirationYear = "17";
 
             Subscription subscription = new Subscription();
             subscription.PlanId = plan.Id;
@@ -70,7 +70,7 @@ namespace OpenpayTest
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "15";
+            card.ExpirationYear = "17";
 
             subscription.Card = card;
             subscription = openpayAPI.SubscriptionService.Update(customer_id, subscription);
