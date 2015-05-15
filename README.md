@@ -1,4 +1,6 @@
-Openpay.Net  [![Build status](https://ci.appveyor.com/api/projects/status/o8ivc5myofhx2kxm)](https://ci.appveyor.com/project/mecoronado/openpay-dotnet)
+![Openpay NET](http://www.openpay.mx/img/github/net.jpg)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/o8ivc5myofhx2kxm)](https://ci.appveyor.com/project/mecoronado/openpay-dotnet)
 ==============
 
 Openpay .NET Client
