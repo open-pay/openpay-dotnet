@@ -1,9 +1,5 @@
 ![Openpay NET](http://www.openpay.mx/img/github/net.jpg)
-
 [![Build status](https://ci.appveyor.com/api/projects/status/o8ivc5myofhx2kxm)](https://ci.appveyor.com/project/mecoronado/openpay-dotnet)
-==============
-
-Openpay .NET Client
 
 This is a client implementing the payment services for Openpay at openpay.mx
 
