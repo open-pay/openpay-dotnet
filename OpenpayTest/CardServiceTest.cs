@@ -18,6 +18,7 @@ namespace OpenpayTest
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
             card.ExpirationYear = "17";
+            card.DeviceSessionId = "120938475692htbssd3";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 
@@ -38,6 +39,7 @@ namespace OpenpayTest
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
             card.ExpirationYear = "17";
+            card.DeviceSessionId = "120938475692htbssd";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 

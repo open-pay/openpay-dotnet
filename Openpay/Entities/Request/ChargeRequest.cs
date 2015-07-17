@@ -50,5 +50,8 @@ namespace Openpay.Entities.Request
 
         [JsonProperty(PropertyName = "customer")]
         public Customer Customer { set; get; }
+
+        [JsonProperty(PropertyName = "use_card_points")]
+        public Boolean UseCardPoints { set; get; }
     }
 }

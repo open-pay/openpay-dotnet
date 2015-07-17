@@ -165,6 +165,29 @@ namespace OpenpayTest
         }
 
         [TestMethod]
+        public void TestChargeToCustomerWithBitcoin()
+        {
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "bitcoin";
+            request.Description = "Testing from .Net [BITCOIN]";
+            request.Amount = new Decimal(9.99);
+
+            Charge charge = openpayAPI.ChargeService.Create("a48ssup67h74sagrwfwz", request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CreationDate);
+            Assert.IsNotNull(charge.PaymentMethod);
+            Assert.IsNotNull(charge.PaymentMethod.AmountBitcoins);
+            Assert.IsNotNull(charge.PaymentMethod.PaymentAddress);
+            Assert.IsNotNull(charge.PaymentMethod.PaymentUrlBip21);
+            Assert.IsNotNull(charge.PaymentMethod.ExchangeRate);
+            Assert.AreEqual("bitcoin", charge.PaymentMethod.Type);
+            Assert.AreEqual("charge_pending", charge.Status);
+        }
+
+        [TestMethod]
         public void TestChargeToMerchant()
         {
             ChargeRequest request = new ChargeRequest();
@@ -183,13 +206,81 @@ namespace OpenpayTest
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNull(charge.CardPoints);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
 
             Charge charge2 = openpayAPI.ChargeService.Get(charge.Id);
             Assert.IsNotNull(charge2);
+            Assert.IsNull(charge2.CardPoints);
             Assert.AreEqual(charge.Id, charge2.Id);
             Assert.AreEqual(charge.Amount, charge2.Amount);
+        }
+
+        [TestMethod]
+        public void TestChargeToMerchantWithPointsSmall()
+        {
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "card";
+            request.Card = GetCardInfo();
+            request.Description = "Testing from .Net with new card";
+            request.Amount = new Decimal(9.99);
+            request.UseCardPoints = true;
+
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+
+            request.Customer = customer;
+
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CardPoints);
+            Assert.AreEqual(charge.CardPoints.Amount, new Decimal(9.99));
+
+            Charge charge2 = openpayAPI.ChargeService.Get(charge.Id);
+            Assert.IsNotNull(charge2);
+            Assert.IsNotNull(charge2.CardPoints);
+            Assert.AreEqual(charge.Id, charge2.Id);
+            Assert.AreEqual(charge.Amount, charge2.Amount);
+            Assert.AreEqual(charge2.CardPoints.Amount, new Decimal(9.99));
+        }
+
+        [TestMethod]
+        public void TestChargeToMerchantWithPointsBig()
+        {
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "card";
+            request.Card = GetCardInfo();
+            request.Description = "Testing from .Net with new card";
+            request.Amount = new Decimal(29.99);
+            request.UseCardPoints = true;
+
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+
+            request.Customer = customer;
+
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CardPoints);
+            Assert.AreEqual(charge.CardPoints.Amount, new Decimal(22.5));
+
+            Charge charge2 = openpayAPI.ChargeService.Get(charge.Id);
+            Assert.IsNotNull(charge2);
+            Assert.IsNotNull(charge2.CardPoints);
+            Assert.AreEqual(charge.Id, charge2.Id);
+            Assert.AreEqual(charge.Amount, charge2.Amount);
+            Assert.AreEqual(charge2.CardPoints.Amount, new Decimal(22.5));
         }
 
         [TestMethod]
@@ -242,25 +333,39 @@ namespace OpenpayTest
         }
 
         [TestMethod]
-        public void TestMerchantChargeCaptureAndRefund()
+        public void TestMerchantChargeWithStore()
         {
             ChargeRequest request = new ChargeRequest();
-            request.Method = "card";
-            request.Card = GetCardInfo();
-            request.Description = "Testing from .Net with new card";
+            request.Method = "store";
+            request.Description = "Testing from .Net [STORE]";
             request.Amount = new Decimal(9.99);
-            request.Capture = false;
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             Charge charge = openpayAPI.ChargeService.Create(request);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
             Assert.AreEqual("in_progress", charge.Status);
+        }
 
-            Charge refund = openpayAPI.ChargeService.Refund(charge.Id, "Merchant Refund");
-            Assert.IsNotNull(refund);
-            Assert.IsNull(refund.Refund);
-            Assert.AreEqual("cancelled", refund.Status);
+        [TestMethod]
+        public void TestMerchantChargeWithBitcoin()
+        {
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "bitcoin";
+            request.Description = "Testing from .Net [BITCOIN]";
+            request.Amount = new Decimal(9.99);
+
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.PaymentMethod);
+            Assert.IsNotNull(charge.PaymentMethod.AmountBitcoins);
+            Assert.IsNotNull(charge.PaymentMethod.PaymentAddress);
+            Assert.IsNotNull(charge.PaymentMethod.PaymentUrlBip21);
+            Assert.IsNotNull(charge.PaymentMethod.ExchangeRate);
+            Assert.AreEqual("bitcoin", charge.PaymentMethod.Type);
+            Assert.AreEqual("charge_pending", charge.Status);
         }
 
         [TestMethod]

@@ -43,6 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\CardPoints.cs" />
     <Compile Include="Entities\Store.cs" />
     <Compile Include="Entities\OpenpayFeesSummary.cs" />
     <Compile Include="Entities\Request\PaginationParams.cs" />
