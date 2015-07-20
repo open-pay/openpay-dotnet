@@ -174,7 +174,7 @@ namespace OpenpayTest
             request.Description = "Testing from .Net [BITCOIN]";
             request.Amount = new Decimal(9.99);
 
-            Charge charge = openpayAPI.ChargeService.Create("a48ssup67h74sagrwfwz", request);
+            Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
             Assert.IsNotNull(charge.CreationDate);
