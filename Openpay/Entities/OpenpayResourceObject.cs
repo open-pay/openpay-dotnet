@@ -8,7 +8,7 @@ namespace Openpay.Entities
 {
     public class OpenpayResourceObject : JsonObject
     {
-        [JsonProperty(PropertyName = "id")]
+		[JsonProperty(PropertyName = "id", NullValueHandling=NullValueHandling.Ignore)]
         public String Id { get; set; }
     }
 }
