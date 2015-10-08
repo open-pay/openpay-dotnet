@@ -19,7 +19,7 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "amount")]
         public Decimal Amount { get; set; }
 
-        [JsonProperty(PropertyName = "caption")]
+		[JsonProperty(PropertyName = "caption", NullValueHandling=NullValueHandling.Ignore)]
         public String Caption { get; set; }
        
     }

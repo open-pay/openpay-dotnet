@@ -41,16 +41,16 @@ namespace Openpay.Entities
 		[JsonProperty(PropertyName = "url")]
 		public String Url { get; set;}
 
-		[JsonProperty(PropertyName = "user")]
+		[JsonProperty(PropertyName = "user", NullValueHandling=NullValueHandling.Ignore)]
 		public String User { get; set;}
 
-		[JsonProperty(PropertyName = "password")]
+		[JsonProperty(PropertyName = "password", NullValueHandling=NullValueHandling.Ignore)]
 		public String Password { get; set;}
 
-		[JsonProperty(PropertyName = "event_types")]
+		[JsonProperty(PropertyName = "event_types", NullValueHandling=NullValueHandling.Ignore)]
 		public List<String> EventTypes { get; set;}
 
-		[JsonProperty(PropertyName = "status")]
+		[JsonProperty(PropertyName = "status", NullValueHandling=NullValueHandling.Ignore)]
 		public String Status { get; set;}
 
 		public void AddEventType(String eventType) {

@@ -15,10 +15,10 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "line1")]
         public String Line1 { get; set; }
 
-        [JsonProperty(PropertyName = "line2")]
+		[JsonProperty(PropertyName = "line2", NullValueHandling=NullValueHandling.Ignore)]
         public String Line2 { get; set; }
 
-        [JsonProperty(PropertyName = "line3")]
+		[JsonProperty(PropertyName = "line3", NullValueHandling=NullValueHandling.Ignore)]
         public String Line3 { get; set; }
 
         [JsonProperty(PropertyName = "city")]

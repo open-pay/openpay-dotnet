@@ -8,7 +8,7 @@ namespace Openpay.Entities
 {
     public class Customer : OpenpayResourceObject
     {
-        [JsonProperty(PropertyName = "external_id")]
+		[JsonProperty(PropertyName = "external_id", NullValueHandling=NullValueHandling.Ignore)]
         public String ExternalId { get; set; }
 
         [JsonProperty(PropertyName = "name")]
@@ -17,31 +17,31 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "email")]
         public String Email { get; set; }
 
-        [JsonProperty(PropertyName = "last_name")]
+		[JsonProperty(PropertyName = "last_name", NullValueHandling=NullValueHandling.Ignore)]
         public String LastName { get; set; }
 
-        [JsonProperty(PropertyName = "phone_number")]
+		[JsonProperty(PropertyName = "phone_number", NullValueHandling=NullValueHandling.Ignore)]
         public String PhoneNumber { get; set; }
 
-        [JsonProperty(PropertyName = "address")]
+		[JsonProperty(PropertyName = "address", NullValueHandling=NullValueHandling.Ignore)]
         public Address Address { get; set; }
 
-        [JsonProperty(PropertyName = "status")]
+		[JsonProperty(PropertyName = "status", NullValueHandling=NullValueHandling.Ignore)]
         public String Status { get; set; }
 
-        [JsonProperty(PropertyName = "clabe")]
+		[JsonProperty(PropertyName = "clabe", NullValueHandling=NullValueHandling.Ignore)]
         public String CLABE { get; set; }
 
-        [JsonProperty(PropertyName = "balance")]
+		[JsonProperty(PropertyName = "balance", NullValueHandling=NullValueHandling.Ignore)]
         public Decimal Balance { get; set; }
 
-        [JsonProperty(PropertyName = "creation_date")]
+		[JsonProperty(PropertyName = "creation_date", NullValueHandling=NullValueHandling.Ignore)]
         public DateTime? CreationDate { get; set; }
         
-        [JsonProperty(PropertyName = "requires_account")]
+		[JsonProperty(PropertyName = "requires_account", NullValueHandling=NullValueHandling.Ignore)]
         public Boolean RequiresAccount { get; set; }
 
-        [JsonProperty(PropertyName = "store")]
+		[JsonProperty(PropertyName = "store", NullValueHandling=NullValueHandling.Ignore)]
         public Store Store  { get; set; }
     }
 }

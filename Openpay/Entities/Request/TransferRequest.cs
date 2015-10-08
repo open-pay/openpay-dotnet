@@ -18,7 +18,7 @@ namespace Openpay.Entities.Request
         [JsonProperty(PropertyName = "description")]
         public String Description { set; get; }
 
-        [JsonProperty(PropertyName = "order_id")]
+		[JsonProperty(PropertyName = "order_id", NullValueHandling=NullValueHandling.Ignore)]
         public String OrderId { set; get; }
 
 

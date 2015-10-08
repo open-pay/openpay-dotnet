@@ -9,16 +9,16 @@ namespace Openpay.Entities
 
     public class Card : OpenpayResourceObject
     {
-        [JsonProperty(PropertyName = "token_id")]
+		[JsonProperty(PropertyName = "token_id", NullValueHandling=NullValueHandling.Ignore)]
         public String TokenId { get; set; }
 
-        [JsonProperty(PropertyName = "creation_date")]
+		[JsonProperty(PropertyName = "creation_date", NullValueHandling=NullValueHandling.Ignore)]
         public DateTime? CreationDate { get; set; }
 
-        [JsonProperty(PropertyName = "bank_name")]
+		[JsonProperty(PropertyName = "bank_name", NullValueHandling=NullValueHandling.Ignore)]
         public String BankName { get; set; }
 
-        [JsonProperty(PropertyName = "allows_payouts")]
+		[JsonProperty(PropertyName = "allows_payouts", NullValueHandling=NullValueHandling.Ignore)]
         public Boolean AllowsPayouts { get; set; }
 
         [JsonProperty(PropertyName = "holder_name")]
@@ -30,31 +30,31 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "expiration_year")]
         public String ExpirationYear { get; set; }
 
-        [JsonProperty(PropertyName = "address")]
+		[JsonProperty(PropertyName = "address", NullValueHandling=NullValueHandling.Ignore)]
         public Address Address;
 
         [JsonProperty(PropertyName = "card_number")]
         public String CardNumber { get; set; }
 
-        [JsonProperty(PropertyName = "brand")]
+		[JsonProperty(PropertyName = "brand", NullValueHandling=NullValueHandling.Ignore)]
         public String Brand { get; set; }
 
-        [JsonProperty(PropertyName = "allows_charges")]
+		[JsonProperty(PropertyName = "allows_charges", NullValueHandling=NullValueHandling.Ignore)]
         public Boolean AllowsCharges { get; set; }
 
-        [JsonProperty(PropertyName = "bank_code")]
+		[JsonProperty(PropertyName = "bank_code", NullValueHandling=NullValueHandling.Ignore)]
         public String BankCode { get; set; }
 
-        [JsonProperty(PropertyName = "type")]
+		[JsonProperty(PropertyName = "type", NullValueHandling=NullValueHandling.Ignore)]
         public String Type { get; set; }
 
-        [JsonProperty(PropertyName = "cvv2")]
+		[JsonProperty(PropertyName = "cvv2", NullValueHandling=NullValueHandling.Ignore)]
         public String Cvv2 { set; get; }
 
-        [JsonProperty(PropertyName = "device_session_id")]
+		[JsonProperty(PropertyName = "device_session_id", NullValueHandling=NullValueHandling.Ignore)]
         public String DeviceSessionId { set; get; }
 
-        [JsonProperty(PropertyName = "points_card")]
+		[JsonProperty(PropertyName = "points_card", NullValueHandling=NullValueHandling.Ignore)]
         public Boolean PointsCard { set; get; }
     }
 }

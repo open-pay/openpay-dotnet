@@ -9,10 +9,10 @@ namespace Openpay.Entities
 
     public class BankAccount : OpenpayResourceObject
     {
-        [JsonProperty(PropertyName = "creation_date")]
+		[JsonProperty(PropertyName = "creation_date", NullValueHandling=NullValueHandling.Ignore)]
         public DateTime? CreationDate { get; set; }
 
-        [JsonProperty(PropertyName = "alias")]
+		[JsonProperty(PropertyName = "alias, NullValueHandling=NullValueHandling.Ignore")]
         public String Alias { get; set; }
 
         [JsonProperty(PropertyName = "clabe")]
@@ -21,10 +21,10 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "holder_name")]
         public String HolderName { get; set; }
 
-        [JsonProperty(PropertyName = "bank_name")]
+		[JsonProperty(PropertyName = "bank_name", NullValueHandling=NullValueHandling.Ignore)]
         public String BankName { get; set; }
 
-        [JsonProperty(PropertyName = "bank_code")]
+		[JsonProperty(PropertyName = "bank_code", NullValueHandling=NullValueHandling.Ignore)]
         public String BankCode { get; set; }
     }
 }
