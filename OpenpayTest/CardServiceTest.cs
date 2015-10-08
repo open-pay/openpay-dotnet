@@ -13,14 +13,15 @@ namespace OpenpayTest
         public void TestCard_CreateAsMerchant()
         {
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "4111111111111111";
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "14";
+            card.ExpirationYear = "17";
+            card.DeviceSessionId = "120938475692htbssd3";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-           
+
             card = openpayAPI.CardService.Create(card);
             Assert.IsNotNull(card.Id);
             Assert.IsNotNull(card.CreationDate);
@@ -33,11 +34,12 @@ namespace OpenpayTest
         {
             string customer_id = "adyytoegxm6boiusecxm";
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "4111111111111111";
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "14";
+            card.ExpirationYear = "17";
+            card.DeviceSessionId = "120938475692htbssd";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 
@@ -51,6 +53,7 @@ namespace OpenpayTest
         {
             string customer_id = "adyytoegxm6boiusecxm";
             string card_id = "kwkoqpg6fcvfse8k8mg2";
+            
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             try
             {

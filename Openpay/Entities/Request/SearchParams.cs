@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,8 @@ namespace Openpay.Entities.Request
         public DateTime CreationGte { get; set; }
 
         public DateTime CreationLte { get; set; }
+
+        public String OrderId { set; get; }
 
         public void Between(DateTime start, DateTime end)
         {

@@ -8,6 +8,9 @@ namespace Openpay.Entities
 {
     public class Customer : OpenpayResourceObject
     {
+        [JsonProperty(PropertyName = "external_id")]
+        public String ExternalId { get; set; }
+
         [JsonProperty(PropertyName = "name")]
         public String Name { get; set; }
 
@@ -38,7 +41,7 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "requires_account")]
         public Boolean RequiresAccount { get; set; }
 
-		[JsonProperty(PropertyName = "external_id")]
-		public String ExternalId { get; set; }
+        [JsonProperty(PropertyName = "store")]
+        public Store Store  { get; set; }
     }
 }

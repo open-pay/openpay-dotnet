@@ -61,11 +61,11 @@ namespace OpenpayTest
             plan = openpayAPI.PlanService.Create(plan);
 
             Card card = new Card();
-            card.CardNumber = "5243385358972033";
+            card.CardNumber = "345678000000007";
             card.HolderName = "Juanito Pérez Nuñez";
-            card.Cvv2 = "123";
+            card.Cvv2 = "1234";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "14";
+            card.ExpirationYear = "17";
 
             Subscription subscription = new Subscription();
             subscription.PlanId = plan.Id;

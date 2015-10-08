@@ -47,6 +47,10 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "customer_id")]
         public String CustomerId { get; set; }
+
+        [JsonProperty(PropertyName = "conciliated")]
+        public Boolean Conciliated { get; set; }
+
     }
 
     public class Refund : Transaction { }
@@ -58,6 +62,15 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "payment_method")]
         public PaymentMethod PaymentMethod { get; set; }
+
+        [JsonProperty(PropertyName = "card_points")]
+        public CardPoints CardPoints { get; set; }
+
+		[JsonProperty(PropertyName = "exchange_rate")]
+		public ExchangeRate ExchangeRate { get; set; }
+
+		[JsonProperty(PropertyName = "metadata")]
+		public Dictionary<String, String> Metadata { set; get; }
     }
 
     public class Payout : Transaction { }

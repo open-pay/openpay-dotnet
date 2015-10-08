@@ -26,5 +26,19 @@ namespace Openpay.Entities
         
         [JsonProperty(PropertyName = "barcode_url")]
         public String BarcodeURL { get; set; }
+
+        [JsonProperty(PropertyName = "payment_address")]
+        public String PaymentAddress { get; set; }
+
+        [JsonProperty(PropertyName = "payment_url_bip21")]
+        public String PaymentUrlBip21 { get; set; }
+
+        [JsonProperty(PropertyName = "amount_bitcoins")]
+        public Decimal AmountBitcoins { get; set; }
+
+        [JsonProperty(PropertyName = "exchange_rate")]
+        public ExchangeRate ExchangeRate { get; set; }
+        
+ 
     }
 }

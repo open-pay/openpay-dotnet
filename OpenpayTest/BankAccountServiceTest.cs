@@ -21,10 +21,10 @@ namespace OpenpayTest
             BankAccount bankAccountCreated = openpayAPI.BankAccountService.Create(customer_id, bankAccount);
             Assert.IsNotNull(bankAccountCreated.Id);
             Assert.IsNull(bankAccountCreated.Alias);
-            Assert.AreEqual(bankAccount.CLABE, bankAccountCreated.CLABE);
+            Assert.AreEqual("012XXXXXXXXXX24616", bankAccountCreated.CLABE);
 
             BankAccount bankAccountGet = openpayAPI.BankAccountService.Get(customer_id, bankAccountCreated.Id);
-            Assert.AreEqual(bankAccount.CLABE, bankAccountGet.CLABE);
+            Assert.AreEqual("012XXXXXXXXXX24616", bankAccountGet.CLABE);
 
             List<BankAccount> accounts = openpayAPI.BankAccountService.List(customer_id);
             Assert.AreEqual(1, accounts.Count);
@@ -40,7 +40,7 @@ namespace OpenpayTest
             string bank_account_id = "bypzo1cstk5xynsuzjxo";
 
             BankAccount bankAccountGet = openpayAPI.BankAccountService.Get(bank_account_id);
-            Assert.AreEqual("012298026516924616", bankAccountGet.CLABE);
+            Assert.AreEqual("012XXXXXXXXXX24616", bankAccountGet.CLABE);
 
             openpayAPI.BankAccountService.Delete(bankAccountGet.Id);
 

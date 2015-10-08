@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -41,8 +38,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\CardPoints.cs" />
+    <Compile Include="Entities\Store.cs" />
+    <Compile Include="Entities\OpenpayFeesSummary.cs" />
+    <Compile Include="Entities\Request\PaginationParams.cs" />
+    <Compile Include="OpenpayFeesService.cs" />
     <Compile Include="SubscriptionService.cs" />
     <Compile Include="PlanService.cs" />
     <Compile Include="Entities\Request\FeeRequest.cs" />
@@ -75,6 +80,9 @@
     <Compile Include="OpenpayException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ParameterBuilder.cs" />
+    <Compile Include="Entities\Webhook.cs" />
+    <Compile Include="WebhookService.cs" />
+    <Compile Include="Entities\ExchangeRate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
