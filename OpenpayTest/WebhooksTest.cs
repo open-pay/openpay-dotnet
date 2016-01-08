@@ -19,7 +19,7 @@ namespace OpenpayTest
 		{
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 			Webhook webhook = new Webhook();
-			webhook.Url = "http://postcatcher.in/catchers/568fdbe90d47be0300000013";
+			webhook.Url = "http://requestb.in/pmcmyopm";
 			webhook.AddEventType("charge.refunded");
 			webhook.AddEventType("charge.failed");
 
