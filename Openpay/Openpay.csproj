@@ -83,6 +83,10 @@
     <Compile Include="Entities\Webhook.cs" />
     <Compile Include="WebhookService.cs" />
     <Compile Include="Entities\ExchangeRate.cs" />
+    <Compile Include="Entities\PayoutSummary.cs" />
+    <Compile Include="PayoutReportService.cs" />
+    <Compile Include="OpenpayGenericService.cs" />
+    <Compile Include="Entities\Request\PayoutReportDetailSearchParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -76,6 +76,7 @@
     <Compile Include="FeeServiceTest.cs" />
     <Compile Include="TransferServiceTest.cs" />
     <Compile Include="WebhooksTest.cs" />
+    <Compile Include="PayoutReportServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Openpay\Openpay.csproj">
