@@ -38,7 +38,7 @@ namespace OpenpayTest
 			Assert.AreEqual ("trfvopnmzdljgaehvbcs", detail[9].Id);
 			foreach (Transaction t in detail) {
 				Assert.IsNotNull (t.Amount);
-				Assert.Greater (t.Amount, 0);
+				Assert.IsTrue (t.Amount > 0, "Amount must be greater than 0");
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace OpenpayTest
 			Assert.AreEqual ("trj9u4wdakoeh9i03n8x", detail[4].Id);
 			foreach (Transaction t in detail) {
 				Assert.IsNotNull (t.Amount);
-				Assert.Greater (t.Amount, 0);
+				Assert.IsTrue (t.Amount > 0, "Amount must be greater than 0");
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace OpenpayTest
 			Assert.AreEqual ("trqykjamb4vfoozt2o37", detail[9].Id);
 			foreach (Transaction t in detail) {
 				Assert.IsNotNull (t.Amount);
-				Assert.Greater (t.Amount, 0);
+				Assert.IsTrue (t.Amount > 0, "Amount must be greater than 0");
 			}
 		}
 
@@ -104,7 +104,7 @@ namespace OpenpayTest
 			Assert.AreEqual ("trnkwmfcjb6yqkntlbg1", detail[0].Id);
 			foreach (Transaction t in detail) {
 				Assert.IsNotNull (t.Amount);
-				Assert.Greater (t.Amount, 0);
+				Assert.IsTrue (t.Amount > 0, "Amount must be greater than 0");
 			}
 		}
     }
