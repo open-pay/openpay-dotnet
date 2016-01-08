@@ -134,7 +134,7 @@ namespace OpenpayTest
             request.Method = "bank_account";
             request.Description = "Testing from .Net [BankAccount]";
             request.Amount = new Decimal(9.99);
-            request.DueDate = new DateTime(2015, 12, 6, 11, 50, 0);
+            request.DueDate = new DateTime(2020, 12, 6, 11, 50, 0);
 
             Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
             Assert.IsNotNull(charge);
@@ -153,7 +153,7 @@ namespace OpenpayTest
             request.Method = "store";
             request.Description = "Testing from .Net [STORE]";
             request.Amount = new Decimal(9.99);
-            request.DueDate = new DateTime(2015,12,6,11,50,0);
+            request.DueDate = new DateTime(2020,12,6,11,50,0);
 
             Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
             Assert.IsNotNull(charge);

@@ -40,7 +40,7 @@ namespace OpenpayTest
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             BankAccount bankAccount = new BankAccount();
-            bankAccount.CLABE = "012298026516924616";
+			bankAccount.CLABE = "012212000000000019";
             bankAccount.HolderName = "Testing";
 
             bankAccount = openpayAPI.BankAccountService.Create(customer_id, bankAccount);
