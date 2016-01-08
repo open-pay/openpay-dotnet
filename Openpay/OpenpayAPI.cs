@@ -15,6 +15,8 @@ namespace Openpay
 
         public ChargeService ChargeService { get; internal set; }
 
+		public PayoutReportService PayoutReportService { get; internal set; }
+
         public TransferService TransferService { get; internal set; }
 
         public PayoutService PayoutService { get; internal set; }
@@ -45,6 +47,7 @@ namespace Openpay
             SubscriptionService = new SubscriptionService(this.httpClient);
 			OpenpayFeesService = new OpenpayFeesService(this.httpClient);
 			WebhooksService = new WebhookService (this.httpClient);
+			PayoutReportService = new PayoutReportService (this.httpClient);
         }
 
         public bool Production {
