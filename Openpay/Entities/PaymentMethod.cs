@@ -23,9 +23,15 @@ namespace Openpay.Entities
         
         [JsonProperty(PropertyName = "reference")]
         public String Reference { get; set; }
+
+		[JsonProperty(PropertyName = "walmart_reference")]
+		public String WalmartReference { get; set; }
         
         [JsonProperty(PropertyName = "barcode_url")]
         public String BarcodeURL { get; set; }
+
+		[JsonProperty(PropertyName = "barcode_walmart_url")]
+		public String BarcodeWalmartURL { get; set; }
 
         [JsonProperty(PropertyName = "payment_address")]
         public String PaymentAddress { get; set; }
