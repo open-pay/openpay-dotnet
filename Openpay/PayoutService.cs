@@ -42,6 +42,16 @@ namespace Openpay
             return base.Get(null, payout_id);
         }
 
+		public void Cancel(string customer_id, string payout_id)
+		{
+			base.Delete(customer_id, payout_id);
+		}
+
+		public void Cancel(string payout_id)
+		{
+			base.Delete(null, payout_id);
+		}
+
         public new List<Payout> List(string customer_id, SearchParams filters = null)
         {
             return base.List(customer_id, filters);
