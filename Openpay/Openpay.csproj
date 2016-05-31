@@ -43,6 +43,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Merchant.cs" />
+    <Compile Include="MerchantService.cs" />
     <Compile Include="Entities\CardPoints.cs" />
     <Compile Include="Entities\Store.cs" />
     <Compile Include="Entities\OpenpayFeesSummary.cs" />

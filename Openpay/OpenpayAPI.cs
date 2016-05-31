@@ -31,6 +31,8 @@ namespace Openpay
 
 		public WebhookService WebhooksService { get; set; }
 
+        public MerchantService MerchantService { get; set; }
+
         private OpenpayHttpClient httpClient;
 
         public OpenpayAPI( string api_key, string merchant_id,bool production = false)
@@ -48,6 +50,7 @@ namespace Openpay
 			OpenpayFeesService = new OpenpayFeesService(this.httpClient);
 			WebhooksService = new WebhookService (this.httpClient);
 			PayoutReportService = new PayoutReportService (this.httpClient);
+            MerchantService = new MerchantService (this.httpClient);
         }
 
         public bool Production {
