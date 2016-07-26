@@ -8,6 +8,8 @@
     <RootNamespace>OpenpayNUnitTests</RootNamespace>
     <AssemblyName>OpenpayNUnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,17 +36,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PayoutReportTest.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ChargeTest.cs" />
+    <Compile Include="PayoutReportTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Openpay\Openpay.csproj">
-      <Project>{29A0AB02-4D5D-42F7-8F6E-A10BAD672DF0}</Project>
-      <Name>Openpay</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>

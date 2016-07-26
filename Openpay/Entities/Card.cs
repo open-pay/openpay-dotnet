@@ -55,6 +55,9 @@ namespace Openpay.Entities
         public String DeviceSessionId { set; get; }
 
 		[JsonProperty(PropertyName = "points_card", NullValueHandling=NullValueHandling.Ignore)]
-        public Boolean PointsCard { set; get; }
+		public Boolean PointsCard { set; get; }
+
+		[JsonProperty(PropertyName = "points_type", NullValueHandling=NullValueHandling.Ignore)]
+		public String PointsType { set; get; }
     }
 }

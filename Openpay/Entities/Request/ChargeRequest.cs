@@ -15,6 +15,7 @@ namespace Openpay.Entities.Request
                                                                                                                                                                                                         
          }
 
+
          [JsonProperty(PropertyName = "method")]
          public String Method { set; get; }
 
@@ -52,6 +53,10 @@ namespace Openpay.Entities.Request
         public Customer Customer { set; get; }
 
 		[JsonProperty(PropertyName = "use_card_points", NullValueHandling=NullValueHandling.Ignore)]
-        public Boolean UseCardPoints { set; get; }
+		public String UseCardPoints { set; get; }
+
+		[JsonProperty(PropertyName = "payment_plan", NullValueHandling=NullValueHandling.Ignore)]
+		public DeferralPayments DeferralPayments { set; get; }
+
     }
 }
