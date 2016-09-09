@@ -87,6 +87,38 @@ namespace OpenpayNUnitTests
 			Assert.AreEqual("completed", refund.Status);
 		}
 
+		[Test()]
+		public void TestRedirectCharge()
+		{
+			string customerExternaiId = "monos003_customer001";
+
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+
+			SearchParams searh = new SearchParams();
+			searh.ExternalId = customerExternaiId;
+			List<Customer> customers = openpayAPI.CustomerService.List(searh);
+			Customer customer = customers[0];
+			customer.ExternalId = null;
+
+			ChargeRequest request = new ChargeRequest();
+			request.Method = "card";
+			request.Description = "Testing redirect from .Net";
+			request.Amount = new Decimal(111.00);
+			request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
+			request.Customer = customer;
+			request.Confirm = false;
+			request.SendEmail = true;
+			request.RedirectUrl = "http://www.openpay.mx/index.html";
+
+			Charge charge = openpayAPI.ChargeService.Create(request);
+			Assert.IsNotNull(charge);
+			Assert.IsNotNull(charge.Id);
+			Assert.IsNotNull(charge.CreationDate);
+			Assert.AreEqual("charge_pending", charge.Status);
+			Console.WriteLine("Url: "+ charge.PaymentMethod.Url);
+
+		}
+
 		[Test ()]
 		public void TestSantanderPoints ()
 		{

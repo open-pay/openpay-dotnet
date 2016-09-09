@@ -58,12 +58,14 @@ namespace Openpay.Entities.Request
 		[JsonProperty(PropertyName = "payment_plan", NullValueHandling=NullValueHandling.Ignore)]
 		public DeferralPayments DeferralPayments { set; get; }
 
+		[JsonProperty(PropertyName = "confirm", NullValueHandling = NullValueHandling.Ignore)]
+		public Boolean Confirm { set; get; }
+
 		[JsonProperty(PropertyName = "send_email", NullValueHandling = NullValueHandling.Ignore)]
 		public Boolean SendEmail { set; get; }
 
 		[JsonProperty(PropertyName = "redirect_url", NullValueHandling = NullValueHandling.Ignore)]
 		public String RedirectUrl { set; get; }
-
 
 	}
 }

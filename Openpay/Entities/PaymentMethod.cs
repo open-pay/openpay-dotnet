@@ -44,7 +44,8 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "exchange_rate")]
         public ExchangeRate ExchangeRate { get; set; }
-        
- 
-    }
+
+		[JsonProperty(PropertyName = "url")]
+		public String Url { get; set; }
+	}
 }
