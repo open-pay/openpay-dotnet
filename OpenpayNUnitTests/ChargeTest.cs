@@ -14,11 +14,9 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestGetByOrderId()
 		{
-			string merchantId = "mexzhpxok3houd5lbvz1";
-			string privateKey = "sk_440e7370f8f34ed592463a452d122a4c";
 			string orderId = "mono3-scoti-oid-00006";
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(privateKey, merchantId);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
 			SearchParams search = new SearchParams();
 			search.OrderId = orderId;
@@ -53,18 +51,15 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestRefundCharge()
 		{
-			string merchantId = "mexzhpxok3houd5lbvz1";
-			string privateKey = "sk_440e7370f8f34ed592463a452d122a4c";
 			string customerExternaiId = "monos003_customer001";
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(privateKey, merchantId);
-			//OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 			Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
 
 			SearchParams searh = new SearchParams();
 			searh.ExternalId = customerExternaiId;
 			List<Customer> customers = openpayAPI.CustomerService.List(searh);
-			Customer customer = (Customer) customers.ToArray().GetValue(0);
+			Customer customer = customers[0];
 			customer.ExternalId = null;
 
 			ChargeRequest request = new ChargeRequest();
@@ -90,9 +85,6 @@ namespace OpenpayNUnitTests
 			Assert.IsNotNull(refund.Id);
 			Assert.IsNotNull(refund.CreationDate);
 			Assert.AreEqual("completed", refund.Status);
-
-
-
 		}
 
 		[Test ()]

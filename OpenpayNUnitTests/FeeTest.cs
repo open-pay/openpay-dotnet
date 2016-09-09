@@ -14,15 +14,12 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestFeeAndRefund()
 		{
-			string merchantId = "mexzhpxok3houd5lbvz1";
-			string privateKey = "sk_440e7370f8f34ed592463a452d122a4c";
-
 			string customerId = "ar2btmquidjhykdaztp6";
 			Decimal amount = new Decimal(11);
 			string description = "comisión de .Net de "+ amount;
 			string refundDescription = "reembolso de comisión de .Net de "+ amount;
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(privateKey, merchantId);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
 			FeeRequest feeRequest = new FeeRequest();
 			feeRequest.CustomerId = customerId;
