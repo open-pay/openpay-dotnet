@@ -50,6 +50,51 @@ namespace OpenpayNUnitTests
 			Assert.AreEqual("completed", charge.Status);
 		}
 
+		[Test()]
+		public void TestRefundCharge()
+		{
+			string merchantId = "mexzhpxok3houd5lbvz1";
+			string privateKey = "sk_440e7370f8f34ed592463a452d122a4c";
+			string customerExternaiId = "monos003_customer001";
+
+			OpenpayAPI openpayAPI = new OpenpayAPI(privateKey, merchantId);
+			//OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
+
+			SearchParams searh = new SearchParams();
+			searh.ExternalId = customerExternaiId;
+			List<Customer> customers = openpayAPI.CustomerService.List(searh);
+			Customer customer = (Customer) customers.ToArray().GetValue(0);
+			customer.ExternalId = null;
+
+			ChargeRequest request = new ChargeRequest();
+			request.Method = "card";
+			request.SourceId = card.Id;
+			request.Description = "Testing from .Net";
+			request.Amount = new Decimal(111.00);
+			request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
+			request.Customer = customer;
+
+			Charge charge = openpayAPI.ChargeService.Create(request);
+			Assert.IsNotNull(charge);
+			Assert.IsNotNull(charge.Id);
+			Assert.IsNotNull(charge.CreationDate);
+			Assert.AreEqual("completed", charge.Status);
+
+			Decimal partialAmount = charge.Amount/2;
+			string description = "reembolso parcial desce .Net de " + partialAmount;
+
+			Charge refund = openpayAPI.ChargeService.Refund(charge.Id, description, partialAmount);
+
+			Assert.IsNotNull(refund);
+			Assert.IsNotNull(refund.Id);
+			Assert.IsNotNull(refund.CreationDate);
+			Assert.AreEqual("completed", refund.Status);
+
+
+
+		}
+
 		[Test ()]
 		public void TestSantanderPoints ()
 		{
@@ -78,6 +123,17 @@ namespace OpenpayNUnitTests
 			card.Cvv2 = "132";
 			card.ExpirationMonth = "12";
 			card.ExpirationYear = "20";
+			return card;
+		}
+
+		public Card GetScotiaCardInfo()
+		{
+			Card card = new Card();
+			card.CardNumber = "5105105105105100";
+			card.HolderName = "Aquiles Salto Ramon";
+			card.Cvv2 = "111";
+			card.ExpirationMonth = "11";
+			card.ExpirationYear = "21";
 			return card;
 		}
 
