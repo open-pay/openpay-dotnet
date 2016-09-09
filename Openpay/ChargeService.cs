@@ -27,15 +27,29 @@ namespace Openpay
             return this.Refund(null, charge_id, description);
         }
 
-        public Charge Refund(string customer_id, string charge_id, string description)
+		public Charge Refund(string charge_id, string description, Decimal? amount)
+		{
+			return this.Refund(null, charge_id, description, amount);
+		}
+
+		public Charge Refund(string customer_id, string charge_id, string description)
         {
-            if (charge_id == null)
-                throw new ArgumentNullException("charge_id cannot be null");
-            string ep = GetEndPoint(customer_id, charge_id) + "/refund";
-            RefundRequest request = new RefundRequest();
-            request.Description = description;
-            return this.httpClient.Post<Charge>(ep, request);
-        }
+			return this.Refund(null, charge_id, description, null);
+		}
+
+		public Charge Refund(string customer_id, string charge_id, string description, Decimal? amount)
+		{
+			if (charge_id == null)
+				throw new ArgumentNullException("charge_id cannot be null");
+			string ep = GetEndPoint(customer_id, charge_id) + "/refund";
+			RefundRequest request = new RefundRequest();
+			request.Description = description;
+
+			if (amount != null)
+				request.Amount = amount;
+			
+			return this.httpClient.Post<Charge>(ep, request);
+		}
 
         public Charge Capture(string charge_id, Decimal? amount)
         {

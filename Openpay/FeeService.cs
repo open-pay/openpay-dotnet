@@ -32,5 +32,18 @@ namespace Openpay
         {
             return base.List(null, filters);
         }
-    }
+
+		public Fee Refund(string charge_id, string description)
+		{
+			if (charge_id == null)
+				throw new ArgumentNullException("charge_id cannot be null");
+			string ep = GetEndPoint(null, charge_id) + "/refund";
+
+			RefundRequest request = new RefundRequest();
+			request.Description = description;
+
+			return this.httpClient.Post<Fee>(ep, request);
+		}
+
+	}
 }

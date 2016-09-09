@@ -31,6 +31,8 @@ namespace Openpay.Entities.Request
 
         public String OrderId { set; get; }
 
+        public String ExternalId { set; get; }
+
         public void Between(DateTime start, DateTime end)
         {
             CreationGte = start;

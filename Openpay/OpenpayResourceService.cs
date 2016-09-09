@@ -117,7 +117,11 @@ namespace Openpay
 
                 if (searchParams.AmountLte > 0)
                     url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "amount[lte]", searchParams.AmountLte.ToString(filter_amount_format));
-            }
+
+				if (searchParams.ExternalId != null)
+					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "external_id", searchParams.ExternalId);
+
+			}
             return url_params;
         }
     }
