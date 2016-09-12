@@ -61,5 +61,18 @@ namespace Openpay
         {
             return base.List(null, filters);
         }
-    }
+
+		public PointsBalance Points(string card_id)
+		{
+			string ep = GetEndPoint(null, card_id) + "/points";
+			return this.httpClient.Get<PointsBalance>(ep);
+		}
+
+		public PointsBalance Points(string customer_id, string card_id)
+		{
+			string ep = GetEndPoint(customer_id, card_id) + "/points";
+			return this.httpClient.Get<PointsBalance>(ep);
+		}
+
+	}
 }

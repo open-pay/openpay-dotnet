@@ -12,7 +12,7 @@ namespace Openpay.Entities.Request
          public ChargeRequest()
          { 
              Capture = true;
-                                                                                                                                                                                                        
+			 Confirm = true;
          }
 
 

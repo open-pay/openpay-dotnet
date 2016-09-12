@@ -4,6 +4,7 @@ using Openpay;
 using Openpay.Entities;
 using Openpay.Entities.Request;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace OpenpayNUnitTests
 {
@@ -116,6 +117,27 @@ namespace OpenpayNUnitTests
 			Assert.IsNotNull(charge.CreationDate);
 			Assert.AreEqual("charge_pending", charge.Status);
 			Console.WriteLine("Url: "+ charge.PaymentMethod.Url);
+
+		}
+
+		[Test()]
+		public void TestPointsBalance()
+		{
+			//string customerExternaiId = "monos003_customer001";
+			String customer_id = "asda4znfoxhvpgcsui3q";
+			String card_id = "keqctdqbro2b7jtcnz7d";
+
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			//Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
+
+			PointsBalance pointsBalance = openpayAPI.CardService.Points(customer_id,card_id);
+
+			Assert.IsNotNull(pointsBalance);
+			Assert.AreEqual(PointsType.BANCOMER, pointsBalance.PointsTypeEnum);
+			Assert.AreEqual(new Decimal(33.750), pointsBalance.RemainingMxn);
+			Assert.AreEqual(new BigInteger(450), pointsBalance.RemainingPoints);
+
+			Console.WriteLine("pointsBalance:[pointsTypeEnum:" + pointsBalance.PointsTypeEnum + "pointsBalance:[pointsType:" + pointsBalance.PointsType + ", remaining Mx:" + pointsBalance.RemainingMxn + ", remainingPoints:" + pointsBalance.RemainingPoints + "]");
 
 		}
 
