@@ -41,5 +41,9 @@ namespace Openpay.Entities
 
 		[JsonProperty(PropertyName = "card", NullValueHandling=NullValueHandling.Ignore)]
         public Card Card { get; set; }
+
+		[JsonProperty(PropertyName = "transaction", NullValueHandling = NullValueHandling.Ignore)]
+		public Transaction Transaction { get; set; }
+
     }
 }
