@@ -38,9 +38,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Merchant.cs" />
@@ -91,6 +93,8 @@
     <Compile Include="Entities\Request\PayoutReportDetailSearchParams.cs" />
     <Compile Include="Entities\DeferralPayments.cs" />
     <Compile Include="Entities\UseCardPointsType.cs" />
+    <Compile Include="Entities\PointsBalance.cs" />
+    <Compile Include="Entities\PointsType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
