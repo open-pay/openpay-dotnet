@@ -98,7 +98,10 @@ namespace Openpay
                 url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "offset", searchParams.Offset.ToString());
 
                 if (searchParams.OrderId != null)
-                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "order_id", searchParams.OrderId);
+					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "order_id", searchParams.OrderId);
+
+				if (searchParams.Status != null)
+					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "status", searchParams.Status.ToString());
 
                 if (searchParams.Creation != DateTime.MinValue)
                     url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "creation", searchParams.Creation.ToString(filter_date_format));
@@ -116,10 +119,8 @@ namespace Openpay
                     url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "amount[gte]", searchParams.AmountGte.ToString(filter_amount_format));
 
                 if (searchParams.AmountLte > 0)
-                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "amount[lte]", searchParams.AmountLte.ToString(filter_amount_format));
+					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "amount[lte]", searchParams.AmountLte.ToString(filter_amount_format));
 
-				if (searchParams.ExternalId != null)
-					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "external_id", searchParams.ExternalId);
 
 			}
             return url_params;

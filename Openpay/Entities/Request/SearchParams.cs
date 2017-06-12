@@ -29,9 +29,9 @@ namespace Openpay.Entities.Request
 
         public DateTime CreationLte { get; set; }
 
-        public String OrderId { set; get; }
+		public String OrderId { set; get; }
 
-        public String ExternalId { set; get; }
+		public TransactionStatus Status { set; get; }
 
         public void Between(DateTime start, DateTime end)
         {

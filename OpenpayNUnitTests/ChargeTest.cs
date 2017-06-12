@@ -21,6 +21,7 @@ namespace OpenpayNUnitTests
 
 			SearchParams search = new SearchParams();
 			search.OrderId = orderId;
+			search.Status = TransactionStatus.COMPLETED;
 			List<Charge> charges = openpayAPI.ChargeService.List(search);
 
 			Console.WriteLine("charges: " + charges.ToArray());
@@ -52,13 +53,11 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestRefundCharge()
 		{
-			string customerExternaiId = "monos003_customer001";
 
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 			Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
 
 			SearchParams searh = new SearchParams();
-			searh.ExternalId = customerExternaiId;
 			List<Customer> customers = openpayAPI.CustomerService.List(searh);
 			Customer customer = customers[0];
 			customer.ExternalId = null;
@@ -77,10 +76,10 @@ namespace OpenpayNUnitTests
 			Assert.IsNotNull(charge.CreationDate);
 			Assert.AreEqual("completed", charge.Status);
 
-			Decimal partialAmount = charge.Amount/2;
-			string description = "reembolso parcial desce .Net de " + partialAmount;
+			Decimal refundAmount = charge.Amount;
+			string description = "reembolso desce .Net de " + refundAmount;
 
-			Charge refund = openpayAPI.ChargeService.Refund(charge.Id, description, partialAmount);
+			Charge refund = openpayAPI.ChargeService.Refund(charge.Id, description, refundAmount);
 
 			Assert.IsNotNull(refund);
 			Assert.IsNotNull(refund.Id);
@@ -91,12 +90,10 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestRedirectCharge()
 		{
-			string customerExternaiId = "monos003_customer001";
 
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
 			SearchParams searh = new SearchParams();
-			searh.ExternalId = customerExternaiId;
 			List<Customer> customers = openpayAPI.CustomerService.List(searh);
 			Customer customer = customers[0];
 			customer.ExternalId = null;
@@ -133,11 +130,11 @@ namespace OpenpayNUnitTests
 			PointsBalance pointsBalance = openpayAPI.CardService.Points(customer_id,card_id);
 
 			Assert.IsNotNull(pointsBalance);
+			Assert.AreEqual(new BigInteger(0), pointsBalance.RemainingPoints);
+			Assert.AreEqual(new Decimal(0), pointsBalance.RemainingMxn);
 			Assert.AreEqual(PointsType.BANCOMER, pointsBalance.PointsTypeEnum);
-			Assert.AreEqual(new Decimal(33.750), pointsBalance.RemainingMxn);
-			Assert.AreEqual(new BigInteger(450), pointsBalance.RemainingPoints);
 
-			Console.WriteLine("pointsBalance:[pointsTypeEnum:" + pointsBalance.PointsTypeEnum + "pointsBalance:[pointsType:" + pointsBalance.PointsType + ", remaining Mx:" + pointsBalance.RemainingMxn + ", remainingPoints:" + pointsBalance.RemainingPoints + "]");
+			Console.WriteLine("pointsBalance:[remaining Mx:" + pointsBalance.RemainingMxn + ", remainingPoints:" + pointsBalance.RemainingPoints + "]");
 
 		}
 
@@ -164,7 +161,7 @@ namespace OpenpayNUnitTests
 		public Card GetCardInfo()
 		{
 			Card card = new Card();
-			card.CardNumber = "5470464956333056";
+			card.CardNumber = "5555555555554444";
 			card.HolderName = "Juanito Pérez Nuñez";
 			card.Cvv2 = "132";
 			card.ExpirationMonth = "12";
@@ -177,8 +174,8 @@ namespace OpenpayNUnitTests
 			Card card = new Card();
 			card.CardNumber = "5105105105105100";
 			card.HolderName = "Aquiles Salto Ramon";
-			card.Cvv2 = "111";
-			card.ExpirationMonth = "11";
+			card.Cvv2 = "123";
+			card.ExpirationMonth = "12";
 			card.ExpirationYear = "21";
 			return card;
 		}
