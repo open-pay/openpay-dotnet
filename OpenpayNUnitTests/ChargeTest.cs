@@ -158,6 +158,28 @@ namespace OpenpayNUnitTests
 			Assert.AreEqual("completed", charge.Status);
 		}
 
+        public void TestChargeWithAffiliation()
+        {
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Card card = openpayAPI.CardService.Create(GetCardInfo());
+
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "card";
+            request.SourceId = card.Id;
+            request.Description = "Testing from .Net";
+            request.Amount = new Decimal(215.00);
+
+            Affiliation affiliation = new Affiliation();
+            affiliation.Name = "amex_3d";
+            request.Affiliation = affiliation;
+
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CreationDate);
+            Assert.AreEqual("completed", charge.Status);
+        }
+
 		public Card GetCardInfo()
 		{
 			Card card = new Card();
