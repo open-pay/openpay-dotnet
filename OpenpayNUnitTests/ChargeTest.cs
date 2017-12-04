@@ -21,7 +21,9 @@ namespace OpenpayNUnitTests
 
 			SearchParams search = new SearchParams();
 			search.OrderId = orderId;
-			search.Status = TransactionStatus.COMPLETED;
+			search.Status = TransactionStatus.REFUNDED;
+			search.CreationGte = new DateTime(2016, 7, 7);
+            search.CreationLte = new DateTime(2016, 12, 15);
 			List<Charge> charges = openpayAPI.ChargeService.List(search);
 
 			Console.WriteLine("charges: " + charges.ToArray());
@@ -42,12 +44,34 @@ namespace OpenpayNUnitTests
 			request.Description = "Testing from .Net";
 			request.Amount = new Decimal(111.00);
 
-
 			Charge charge = openpayAPI.ChargeService.Create(request);
 			Assert.IsNotNull(charge);
 			Assert.IsNotNull(charge.Id);
 			Assert.IsNotNull(charge.CreationDate);
 			Assert.AreEqual("completed", charge.Status);
+		}
+
+		[Test()]
+		public void TestCharge3DSecure()
+		{
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			Card card = openpayAPI.CardService.Create(GetCardInfo());
+
+			ChargeRequest request = new ChargeRequest();
+			request.Method = "card";
+			request.SourceId = card.Id;
+			request.Description = "Testing from .Net";
+			request.Amount = new Decimal(111.00);
+			request.Use3DSecure = true;
+			request.RedirectUrl = "https://www.openpay.mx";
+
+
+			Charge charge = openpayAPI.ChargeService.Create(request);
+			Assert.IsNotNull(charge);
+			Assert.IsNotNull(charge.Id);
+			Assert.IsNotNull(charge.CreationDate);
+			Assert.IsNotNull(charge.PaymentMethod.Url);
+			Assert.AreEqual("charge_pending", charge.Status);
 		}
 
 		[Test()]
@@ -130,8 +154,8 @@ namespace OpenpayNUnitTests
 			PointsBalance pointsBalance = openpayAPI.CardService.Points(customer_id,card_id);
 
 			Assert.IsNotNull(pointsBalance);
-			Assert.AreEqual(new BigInteger(0), pointsBalance.RemainingPoints);
-			Assert.AreEqual(new Decimal(0), pointsBalance.RemainingMxn);
+			Assert.AreEqual(new BigInteger(450), pointsBalance.RemainingPoints);
+			Assert.AreEqual(new Decimal(33.75), pointsBalance.RemainingMxn);
 			Assert.AreEqual(PointsType.BANCOMER, pointsBalance.PointsTypeEnum);
 
 			Console.WriteLine("pointsBalance:[remaining Mx:" + pointsBalance.RemainingMxn + ", remainingPoints:" + pointsBalance.RemainingPoints + "]");

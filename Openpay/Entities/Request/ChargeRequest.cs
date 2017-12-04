@@ -35,7 +35,7 @@ namespace Openpay.Entities.Request
          public String OrderId { set; get; }
 
 		[JsonProperty(PropertyName = "capture", NullValueHandling=NullValueHandling.Ignore)]
-         public Boolean Capture { set; get; }
+		public Boolean Capture { set; get; }
 
 		[JsonProperty(PropertyName = "device_session_id", NullValueHandling=NullValueHandling.Ignore)]
 		 public String DeviceSessionId { set; get; }
@@ -63,6 +63,9 @@ namespace Openpay.Entities.Request
 
 		[JsonProperty(PropertyName = "send_email", NullValueHandling = NullValueHandling.Ignore)]
 		public Boolean SendEmail { set; get; }
+
+		[JsonProperty(PropertyName = "use_3d_secure", NullValueHandling = NullValueHandling.Ignore)]
+		public Boolean Use3DSecure { set; get; }
 
 		[JsonProperty(PropertyName = "redirect_url", NullValueHandling = NullValueHandling.Ignore)]
 		public String RedirectUrl { set; get; }
