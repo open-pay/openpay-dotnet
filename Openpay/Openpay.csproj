@@ -95,6 +95,8 @@
     <Compile Include="Entities\UseCardPointsType.cs" />
     <Compile Include="Entities\PointsBalance.cs" />
     <Compile Include="Entities\PointsType.cs" />
+    <Compile Include="Entities\Affiliation.cs" />
+    <Compile Include="Entities\TransactionStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

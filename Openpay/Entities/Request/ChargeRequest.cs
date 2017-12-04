@@ -70,5 +70,8 @@ namespace Openpay.Entities.Request
 		[JsonProperty(PropertyName = "redirect_url", NullValueHandling = NullValueHandling.Ignore)]
 		public String RedirectUrl { set; get; }
 
+        [JsonProperty(PropertyName = "affiliation", NullValueHandling = NullValueHandling.Ignore)]
+        public Affiliation Affiliation { set; get; }
+
 	}
 }
