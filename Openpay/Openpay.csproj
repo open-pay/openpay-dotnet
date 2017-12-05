@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Merchant.cs" />
+    <Compile Include="Entities\TransactionStatus.cs" />
     <Compile Include="MerchantService.cs" />
     <Compile Include="Entities\CardPoints.cs" />
     <Compile Include="Entities\Store.cs" />

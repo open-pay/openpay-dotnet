@@ -225,7 +225,7 @@ namespace OpenpayTest
             request.Card = GetCardInfo();
             request.Description = "Testing from .Net with new card";
             request.Amount = new Decimal(9.99);
-            request.UseCardPoints = true;
+            request.UseCardPoints = true.ToString();
 
             Customer customer = new Customer();
             customer.Name = "Openpay";
@@ -258,7 +258,7 @@ namespace OpenpayTest
             request.Card = GetCardInfo();
             request.Description = "Testing from .Net with new card";
             request.Amount = new Decimal(29.99);
-            request.UseCardPoints = true;
+            request.UseCardPoints = true.ToString();
 
             Customer customer = new Customer();
             customer.Name = "Openpay";
