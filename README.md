@@ -7,7 +7,7 @@ This is a client implementing the payment services for Openpay at openpay.mx
 Compatibility
 -------------
 
-* .Net Framework 4.0 or later 
+* .Net Framework 4.5 or later 
 
 Dependencies
 ------------
