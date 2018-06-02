@@ -11,7 +11,7 @@ namespace OpenpayTest
     public class PayoutServiceTest
     {
         string customer_id = "adyytoegxm6boiusecxm";
-
+        /*
         [TestMethod]
         public void TestPayoutAsCustomer_CreateBankAccount()
         {
@@ -135,5 +135,6 @@ namespace OpenpayTest
             Assert.AreEqual(payout.Amount, payoutGet.Amount);
             Assert.AreEqual(payout.BankAccount.CLABE, payoutGet.BankAccount.CLABE);
         }
+        */
     }
 }

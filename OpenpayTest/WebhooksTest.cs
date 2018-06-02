@@ -14,6 +14,7 @@ namespace OpenpayTest
 	[TestClass]
 	public class WebhooksTest
 	{
+        /*
 		[TestMethod]
 		public void TestWebhooks_Create_Get_Verify_Get_List_Delete()
 		{
@@ -47,7 +48,7 @@ namespace OpenpayTest
 
 			openpayAPI.WebhooksService.Delete(webhookGet.Id);
 		}
-
+        */
 		private string GetVerificationCode(string url_webhook)
 		{
 			string url = url_webhook + "?inspect";

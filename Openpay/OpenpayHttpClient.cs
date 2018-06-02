@@ -107,6 +107,7 @@ namespace Openpay
             string result = null;
             string endpoint = APIEndpoint + MerchantId + path;
             Console.WriteLine("Request to: " + endpoint);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest req = SetupRequest(method.ToString(), endpoint);
             if (body != null)
             {

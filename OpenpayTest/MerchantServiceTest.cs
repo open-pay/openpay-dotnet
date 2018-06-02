@@ -21,7 +21,7 @@ namespace OpenpayTest
             Assert.IsNotNull(merchant.Email);
             Assert.IsNotNull(merchant.CreationDate);
             Assert.IsNotNull(merchant.Status);
-            Assert.IsNotNull(merchant.CLABE);
+            Assert.IsNull(merchant.CLABE);
             Assert.IsNotNull(merchant.Phone);
             Assert.IsTrue(merchant.Balance.CompareTo(1000.00M) > 0);
             Assert.IsTrue(merchant.AvailableFunds.CompareTo(1000.00M) > 0);

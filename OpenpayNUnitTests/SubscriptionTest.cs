@@ -57,7 +57,7 @@ namespace OpenpayNUnitTests
 
 			Assert.IsNotNull(subscriptionRequest);
 			Assert.IsNotNull(subscriptionRequest.Status);
-			Assert.IsNull(subscriptionRequest.Transaction);
+			Assert.IsNotNull(subscriptionRequest.Transaction);
 
 		}
 

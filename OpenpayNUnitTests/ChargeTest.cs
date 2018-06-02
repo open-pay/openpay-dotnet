@@ -211,8 +211,8 @@ namespace OpenpayNUnitTests
 			card.HolderName = "Juanito Pérez Nuñez";
 			card.Cvv2 = "132";
 			card.ExpirationMonth = "12";
-			card.ExpirationYear = "20";
-			return card;
+			card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
+            return card;
 		}
 
 		public Card GetScotiaCardInfo()
@@ -222,8 +222,8 @@ namespace OpenpayNUnitTests
 			card.HolderName = "Aquiles Salto Ramon";
 			card.Cvv2 = "123";
 			card.ExpirationMonth = "12";
-			card.ExpirationYear = "21";
-			return card;
+			card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
+            return card;
 		}
 
 	}

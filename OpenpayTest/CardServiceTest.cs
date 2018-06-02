@@ -17,7 +17,7 @@ namespace OpenpayTest
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "17";
+            card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
             card.DeviceSessionId = "120938475692htbssd3";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
@@ -38,7 +38,7 @@ namespace OpenpayTest
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "123";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "17";
+            card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
             card.DeviceSessionId = "120938475692htbssd";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);

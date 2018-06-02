@@ -65,7 +65,7 @@ namespace OpenpayTest
             card.HolderName = "Juanito Pérez Nuñez";
             card.Cvv2 = "1234";
             card.ExpirationMonth = "01";
-            card.ExpirationYear = "17";
+            card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
 
             Subscription subscription = new Subscription();
             subscription.PlanId = plan.Id;

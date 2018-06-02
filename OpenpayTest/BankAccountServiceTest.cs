@@ -15,6 +15,13 @@ namespace OpenpayTest
         public void TestAsCustomer_CreateGetDelete()
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+
+            List<BankAccount> accounts = openpayAPI.BankAccountService.List(customer_id);
+            foreach(BankAccount account in accounts)
+            {
+                openpayAPI.BankAccountService.Delete(customer_id, account.Id);
+            }
+
             BankAccount bankAccount = new BankAccount();
 			bankAccount.CLABE = "012212000000000006";
             bankAccount.HolderName = "Testing";
@@ -26,11 +33,13 @@ namespace OpenpayTest
             BankAccount bankAccountGet = openpayAPI.BankAccountService.Get(customer_id, bankAccountCreated.Id);
             Assert.AreEqual("012XXXXXXXXXX00006", bankAccountGet.CLABE);
 
-            List<BankAccount> accounts = openpayAPI.BankAccountService.List(customer_id);
+            accounts = openpayAPI.BankAccountService.List(customer_id);
             Assert.AreEqual(1, accounts.Count);
 
             openpayAPI.BankAccountService.Delete(customer_id, bankAccountGet.Id);
-           
+
+            accounts = openpayAPI.BankAccountService.List(customer_id);
+            Assert.AreEqual(0, accounts.Count);
         }
 
        // [TestMethod]

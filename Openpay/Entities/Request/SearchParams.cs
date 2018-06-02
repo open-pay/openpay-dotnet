@@ -31,7 +31,7 @@ namespace Openpay.Entities.Request
 
 		public String OrderId { set; get; }
 
-		public TransactionStatus Status { set; get; }
+		public TransactionStatus? Status { set; get; }
 
         public void Between(DateTime start, DateTime end)
         {
