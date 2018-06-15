@@ -51,6 +51,9 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "conciliated")]
         public Boolean Conciliated { get; set; }
 
+		[JsonProperty(PropertyName = "due_date")]
+		public DateTime? DueDate { get; set; }
+
     }
 
     public class Refund : Transaction { }
