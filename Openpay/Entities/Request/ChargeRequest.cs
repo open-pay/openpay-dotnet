@@ -59,7 +59,7 @@ namespace Openpay.Entities.Request
     		public DeferralPayments DeferralPayments { set; get; }
 
     		[JsonProperty(PropertyName = "confirm", NullValueHandling = NullValueHandling.Ignore)]
-    		public Boolean Confirm { set; get; }
+    		public String Confirm { set; get; }
 
     		[JsonProperty(PropertyName = "send_email", NullValueHandling = NullValueHandling.Ignore)]
     		public Boolean SendEmail { set; get; }

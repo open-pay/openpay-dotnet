@@ -128,7 +128,7 @@ namespace OpenpayNUnitTests
 			request.Amount = new Decimal(111.00);
 			request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
 			request.Customer = customer;
-			request.Confirm = false;
+			request.Confirm = "false";
 			request.SendEmail = true;
 			request.RedirectUrl = "http://www.openpay.mx/index.html";
 
@@ -228,4 +228,3 @@ namespace OpenpayNUnitTests
 
 	}
 }
-
