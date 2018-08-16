@@ -20,18 +20,18 @@ namespace Openpay.Entities
 
         [JsonProperty(PropertyName = "name")]
         public String Name { get; set; }
-        
+
         [JsonProperty(PropertyName = "reference")]
         public String Reference { get; set; }
 
-		[JsonProperty(PropertyName = "walmart_reference")]
-		public String WalmartReference { get; set; }
-        
+    		[JsonProperty(PropertyName = "walmart_reference")]
+    		public String WalmartReference { get; set; }
+
         [JsonProperty(PropertyName = "barcode_url")]
         public String BarcodeURL { get; set; }
 
-		[JsonProperty(PropertyName = "barcode_walmart_url")]
-		public String BarcodeWalmartURL { get; set; }
+    		[JsonProperty(PropertyName = "barcode_walmart_url")]
+    		public String BarcodeWalmartURL { get; set; }
 
         [JsonProperty(PropertyName = "payment_address")]
         public String PaymentAddress { get; set; }
@@ -45,7 +45,13 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "exchange_rate")]
         public ExchangeRate ExchangeRate { get; set; }
 
-		[JsonProperty(PropertyName = "url")]
-		public String Url { get; set; }
+    		[JsonProperty(PropertyName = "url")]
+    		public String Url { get; set; }
+
+        [JsonProperty(PropertyName = "ivr_key")]
+        public String IvrKey { get; set; }
+
+        [JsonProperty(PropertyName = "phone_number")]
+        public String PhoneNumber { get; set; }
 	}
 }
