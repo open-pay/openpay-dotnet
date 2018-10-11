@@ -59,5 +59,8 @@ namespace Openpay.Entities
 
 		[JsonProperty(PropertyName = "points_type", NullValueHandling=NullValueHandling.Ignore)]
 		public String PointsType { set; get; }
+
+		[JsonProperty(PropertyName = "affiliation")]
+		public Affiliation Affiliation { set; get; }
     }
 }
