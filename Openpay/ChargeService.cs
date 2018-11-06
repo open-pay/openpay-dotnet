@@ -34,7 +34,7 @@ namespace Openpay
 
 		public Charge Refund(string customer_id, string charge_id, string description)
         {
-			return this.Refund(null, charge_id, description, null);
+            return this.Refund(customer_id, charge_id, description, null);
 		}
 
 		public Charge Refund(string customer_id, string charge_id, string description, Decimal? amount)
