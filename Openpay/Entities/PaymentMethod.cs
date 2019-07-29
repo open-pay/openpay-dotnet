@@ -24,6 +24,9 @@ namespace Openpay.Entities
         [JsonProperty(PropertyName = "reference")]
         public String Reference { get; set; }
 
+        [JsonProperty(PropertyName = "agreement")]
+        public String Agreement { get; set; }
+
     		[JsonProperty(PropertyName = "walmart_reference")]
     		public String WalmartReference { get; set; }
 
