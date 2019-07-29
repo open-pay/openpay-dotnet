@@ -22,8 +22,8 @@ namespace OpenpayNUnitTests
 			SearchParams search = new SearchParams();
 			search.OrderId = orderId;
 			search.Status = TransactionStatus.REFUNDED;
-			search.CreationGte = new DateTime(2016, 7, 7);
-            search.CreationLte = new DateTime(2016, 12, 15);
+			search.CreationGte = new DateTime(2016, 9, 7);
+            search.CreationLte = new DateTime(2016, 10, 1);
 			List<Charge> charges = openpayAPI.ChargeService.List(search);
 
 			Console.WriteLine("charges: " + charges.ToArray());
