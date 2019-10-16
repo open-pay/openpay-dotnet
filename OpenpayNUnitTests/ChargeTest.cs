@@ -51,7 +51,45 @@ namespace OpenpayNUnitTests
 			Assert.AreEqual("completed", charge.Status);
 		}
 
-		[Test()]
+        [Test()]
+        public void TestCancelCharge()
+        {
+            string customer_id = "aa8ekxqmzcwyxugli0h1";
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+            customer.Id = customer_id;
+
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Card card = openpayAPI.CardService.Create(GetCardInfo());
+
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "card";
+            request.SourceId = card.Id;
+            request.Description = "Testing from .Net";
+            request.Amount = new Decimal(111.00);
+            request.Use3DSecure = true;
+            request.RedirectUrl = "https://www.openpay.mx";
+            request.Customer = customer;
+            request.Confirm = "false";
+            request.SendEmail = false;
+            request.DeviceSessionId = "kR1MiQhz2otdIuUlQkbEyitIqVMiI16f";
+
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CreationDate);
+            Assert.IsNotNull(charge.PaymentMethod.Url);
+            Assert.AreEqual("charge_pending", charge.Status);
+    
+            charge = openpayAPI.ChargeService.CancelByMerchant(Constants.MERCHANT_ID, charge.Id, request);
+            Assert.IsNotNull(charge);
+            Assert.AreEqual("cancelled", charge.Status);
+        }
+
+        [Test()]
 		public void TestCharge3DSecure()
 		{
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
@@ -215,7 +253,7 @@ namespace OpenpayNUnitTests
             return card;
 		}
 
-		public Card GetScotiaCardInfo()
+        public Card GetScotiaCardInfo()
 		{
 			Card card = new Card();
 			card.CardNumber = "5105105105105100";

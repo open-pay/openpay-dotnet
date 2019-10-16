@@ -76,6 +76,9 @@ namespace Openpay.Entities.Request
        [JsonProperty(PropertyName = "is_phone_order", NullValueHandling=NullValueHandling.Ignore)]
        public Boolean IsPhoneOrder { set; get; }
 
+	   [JsonProperty(PropertyName = "payment_options", NullValueHandling=NullValueHandling.Ignore)]
+       public String PaymentOptions { set; get; }
+
        [JsonProperty(PropertyName = "cvv2", NullValueHandling = NullValueHandling.Ignore)]
        public String Cvv2 { set; get; }
 

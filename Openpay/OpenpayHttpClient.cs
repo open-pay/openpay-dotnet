@@ -97,6 +97,17 @@ namespace Openpay
             return JsonConvert.DeserializeObject<T>(json);
         }
 
+        public T Cancel<T>(string endpoint, JsonObject obj)
+        {
+            var json = DoRequest(endpoint, HttpMethod.POST, obj.ToJson());
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+
+        public void Cancel<T>(string endpoint)
+        {
+            DoRequest(endpoint, HttpMethod.POST, null);
+        }
+
         public void Delete(string endpoint)
         {
             DoRequest(endpoint, HttpMethod.DELETE, null);

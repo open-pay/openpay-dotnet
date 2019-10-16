@@ -62,5 +62,8 @@ namespace Openpay.Entities
 
 		[JsonProperty(PropertyName = "affiliation")]
 		public Affiliation Affiliation { set; get; }
+
+        [JsonProperty(PropertyName = "payment_options", NullValueHandling=NullValueHandling.Ignore)]
+        public String PaymentOptions { set; get; }
     }
 }

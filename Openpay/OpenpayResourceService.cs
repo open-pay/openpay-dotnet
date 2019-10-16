@@ -44,6 +44,20 @@ namespace Openpay
             return ep;
         }
 
+        protected String GetEndPointMerchant(string merchant_id, string resource_id = null)
+        {
+            string ep = "/" + ResourceName.ToLower();
+            /*if (merchant_id != null)
+            {
+                ep = String.Format(merchant_id + ep);
+            }*/
+            if (resource_id != null)
+            {
+                ep += "/" + resource_id;
+            }
+            return ep;
+        }
+
         protected virtual R Create(string customer_id, T obj)
         {
             if (obj == null)
@@ -61,6 +75,22 @@ namespace Openpay
 
             string ep = GetEndPoint(customer_id, obj.Id);
             return this.httpClient.Put<R>(ep, obj);
+        }
+
+        protected virtual R Cancel(string customer_id, string charge_id, T obj)
+        {
+            if (obj == null)
+                throw new ArgumentNullException("The object to create is null");
+            string ep = GetEndPoint(customer_id, charge_id)+"/cancel";
+            return this.httpClient.Cancel<R>(ep, obj);
+        }
+
+        protected virtual R CancelByMerchant(string merchant_id, string charge_id, T obj)
+        {
+            if (obj == null)
+                throw new ArgumentNullException("The object to create is null");
+            string ep = GetEndPointMerchant(merchant_id, charge_id) + "/cancel";
+            return this.httpClient.Cancel<R>(ep, obj);
         }
 
         protected virtual void Delete(string customer_id, string resource_id)
