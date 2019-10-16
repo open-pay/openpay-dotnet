@@ -76,11 +76,6 @@ namespace Openpay
             return base.Create(customer_id, charge_request);
         }
 
-        public Charge Cancel(string customer_id, ChargeRequest charge_request)
-        {
-            return base.Cancel(null, customer_id, charge_request);
-        }
-
         public Charge CancelByMerchant(string merchant_id, string charge_id, ChargeRequest charge_request)
         {
              return base.CancelByMerchant(merchant_id, charge_id,  charge_request);
