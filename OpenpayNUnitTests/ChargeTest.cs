@@ -33,7 +33,7 @@ namespace OpenpayNUnitTests
 		}
 
 		[Test()]
-		public void TestCharge()
+		public void TestCardCharge()
 		{
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 			Card card = openpayAPI.CardService.Create(GetCardInfo());
@@ -42,77 +42,119 @@ namespace OpenpayNUnitTests
 			request.Method = "card";
 			request.SourceId = card.Id;
 			request.Description = "Testing from .Net";
-			request.Amount = new Decimal(111.00);
+			request.Amount = new Decimal(111);
+            request.Iva = "17";
+            request.Currency = "COP";
 
-			Charge charge = openpayAPI.ChargeService.Create(request);
-			Assert.IsNotNull(charge);
-			Assert.IsNotNull(charge.Id);
-			Assert.IsNotNull(charge.CreationDate);
-			Assert.AreEqual("completed", charge.Status);
-		}
-
-        [Test()]
-        public void TestCancelCharge()
-        {
-            string customer_id = "aa8ekxqmzcwyxugli0h1";
             Customer customer = new Customer();
             customer.Name = "Openpay";
             customer.LastName = "Test";
             customer.PhoneNumber = "1234567890";
             customer.Email = "noemail@openpay.mx";
-            customer.Id = customer_id;
 
+            Address address = new Address();
+            address.Department = "Medellín";
+            address.City = "Antioquia";
+            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
+
+            customer.Address = address;
+
+            request.Customer = customer;
+            request.DeviceSessionId = "myDevice123Net";
+            Charge charge = openpayAPI.ChargeService.Create(request);
+			Assert.IsNotNull(charge);
+			Assert.IsNotNull(charge.Id);
+			Assert.IsNotNull(charge.CreationDate);
+            Console.WriteLine(">>> charge status: " + charge.Status.ToString());
+
+            Assert.AreEqual("completed", charge.Status);
+
+		}
+
+        [Test()]
+        public void TestCancel()
+        {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-            Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();
             request.Method = "card";
-            request.SourceId = card.Id;
-            request.Description = "Testing from .Net";
-            request.Amount = new Decimal(111.00);
-            request.Use3DSecure = true;
-            request.RedirectUrl = "https://www.openpay.mx";
+            request.Description = "Testing from .Net with redirect";
+            request.Amount = new Decimal(111);
+            request.Iva = "17";
+            request.Currency = "COP";
+
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+
+            Address address = new Address();
+            address.Department = "Medellín";
+            address.City = "Antioquia";
+            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
+
+            customer.Address = address;
+
             request.Customer = customer;
+            request.DeviceSessionId = "myDevice123Net";
+
             request.Confirm = "false";
-            request.SendEmail = false;
-            request.DeviceSessionId = "kR1MiQhz2otdIuUlQkbEyitIqVMiI16f";
+
+            Random rnd = new Random();
+            String orderId = rnd.Next(1, 999999999).ToString();
+            request.OrderId = rnd.Next(1, 999999999).ToString();
 
             Charge charge = openpayAPI.ChargeService.Create(request);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
+            Console.WriteLine(">>> charge : " + charge.ToJson().ToString());
+
             Assert.IsNotNull(charge.CreationDate);
-            Assert.IsNotNull(charge.PaymentMethod.Url);
             Assert.AreEqual("charge_pending", charge.Status);
-    
-            charge = openpayAPI.ChargeService.CancelByMerchant(Constants.MERCHANT_ID, charge.Id, request);
-            Assert.IsNotNull(charge);
-            Assert.AreEqual("cancelled", charge.Status);
+            Console.WriteLine(">>> charge status: " + charge.Status.ToString());
+
+            Charge cancelledCharge = openpayAPI.ChargeService.CancelByMerchant(Constants.MERCHANT_ID, charge.Id, request);
+
+            Console.WriteLine(">>> cancelled charge: " + cancelledCharge.ToJson().ToString());
+            Console.WriteLine(">>> cancelled charge status: " + cancelledCharge.Status.ToString());
+
         }
 
         [Test()]
-		public void TestCharge3DSecure()
-		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-			Card card = openpayAPI.CardService.Create(GetCardInfo());
+        public void TestMerchantChargeWithStore()
+        {
+            ChargeRequest request = new ChargeRequest();
 
-			ChargeRequest request = new ChargeRequest();
-			request.Method = "card";
-			request.SourceId = card.Id;
-			request.Description = "Testing from .Net";
-			request.Amount = new Decimal(111.00);
-			request.Use3DSecure = true;
-			request.RedirectUrl = "https://www.openpay.mx";
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
 
+            Address address = new Address();
+            address.Department = "Medellín";
+            address.City = "Antioquia";
+            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
 
-			Charge charge = openpayAPI.ChargeService.Create(request);
-			Assert.IsNotNull(charge);
-			Assert.IsNotNull(charge.Id);
-			Assert.IsNotNull(charge.CreationDate);
-			Assert.IsNotNull(charge.PaymentMethod.Url);
-			Assert.AreEqual("charge_pending", charge.Status);
-		}
+            customer.Address = address;
 
-		[Test()]
+            request.Customer = customer;
+
+            request.Method = "store";
+            request.Description = "Testing from .Net [STORE]";
+            request.Amount = new Decimal(1010);
+            request.Iva = "17";
+            request.Currency = "COP";
+
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.AreEqual("in_progress", charge.Status);
+        }
+
+        [Test()]
 		public void TestRefundCharge()
 		{
 
@@ -128,8 +170,10 @@ namespace OpenpayNUnitTests
 			request.Method = "card";
 			request.SourceId = card.Id;
 			request.Description = "Testing from .Net";
-			request.Amount = new Decimal(111.00);
-			request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
+            request.Amount = 100;
+            request.Iva = "190";
+            request.Currency = "COP";
+            request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
 			request.Customer = customer;
 
 			Charge charge = openpayAPI.ChargeService.Create(request);
@@ -155,16 +199,19 @@ namespace OpenpayNUnitTests
 
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
-			SearchParams searh = new SearchParams();
-			List<Customer> customers = openpayAPI.CustomerService.List(searh);
+			SearchParams search = new SearchParams();
+			List<Customer> customers = openpayAPI.CustomerService.List(search);
 			Customer customer = customers[0];
 			customer.ExternalId = null;
 
 			ChargeRequest request = new ChargeRequest();
 			request.Method = "card";
 			request.Description = "Testing redirect from .Net";
-			request.Amount = new Decimal(111.00);
-			request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
+            request.Amount = new Decimal(10000);
+            request.Iva = "17";
+            request.Currency = "COP";
+
+            request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
 			request.Customer = customer;
 			request.Confirm = "false";
 			request.SendEmail = true;
@@ -179,46 +226,6 @@ namespace OpenpayNUnitTests
 
 		}
 
-		[Test()]
-		public void TestPointsBalance()
-		{
-			//string customerExternaiId = "monos003_customer001";
-			String customer_id = "asda4znfoxhvpgcsui3q";
-			String card_id = "keqctdqbro2b7jtcnz7d";
-
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
-			//Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
-
-			PointsBalance pointsBalance = openpayAPI.CardService.Points(customer_id,card_id);
-
-			Assert.IsNotNull(pointsBalance);
-			Assert.AreEqual(new BigInteger(450), pointsBalance.RemainingPoints);
-			Assert.AreEqual(new Decimal(33.75), pointsBalance.RemainingMxn);
-			Assert.AreEqual(PointsType.BANCOMER, pointsBalance.PointsTypeEnum);
-
-			Console.WriteLine("pointsBalance:[remaining Mx:" + pointsBalance.RemainingMxn + ", remainingPoints:" + pointsBalance.RemainingPoints + "]");
-
-		}
-
-		[Test ()]
-		public void TestSantanderPoints ()
-		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-			Card card = openpayAPI.CardService.Create (GetCardInfo ());
-
-			ChargeRequest request = new ChargeRequest();
-			request.Method = "card";
-			request.SourceId = card.Id;
-			request.Description = "Testing from .Net";
-			request.Amount = new Decimal(215.00);
-			request.UseCardPoints = UseCardPointsType.MIXED.ToString();
-
-			Charge charge = openpayAPI.ChargeService.Create(request);
-			Assert.IsNotNull(charge);
-			Assert.IsNotNull(charge.Id);
-			Assert.IsNotNull(charge.CreationDate);
-			Assert.AreEqual("completed", charge.Status);
-		}
 
         public void TestChargeWithAffiliation()
         {

@@ -61,7 +61,7 @@
     <Compile Include="Entities\Request\FeeRequest.cs" />
     <Compile Include="PayoutService.cs" />
     <Compile Include="ChargeService.cs" />
-    <Compile Include="BankAccountService.cs" />
+    <Compile Include="PseService.cs" />
     <Compile Include="Entities\Request\PayoutRequest.cs" />
     <Compile Include="Entities\Request\TransferRequest.cs" />
     <Compile Include="FeeService.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\Plan.cs" />
-    <Compile Include="Entities\BankAccount.cs" />
+    <Compile Include="Entities\Pse.cs" />
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\JsonObject.cs" />
@@ -101,6 +101,8 @@
     <Compile Include="Entities\PointsType.cs" />
     <Compile Include="Entities\Affiliation.cs" />
     <Compile Include="Entities\TransactionStatus.cs" />
+    <Compile Include="Entities\Request\PseRequest.cs" />
+    <Compile Include="LoggingHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

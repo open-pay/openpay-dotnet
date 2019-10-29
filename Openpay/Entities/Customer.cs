@@ -23,7 +23,7 @@ namespace Openpay.Entities
 		[JsonProperty(PropertyName = "phone_number", NullValueHandling=NullValueHandling.Ignore)]
         public String PhoneNumber { get; set; }
 
-		[JsonProperty(PropertyName = "address", NullValueHandling=NullValueHandling.Ignore)]
+		[JsonProperty(PropertyName = "customer_address", NullValueHandling=NullValueHandling.Ignore)]
         public Address Address { get; set; }
 
 		[JsonProperty(PropertyName = "status", NullValueHandling=NullValueHandling.Ignore)]

@@ -10,50 +10,7 @@ namespace OpenpayTest
     [TestClass]
     public class ChargeServiceTest
     {
-        /*
-        [TestMethod]
-        public void TestChargeToCustomerWithSourceId()
-        {
-            string customer_id = "adyytoegxm6boiusecxm";
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 
-            ChargeRequest request = new ChargeRequest();
-            request.Method = "card";
-            request.SourceId = "kwkoqpg6fcvfse8k8mg2";
-            request.Description = "Testing from .Net";
-            request.Amount = new Decimal(9.99);
-
-            Charge charge = openpayAPI.ChargeService.Create(customer_id, request);
-            
-            Assert.IsNotNull(charge);
-            Assert.IsNotNull(charge.Id);
-            Assert.IsNotNull(charge.CreationDate);
-            Assert.AreEqual("completed", charge.Status);
-
-            Charge charge2 = openpayAPI.ChargeService.Get(customer_id, charge.Id);
-            Assert.IsNotNull(charge2);
-            Assert.AreEqual(charge.Id, charge2.Id);
-            Assert.AreEqual(charge.Amount, charge2.Amount);
-        }
-        
-        [TestMethod]
-        public void TestChargeToCustomerWithCard()
-        {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-
-            ChargeRequest request = new ChargeRequest();
-            request.Method = "card";
-            request.Card = GetCardInfo();
-            request.Description = "Testing from .Net";
-            request.Amount = new Decimal(9.99);
-
-            Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
-            Assert.IsNotNull(charge);
-            Assert.IsNotNull(charge.Id);
-            Assert.IsNotNull(charge.CreationDate);
-            Assert.AreEqual("completed", charge.Status);
-        }
-        */
 
         [TestMethod]
 		public void TestChargeToCustomerWithCard_metdatata_USD()
@@ -78,58 +35,9 @@ namespace OpenpayTest
 			Assert.IsNotNull(charge.Metadata);
 			Assert.IsNotNull(charge.ExchangeRate);
 		}
-        /*
-        [TestMethod]
-        public void TestChargeToCustomer_AndCapture()
-        {
-            String customer_id = "adyytoegxm6boiusecxm";
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-
-            ChargeRequest request = new ChargeRequest();
-            request.Method = "card";
-            request.SourceId = "kwkoqpg6fcvfse8k8mg2";
-            request.Description = "Testing from .Net";
-            request.Amount = new Decimal(9.99);
-            request.Capture = false;
-
-            Charge charge = openpayAPI.ChargeService.Create(customer_id, request);
-            Assert.IsNotNull(charge);
-            Assert.IsNotNull(charge.Id);
-            Assert.IsNotNull(charge.CreationDate);
-            Assert.AreEqual("in_progress", charge.Status);
-
-            Charge chargeCompleted = openpayAPI.ChargeService.Capture(customer_id, charge.Id, null);
-            Assert.IsNotNull(chargeCompleted);
-            Assert.AreEqual("completed", chargeCompleted.Status);
-            Assert.AreEqual(charge.Amount, chargeCompleted.Amount);
-        }
-        
-        [TestMethod]
-        public void TestChargeToCustomerWithSourceId_AndRefund()
-        {
-            String customer_id = "adyytoegxm6boiusecxm";
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-
-            ChargeRequest request = new ChargeRequest();
-            request.Method = "card";                                                                                                                                                                                                                                                                                                    
-            request.SourceId = "kwkoqpg6fcvfse8k8mg2";
-            request.Description = "Testing from .Net";
-            request.Amount = new Decimal(9.99);
-
-            Charge charge = openpayAPI.ChargeService.Create(customer_id, request);
-            Assert.IsNotNull(charge);
-            Assert.IsNotNull(charge.Id);
-            Assert.IsNotNull(charge.CreationDate);
-            Assert.AreEqual("completed", charge.Status);
-
-            Charge chargeWithrefund = openpayAPI.ChargeService.Refund(customer_id, charge.Id, "refund desc");
-            Assert.IsNotNull(chargeWithrefund);
-            Assert.IsNotNull(chargeWithrefund.Refund);
-        }
-        */
 
         [TestMethod]
-        public void TestChargeToCustomerWithBankAccount()
+        public void TestCustomerWithPsePayment()
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
 
@@ -158,7 +66,7 @@ namespace OpenpayTest
             request.Amount = new Decimal(9.99);
             request.DueDate = DateTime.Now.AddDays(25);
 
-            Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
+			Charge charge = openpayAPI.ChargeService.Create("adyytoegxm6boiusecxm", request);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
             Assert.IsNotNull(charge.CreationDate);

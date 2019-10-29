@@ -46,6 +46,7 @@
     <Compile Include="FeeTest.cs" />
     <Compile Include="SubscriptionTest.cs" />
     <Compile Include="AlipayChargeTest.cs" />
+    <Compile Include="PseTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

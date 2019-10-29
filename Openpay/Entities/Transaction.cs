@@ -37,7 +37,7 @@ namespace Openpay.Entities
         public Card Card { get; set; }
 
         [JsonProperty(PropertyName = "bank_account")]
-        public BankAccount BankAccount { get; set; }
+        public Pse BankAccount { get; set; }
 
         [JsonProperty(PropertyName = "authorization")]
         public String Authorization { get; set; }

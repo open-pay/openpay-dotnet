@@ -11,7 +11,7 @@ namespace Openpay
 
         public CardService CardService { get; internal set; }
 
-        public BankAccountService BankAccountService { get; internal set; }
+        public PseService PseService { get; internal set; }
 
         public ChargeService ChargeService { get; internal set; }
 
@@ -40,7 +40,7 @@ namespace Openpay
             this.httpClient = new OpenpayHttpClient(api_key, merchant_id, production);
             CustomerService = new CustomerService(this.httpClient);
             CardService = new CardService(this.httpClient);
-            BankAccountService = new BankAccountService(this.httpClient);
+            PseService = new PseService(this.httpClient);
             ChargeService = new ChargeService(this.httpClient);
             PayoutService = new PayoutService(this.httpClient);
             TransferService = new TransferService(this.httpClient);

@@ -20,7 +20,7 @@ namespace Openpay.Entities.Request
          public Card Card { set; get; }
 
 		[JsonProperty(PropertyName = "bank_account", NullValueHandling=NullValueHandling.Ignore)]
-         public BankAccount BankAccount { set; get; }
+         public Pse BankAccount { set; get; }
 
          [JsonProperty(PropertyName = "amount")]
          public Decimal Amount { set; get; }

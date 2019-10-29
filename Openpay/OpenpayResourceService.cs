@@ -58,6 +58,42 @@ namespace Openpay
             return ep;
         }
 
+        protected String GetPseEndPoint(string customer_id, string resource_id = null)
+        {
+            string ep = "/" + ResourceName.ToLower();
+            if (customer_id != null)
+            {
+                ep = String.Format("/customers/{0}" + ep, customer_id);
+            }
+            if (resource_id != null)
+            {
+                ep = ep + "/" + resource_id;
+            }
+            return ep;
+        }
+
+        protected String GetPseEndPointMerchant(string merchant_id, string resource_id = null)
+        {
+            string ep = "/" + ResourceName.ToLower();
+            /*if (merchant_id != null)
+            {
+                ep = String.Format(merchant_id + ep);
+            }*/
+            if (resource_id != null)
+            {
+                ep += "/" + resource_id;
+            }
+            return ep;
+        }
+
+        protected virtual R Pse(string customer_id, T obj)
+        {
+            if (obj == null)
+                throw new ArgumentNullException("The object to pse is null");
+            string ep = GetEndPoint(customer_id);
+            return this.httpClient.Post<R>(ep, obj);
+        }
+
         protected virtual R Create(string customer_id, T obj)
         {
             if (obj == null)
