@@ -43,8 +43,8 @@ namespace OpenpayNUnitTests
 			request.SourceId = card.Id;
 			request.Description = "Testing from .Net";
 			request.Amount = new Decimal(111);
-            request.Iva = "17";
             request.Currency = "COP";
+            request.Iva = "17";
 
             Customer customer = new Customer();
             customer.Name = "Openpay";
@@ -80,8 +80,8 @@ namespace OpenpayNUnitTests
             request.Method = "card";
             request.Description = "Testing from .Net with redirect";
             request.Amount = new Decimal(111);
-            request.Iva = "17";
             request.Currency = "COP";
+			request.Iva = "17";
 
             Customer customer = new Customer();
             customer.Name = "Openpay";
@@ -144,8 +144,8 @@ namespace OpenpayNUnitTests
             request.Method = "store";
             request.Description = "Testing from .Net [STORE]";
             request.Amount = new Decimal(1010);
-            request.Iva = "17";
             request.Currency = "COP";
+			request.Iva = "17";
 
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
             Charge charge = openpayAPI.ChargeService.Create(request);
@@ -171,7 +171,8 @@ namespace OpenpayNUnitTests
 			request.SourceId = card.Id;
 			request.Description = "Testing from .Net";
             request.Amount = 100;
-            request.Iva = "190";
+			request.Currency = "COP";
+            request.Iva = "19";
             request.Currency = "COP";
             request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
 			request.Customer = customer;
@@ -208,8 +209,8 @@ namespace OpenpayNUnitTests
 			request.Method = "card";
 			request.Description = "Testing redirect from .Net";
             request.Amount = new Decimal(10000);
-            request.Iva = "17";
             request.Currency = "COP";
+			request.Iva = "17";
 
             request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
 			request.Customer = customer;
@@ -237,6 +238,8 @@ namespace OpenpayNUnitTests
             request.SourceId = card.Id;
             request.Description = "Testing from .Net";
             request.Amount = new Decimal(215.00);
+			request.Currency = "COP";
+			request.Iva = "15";
 
             Affiliation affiliation = new Affiliation();
             affiliation.Name = "amex_3d";

@@ -1,17 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System;
 using Openpay;
 using Openpay.Entities;
 using Openpay.Entities.Request;
-using System;
 using System.Collections.Generic;
+using System.Numerics;
 
-namespace OpenpayTest
+namespace OpenpayNUnitTests
 {
-    [TestClass]
-    public class CustomerServiceTest
+	[TestFixture ()]
+    public class CustomerTest
     {
 
-        [TestMethod]
+		[Test()]
         public void TestCustomer_Get()
         {
             string customer_id = "adyytoegxm6boiusecxm";
@@ -25,7 +26,7 @@ namespace OpenpayTest
             Assert.IsTrue(customer.Balance.CompareTo(8499.00M) > 0);
         }
 
-        [TestMethod]
+		[Test()]
         public void TestCustomer_List()
         {
             SearchParams search = new SearchParams();
@@ -36,7 +37,7 @@ namespace OpenpayTest
             Assert.AreEqual(3, customers.Count);
         }
 
-        [TestMethod]
+		[Test()]
         public void TestCustomer_CreateAndDelete()
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
@@ -51,7 +52,7 @@ namespace OpenpayTest
             openpayAPI.CustomerService.Delete(customer.Id);
         }
 
-        [TestMethod]
+		[Test()]
         public void TestCustomer_CreateAndDeleteWithAddress()
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
@@ -60,12 +61,11 @@ namespace OpenpayTest
             customer.LastName = "Technology";
             customer.Email = "net@c.com";
             customer.Address = new Address();
-			customer.Address.Department = "Medellín";
-			customer.Address.City = "Antioquia";
-			customer.Address.Additional = "Avenida 11e bis #152-43 Apartamento 508";
+            customer.Address.Department = "Medellín";
+            customer.Address.City = "Antioquia";
+            customer.Address.Additional = "Avenida 11e bis #152-43 Apartamento 508";
 
-
-			customer = openpayAPI.CustomerService.Create(customer);
+            customer = openpayAPI.CustomerService.Create(customer);
             Assert.IsNotNull(customer);
             Assert.IsNotNull(customer.Address);
             Assert.IsFalse(String.IsNullOrEmpty(customer.Id));
@@ -84,7 +84,7 @@ namespace OpenpayTest
             }
         }
 
-		[TestMethod]
+		[Test()]
         public void TestUpdate()
         {
             Random rnd = new Random();
