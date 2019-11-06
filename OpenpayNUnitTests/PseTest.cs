@@ -15,7 +15,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestPsePaymentWithNewCustomer()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
             PseRequest request = new PseRequest();
             request.Country = "COL";
@@ -52,7 +52,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestPsePaymentWithCustomerId()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
             // Id Customer
             SearchParams search = new SearchParams();

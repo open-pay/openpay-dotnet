@@ -40,13 +40,17 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="CardTest.cs" />
     <Compile Include="ChargeTest.cs" />
-    <Compile Include="PayoutReportTest.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="CustomerTest.cs" />
     <Compile Include="FeeTest.cs" />
-    <Compile Include="SubscriptionTest.cs" />
-    <Compile Include="AlipayChargeTest.cs" />
+    <Compile Include="MerchantTest.cs" />
+    <Compile Include="PlanTest.cs" />
     <Compile Include="PseTest.cs" />
+    <Compile Include="SubscriptionTest.cs" />
+    <Compile Include="TransferTest.cs" />
+    <Compile Include="WebhooksTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

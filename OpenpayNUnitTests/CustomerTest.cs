@@ -15,23 +15,32 @@ namespace OpenpayNUnitTests
 		[Test()]
         public void TestCustomer_Get()
         {
-            string customer_id = "adyytoegxm6boiusecxm";
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-            Customer customer = openpayAPI.CustomerService.Get(customer_id);
-            Assert.IsNotNull(customer);
-            Assert.IsNotNull(customer.Name);
-            Assert.IsNotNull(customer.Store);
-            Assert.IsNotNull(customer.CreationDate);
-            Assert.IsNull(customer.Address);
-            Assert.IsTrue(customer.Balance.CompareTo(8499.00M) > 0);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            Customer customer = new Customer();
+            customer.Name = "Net Client " + getRandomWordUpperCase(8);
+            customer.LastName = "Technology";
+            customer.Email = "net@" + getRandomWordLowerCase(15) + ".com";
+
+            customer = openpayAPI.CustomerService.Create(customer);
+
+            // ---- INI
+            string customer_id = customer.Id;
+            Customer customerRead = openpayAPI.CustomerService.Get(customer_id);
+            Assert.IsNotNull(customerRead);
+            Assert.IsNotNull(customerRead.Name);
+            Assert.IsNotNull(customerRead.CreationDate);
+            Assert.IsNull(customerRead.Address);
+            // ---- END
+
+            openpayAPI.CustomerService.Delete(customer_id);
         }
 
-		[Test()]
+        [Test()]
         public void TestCustomer_List()
         {
             SearchParams search = new SearchParams();
             search.Limit = 3;
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             List<Customer> customers = openpayAPI.CustomerService.List(search);
             Assert.IsNotNull(customers);
             Assert.AreEqual(3, customers.Count);
@@ -40,14 +49,14 @@ namespace OpenpayNUnitTests
 		[Test()]
         public void TestCustomer_CreateAndDelete()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Customer customer = new Customer();
-            customer.Name = "Net Client";
-            customer.Email = "net@c.com";
+            customer.Name = "Net Client " + getRandomWordUpperCase(8);
+            customer.LastName = "Technology";
+            customer.Email = "net@" + getRandomWordLowerCase(15) + ".com";
 
             customer = openpayAPI.CustomerService.Create(customer);
             Assert.IsNotNull(customer);
-            Assert.IsNotNull(customer.Store);
             Assert.IsFalse(String.IsNullOrEmpty(customer.Id));
             openpayAPI.CustomerService.Delete(customer.Id);
         }
@@ -55,7 +64,7 @@ namespace OpenpayNUnitTests
 		[Test()]
         public void TestCustomer_CreateAndDeleteWithAddress()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Customer customer = new Customer();
             customer.Name = "Net Client";
             customer.LastName = "Technology";
@@ -87,18 +96,56 @@ namespace OpenpayNUnitTests
 		[Test()]
         public void TestUpdate()
         {
+            // Create Customer
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            Customer customer = new Customer();
+            customer.Name = "Net Client " + getRandomWordUpperCase(8);
+            customer.LastName = "Technology";
+            customer.Email = "net@" + getRandomWordLowerCase(15) + ".com";
+
+            customer = openpayAPI.CustomerService.Create(customer);
+
+            // --- INI
             Random rnd = new Random();
-            string newName = "New name " + rnd.Next(0, 500);
+            string updateName = "New name " + rnd.Next(0, 500);
 
-            string customer_id = "adyytoegxm6boiusecxm";
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
-            Customer customer = openpayAPI.CustomerService.Get(customer_id);
-            customer.Name = newName;
+            string customer_id = customer.Id;
+            Customer customerToUpdate = openpayAPI.CustomerService.Get(customer_id);
+            customerToUpdate.Name = updateName;
 
-            customer = openpayAPI.CustomerService.Update(customer);
-            Assert.IsNotNull(customer);
-            Assert.IsNotNull(customer.Name);
-            Assert.AreEqual(newName, customer.Name);
+            Customer customerUpdated = openpayAPI.CustomerService.Update(customerToUpdate);
+            Assert.IsNotNull(customerUpdated);
+            Assert.True(customerUpdated.Name.Contains("New name "));
+            // --- FIN
+
         }
+
+        private String getRandomNumberAsString(int min, int max)
+        {
+            return String.Concat(new Random().Next(100, 999));
+        }
+
+        private String getRandomWordLowerCase(int length)
+        {
+            Random rnd = new Random();
+            string text = "";
+            for (int i = 0; i < length; i++)
+            {
+                text = string.Concat(text, (char)rnd.Next('a', 'z'));
+            }
+            return text.ToLower();
+        }
+
+        private String getRandomWordUpperCase(int length)
+        {
+            Random rnd = new Random();
+            string text = "";
+            for (int i = 0; i < length; i++)
+            {
+                text = string.Concat(text, (char)rnd.Next('a', 'z'));
+            }
+            return text.ToUpper();
+        }
+
     }
 }

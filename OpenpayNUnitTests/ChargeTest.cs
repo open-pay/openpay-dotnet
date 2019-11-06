@@ -15,27 +15,69 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestGetByOrderId()
 		{
-			string orderId = "mono3-scoti-oid-00006";
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+
+            /*
+            // --- Create Charge
+            Card card = openpayAPI.CardService.Create(GetCardInfo());
+
+            ChargeRequest request = new ChargeRequest();
+            request.Method = "card";
+            request.SourceId = card.Id;
+            request.Description = "Testing from .Net";
+            request.Amount = new Decimal(111);
+            request.Currency = "COP";
+            request.Iva = "17";
+            request.OrderId = "orderColCop111";
+
+            Customer customer = new Customer();
+            customer.Name = "Openpay";
+            customer.LastName = "Test";
+            customer.PhoneNumber = "1234567890";
+            customer.Email = "noemail@openpay.mx";
+
+            Address address = new Address();
+            address.Department = "Medellín";
+            address.City = "Antioquia";
+            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
+
+            customer.Address = address;
+
+            request.Customer = customer;
+            request.DeviceSessionId = "myDevice123Net";
+            Charge charge = openpayAPI.ChargeService.Create(request);
+            Assert.IsNotNull(charge);
+            Assert.IsNotNull(charge.Id);
+            Assert.IsNotNull(charge.CreationDate);
+            Console.WriteLine(">>> charge status: " + charge.Status.ToString());
+            Assert.AreEqual("completed", charge.Status);
+            */
+
+            // INI ------------------
+
+
+            string orderId = "orderColCop111";
 
 			SearchParams search = new SearchParams();
 			search.OrderId = orderId;
-			search.Status = TransactionStatus.REFUNDED;
-			search.CreationGte = new DateTime(2016, 9, 7);
-            search.CreationLte = new DateTime(2016, 10, 1);
+			search.Status = TransactionStatus.COMPLETED;
+			search.CreationGte = new DateTime(2019, 11, 1);
+            search.CreationLte = new DateTime(2019, 11, 5);
 			List<Charge> charges = openpayAPI.ChargeService.List(search);
 
 			Console.WriteLine("charges: " + charges.ToArray());
 
 			Assert.IsNotNull(charges);
 			Assert.AreEqual(1, charges.Count);
-		}
+            // FIN ------------------
 
-		[Test()]
+        }
+
+        [Test()]
 		public void TestCardCharge()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 			Card card = openpayAPI.CardService.Create(GetCardInfo());
 
 			ChargeRequest request = new ChargeRequest();
@@ -74,7 +116,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestCancel()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
 
             ChargeRequest request = new ChargeRequest();
             request.Method = "card";
@@ -114,7 +156,7 @@ namespace OpenpayNUnitTests
             Assert.AreEqual("charge_pending", charge.Status);
             Console.WriteLine(">>> charge status: " + charge.Status.ToString());
 
-            Charge cancelledCharge = openpayAPI.ChargeService.CancelByMerchant(Constants.MERCHANT_ID, charge.Id, request);
+            Charge cancelledCharge = openpayAPI.ChargeService.CancelByMerchant(Constants.NEW_MERCHANT_ID, charge.Id, request);
 
             Console.WriteLine(">>> cancelled charge: " + cancelledCharge.ToJson().ToString());
             Console.WriteLine(">>> cancelled charge status: " + cancelledCharge.Status.ToString());
@@ -147,7 +189,7 @@ namespace OpenpayNUnitTests
             request.Currency = "COP";
 			request.Iva = "17";
 
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Charge charge = openpayAPI.ChargeService.Create(request);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
@@ -159,7 +201,7 @@ namespace OpenpayNUnitTests
 		{
 
 			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
-			Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
+			Card card = openpayAPI.CardService.Create(GetCardInfo2());
 
 			SearchParams searh = new SearchParams();
 			List<Customer> customers = openpayAPI.CustomerService.List(searh);
@@ -230,7 +272,7 @@ namespace OpenpayNUnitTests
 
         public void TestChargeWithAffiliation()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();
@@ -255,24 +297,51 @@ namespace OpenpayNUnitTests
 		public Card GetCardInfo()
 		{
 			Card card = new Card();
-			card.CardNumber = "5555555555554444";
-			card.HolderName = "Juanito Pérez Nuñez";
-			card.Cvv2 = "132";
-			card.ExpirationMonth = "12";
-			card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
+			card.CardNumber = "4242424242424242";
+			card.HolderName = getRandomWordUpperCase(5) + " " + getRandomWordLowerCase(5);
+            card.Cvv2 = getRandomNumberAsString(100, 999);
+            card.ExpirationMonth = "0" + String.Concat(new Random().Next(1, 9));
+            card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
             return card;
 		}
 
-        public Card GetScotiaCardInfo()
+        public Card GetCardInfo2()
 		{
 			Card card = new Card();
-			card.CardNumber = "5105105105105100";
-			card.HolderName = "Aquiles Salto Ramon";
-			card.Cvv2 = "123";
-			card.ExpirationMonth = "12";
-			card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
+			card.CardNumber = "4242424242424242";
+            card.HolderName = getRandomWordUpperCase(5) + " " + getRandomWordLowerCase(5);
+            card.Cvv2 = getRandomNumberAsString(100, 999);
+            card.ExpirationMonth = "0" + String.Concat(new Random().Next(1, 9));
+            card.ExpirationYear = DateTime.Now.AddYears(3).Year.ToString().Substring(2);
             return card;
 		}
 
-	}
+        private String getRandomNumberAsString(int min, int max)
+        {
+            return String.Concat(new Random().Next(100, 999));
+        }
+
+        private String getRandomWordLowerCase(int length)
+        {
+            Random rnd = new Random();
+            string text = "";
+            for (int i = 0; i < length; i++)
+            {
+                text = string.Concat(text, (char)rnd.Next('a', 'z'));
+            }
+            return text.ToLower();
+        }
+
+        private String getRandomWordUpperCase(int length)
+        {
+            Random rnd = new Random();
+            string text = "";
+            for (int i = 0; i < length; i++)
+            {
+                text = string.Concat(text, (char)rnd.Next('a', 'z'));
+            }
+            return text.ToUpper();
+        }
+
+    }
 }

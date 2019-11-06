@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Openpay", "Openpay\Openpay.csproj", "{29A0AB02-4D5D-42F7-8F6E-A10BAD672DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenpayTests", "OpenpayTest\OpenpayTests.csproj", "{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenpayNUnitTests", "OpenpayNUnitTests\OpenpayNUnitTests.csproj", "{742C7F9D-ACAA-4880-AAB3-16351BA630B1}"
 EndProject
 Global
@@ -23,11 +21,6 @@ Global
 		{742C7F9D-ACAA-4880-AAB3-16351BA630B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742C7F9D-ACAA-4880-AAB3-16351BA630B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{742C7F9D-ACAA-4880-AAB3-16351BA630B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA46DB9-10F6-4D77-9B6D-C9E25301B5EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

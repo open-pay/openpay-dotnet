@@ -1,21 +1,22 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System;
 using Openpay;
 using Openpay.Entities;
 using Openpay.Entities.Request;
 using System.Collections.Generic;
+using System.Numerics;
 
-namespace OpenpayTest
+namespace OpenpayNUnitTests
 {
-    [TestClass]
+	[TestFixture ()]
     public class TransferServiceTest
     {
         private static readonly string customer_id = "adyytoegxm6boiusecxm";
 
-        [TestMethod]
+        [Test()]
         public void TesTransferCreate()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             TransferRequest request = new TransferRequest();
             request.CustomerId = "acjpcdct4tbyemirw7zo";
             request.Amount = 11.0m;
@@ -37,10 +38,10 @@ namespace OpenpayTest
             Assert.IsNotNull(transferGet.Status);
         }
 
-        [TestMethod]
+        [Test()]
         public void TesTransferList()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             SearchParams filters = new SearchParams();
             filters.CreationLte = new DateTime(2014, 1, 8);
             filters.Amount = 10.0m;

@@ -1,21 +1,23 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System;
 using Openpay;
 using Openpay.Entities;
+using Openpay.Entities.Request;
 using System.Collections.Generic;
+using System.Numerics;
 
-namespace OpenpayTest
+namespace OpenpayNUnitTests
 {
-    [TestClass]
-    public class PlantServiceTest
+	[TestFixture ()]
+    public class PlanTest
     {
 
         string customer_id = "adyytoegxm6boiusecxm";
 
-        [TestMethod]
+        [Test()]
         public void TestCreateGeDelete()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Plan plan = new Plan();
             plan.Name = "Tv";
             plan.Amount = 99.99m;
@@ -35,10 +37,10 @@ namespace OpenpayTest
         }
 
 
-        [TestMethod]
+        [Test()]
         public void TestUpdatePlan()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Plan plan = openpayAPI.PlanService.Get("pxs6fx3asdaa7xg3ray4");
             Random rnd = new Random();
             string newName = plan.Name + rnd.Next(0, 10);
@@ -47,10 +49,10 @@ namespace OpenpayTest
             Assert.AreEqual(newName, plantUpdated.Name);
         }
 
-        [TestMethod]
+        [Test()]
         public void TestListSubscriptions()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             Plan plan = new Plan();
             plan.Name = "Tv";
             plan.Amount = 89.99m;
@@ -79,10 +81,10 @@ namespace OpenpayTest
             openpayAPI.PlanService.Delete(plan.Id);
         }
 
-        [TestMethod]
+        [Test()]
         public void TestList()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
             List<Plan> plans = openpayAPI.PlanService.List();
             Assert.IsTrue(plans.Count > 0);
 

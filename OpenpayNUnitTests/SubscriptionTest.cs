@@ -83,6 +83,45 @@ namespace OpenpayNUnitTests
 			Assert.IsNotNull(subscriptionRequest.Transaction);
 		}
 
+        /*
+		[Test()]
+        public void TestCreateAndUpdate()
+        {
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            string plan_id = "pxs6fx3asdaa7xg3ray4";
+            Subscription subscription = new Subscription();
+            subscription.PlanId = plan_id;
+            subscription.CardId = "kwkoqpg6fcvfse8k8mg2";
+            subscription = openpayAPI.SubscriptionService.Create(customer_id, subscription);
+            Assert.IsNotNull(subscription.Card);
+
+            Card card = new Card();
+            card.CardNumber = "5105105105105100";
+            card.HolderName = "Juanito Pérez Nuñez";
+            card.Cvv2 = "123";
+            card.ExpirationMonth = "01";
+            card.ExpirationYear = DateTime.Now.AddYears(2).Year.ToString().Substring(2);
+
+            subscription.Card = card;
+            subscription = openpayAPI.SubscriptionService.Update(customer_id, subscription);
+            Assert.IsNotNull(subscription.Card);
+            int cardLength = card.CardNumber.Length;
+            Assert.AreEqual("510510XXXXXX5100", subscription.Card.CardNumber);
+
+            Subscription subscriptionGet = openpayAPI.SubscriptionService.Get(customer_id, subscription.Id);
+            Assert.AreEqual(subscription.TrialEndDate, subscriptionGet.TrialEndDate);
+        }
+        */
+		
+		[Test()]
+        public void TestListSubscriptions()
+        {
+            string customerId = "a8tnslpnbcwnrxqavrkg";
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            List<Subscription> subscriptions = openpayAPI.SubscriptionService.List(customerId);
+            Assert.IsTrue(subscriptions.Count > 0);
+        }
+		
 	}
 }
 
