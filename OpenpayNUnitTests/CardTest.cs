@@ -79,11 +79,13 @@ namespace OpenpayNUnitTests
             customer.LastName = "Perez";
             customer.Email = "net_email@comercio.co";
             customer.PhoneNumber = "5719383832";
-            Address address = new Address();
-            address.Department = "Medellín";
-            address.City = "Antioquía";
-            address.Additional = "Avenida 7f bis # 138-58 Apartamento 942";
-            customer.Address = address;
+
+            CustomerAddress customerAddress = new CustomerAddress();
+            customerAddress.Department = "Medellín";
+            customerAddress.City = "Antioquia";
+            customerAddress.Additional = "Avenida 7f bis #138-58 Apartamento 942";
+
+            customer.CustomerAddress = customerAddress;
 
             customer = openpayAPI.CustomerService.Create(customer);
             Assert.IsNotNull(customer);

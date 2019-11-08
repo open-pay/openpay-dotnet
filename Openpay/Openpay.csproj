@@ -102,6 +102,7 @@
     <Compile Include="Entities\Affiliation.cs" />
     <Compile Include="Entities\TransactionStatus.cs" />
     <Compile Include="Entities\Request\PseRequest.cs" />
+    <Compile Include="Entities\CustomerAddress.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

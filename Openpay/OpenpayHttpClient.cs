@@ -15,6 +15,7 @@ namespace Openpay
         private static readonly string api_endpoint_sandbox = "https://sandbox-api.openpay.mx/v1/";
         private static readonly string user_agent = "Openpay .NET v1";
         private static readonly Encoding encoding = Encoding.UTF8;
+        private static readonly string CT_SLASH = "/";
         private Boolean _isProduction = false;
 
         public int TimeoutSeconds { get; set; }
@@ -116,7 +117,11 @@ namespace Openpay
         protected virtual string DoRequest(string path, HttpMethod method, string body)
         {
             string result = null;
-            string endpoint = APIEndpoint + MerchantId + path;
+            string endpoint = APIEndpoint + MerchantId;
+            if (!CT_SLASH.Equals(path))
+            {
+                endpoint = endpoint + path;
+            }
             Console.WriteLine("Request to: " + endpoint);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebRequest req = SetupRequest(method.ToString(), endpoint);

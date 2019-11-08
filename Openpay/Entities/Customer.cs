@@ -23,10 +23,13 @@ namespace Openpay.Entities
 		[JsonProperty(PropertyName = "phone_number", NullValueHandling=NullValueHandling.Ignore)]
         public String PhoneNumber { get; set; }
 
-		[JsonProperty(PropertyName = "customer_address", NullValueHandling=NullValueHandling.Ignore)]
-        public Address Address { get; set; }
+		[JsonProperty(PropertyName = "address", NullValueHandling=NullValueHandling.Ignore)]
+        public Address Address { get; }
 
-		[JsonProperty(PropertyName = "status", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "customer_address", NullValueHandling = NullValueHandling.Ignore)]
+        public CustomerAddress CustomerAddress { get; set; }
+
+        [JsonProperty(PropertyName = "status", NullValueHandling=NullValueHandling.Ignore)]
         public String Status { get; set; }
 
 		[JsonProperty(PropertyName = "clabe", NullValueHandling=NullValueHandling.Ignore)]
@@ -44,4 +47,5 @@ namespace Openpay.Entities
 		[JsonProperty(PropertyName = "store", NullValueHandling=NullValueHandling.Ignore)]
         public Store Store  { get; set; }
     }
+
 }

@@ -94,12 +94,12 @@ namespace OpenpayNUnitTests
             customer.PhoneNumber = "1234567890";
             customer.Email = "noemail@openpay.mx";
 
-            Address address = new Address();
-            address.Department = "Medellín";
-            address.City = "Antioquia";
-            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
+            CustomerAddress customerAddress = new CustomerAddress();
+            customerAddress.Department = "Medellín";
+            customerAddress.City = "Antioquia";
+            customerAddress.Additional = "Avenida 17d bis #13-25 Apartamento 444";
 
-            customer.Address = address;
+            customer.CustomerAddress = customerAddress;
 
             request.Customer = customer;
             request.DeviceSessionId = "myDevice123Net";
@@ -131,12 +131,12 @@ namespace OpenpayNUnitTests
             customer.PhoneNumber = "1234567890";
             customer.Email = "noemail@openpay.mx";
 
-            Address address = new Address();
-            address.Department = "Medellín";
-            address.City = "Antioquia";
-            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
+            CustomerAddress customerAddress = new CustomerAddress();
+            customerAddress.Department = "Medellín";
+            customerAddress.City = "Antioquia";
+            customerAddress.Additional = "Avenida 17d bis #13-25 Apartamento 444";
 
-            customer.Address = address;
+            customer.CustomerAddress = customerAddress;
 
             request.Customer = customer;
             request.DeviceSessionId = "myDevice123Net";
@@ -174,12 +174,12 @@ namespace OpenpayNUnitTests
             customer.PhoneNumber = "1234567890";
             customer.Email = "noemail@openpay.mx";
 
-            Address address = new Address();
-            address.Department = "Medellín";
-            address.City = "Antioquia";
-            address.Additional = "Avenida 17d bis #13-25 Apartamento 444";
+            CustomerAddress customerAddress = new CustomerAddress();
+            customerAddress.Department = "Medellín";
+            customerAddress.City = "Antioquia";
+            customerAddress.Additional = "Avenida 17d bis #13-25 Apartamento 444";
 
-            customer.Address = address;
+            customer.CustomerAddress = customerAddress;
 
             request.Customer = customer;
 
