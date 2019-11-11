@@ -33,12 +33,12 @@ namespace OpenpayNUnitTests
             customer.PhoneNumber = "1234567892";
             customer.Email = "noemailfortest@openpay.mx";
 
-            Address address = new Address();
-            address.Department = "Medellín";
-            address.City = "Antioquia";
-            address.Additional = "Avenida 18e bis #17-28 Apartamento 451";
+            CustomerAddress customerAddress = new CustomerAddress();
+            customerAddress.Department = "Medellín";
+            customerAddress.City = "Antioquia";
+            customerAddress.Additional = "Avenida 18e bis #17-28 Apartamento 451";
 
-            customer.Address = address;
+            customer.CustomerAddress = customerAddress;
 
             request.Customer = customer;
 
