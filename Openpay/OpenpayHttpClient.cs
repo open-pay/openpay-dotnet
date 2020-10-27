@@ -1,15 +1,13 @@
 ﻿using Newtonsoft.Json;
 using Openpay.Entities;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 
 namespace Openpay
 {
-    public class OpenpayHttpClient
+    public class OpenpayHttpClient 
     {
         private static readonly string api_endpoint = "https://api.openpay.mx/v1/";
         private static readonly string api_endpoint_sandbox = "https://sandbox-api.openpay.mx/v1/";
@@ -37,14 +35,17 @@ namespace Openpay
             Production = production;
         }
 
-        public bool Production { 
-            get { 
-                return _isProduction; 
-            } 
-            set { 
+        public bool Production
+        {
+            get
+            {
+                return _isProduction;
+            }
+            set
+            {
                 APIEndpoint = value ? api_endpoint : api_endpoint_sandbox;
                 _isProduction = value;
-            } 
+            }
         }
 
         protected virtual WebRequest SetupRequest(string method, string url)
@@ -80,10 +81,10 @@ namespace Openpay
             return JsonConvert.DeserializeObject<T>(json);
         }
 
-		public void Post<T>(string endpoint)
-		{
-			DoRequest(endpoint, HttpMethod.POST, null);
-		}
+        public void Post<T>(string endpoint)
+        {
+            DoRequest(endpoint, HttpMethod.POST, null);
+        }
 
         public T Get<T>(string endpoint)
         {

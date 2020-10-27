@@ -1,14 +1,10 @@
 ﻿using Openpay.Entities;
 using Openpay.Entities.Request;
-using Openpay.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Openpay
 {
-    public class CardService : OpenpayResourceService<Card, Card>
+    public class CardService : OpenpayResourceService<Card, Card>, ICardService
     {
         public CardService(string api_key, string merchant_id, bool production = false)
             : base(api_key, merchant_id, production)
@@ -62,17 +58,17 @@ namespace Openpay
             return base.List(null, filters);
         }
 
-		public PointsBalance Points(string card_id)
-		{
-			string ep = GetEndPoint(null, card_id) + "/points";
-			return this.httpClient.Get<PointsBalance>(ep);
-		}
+        public PointsBalance Points(string card_id)
+        {
+            string ep = GetEndPoint(null, card_id) + "/points";
+            return this.httpClient.Get<PointsBalance>(ep);
+        }
 
-		public PointsBalance Points(string customer_id, string card_id)
-		{
-			string ep = GetEndPoint(customer_id, card_id) + "/points";
-			return this.httpClient.Get<PointsBalance>(ep);
-		}
+        public PointsBalance Points(string customer_id, string card_id)
+        {
+            string ep = GetEndPoint(customer_id, card_id) + "/points";
+            return this.httpClient.Get<PointsBalance>(ep);
+        }
 
-	}
+    }
 }

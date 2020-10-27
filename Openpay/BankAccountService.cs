@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Openpay.Entities;
+﻿using Openpay.Entities;
 using Openpay.Entities.Request;
+using System.Collections.Generic;
 
 namespace Openpay
 {
-    public class BankAccountService : OpenpayResourceService<BankAccount, BankAccount>
+    public class BankAccountService : OpenpayResourceService<BankAccount, BankAccount>, IBankAccountService
     {
 
         public BankAccountService(string api_key, string merchant_id, bool production = false)
@@ -32,7 +29,7 @@ namespace Openpay
             return base.Create(null, bankAccount);
         }
 
-       
+
 
         public new void Delete(string customer_id, string bankAccount_id)
         {

@@ -1,14 +1,10 @@
 ﻿using Openpay.Entities;
 using Openpay.Entities.Request;
-using Openpay.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Openpay
 {
-    public class TransferService : OpenpayResourceService<TransferRequest, Transfer>
+    public class TransferService : OpenpayResourceService<TransferRequest, Transfer>, ITransferService
     {
 
         public TransferService(string api_key, string merchant_id, bool production = false)
