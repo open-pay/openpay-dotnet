@@ -50,6 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Merchant.cs" />
+    <Compile Include="IBankAccountService.cs" />
+    <Compile Include="ICardService.cs" />
+    <Compile Include="IChargeService.cs" />
+    <Compile Include="ICustomerService.cs" />
+    <Compile Include="IFeeService.cs" />
+    <Compile Include="IMerchantService.cs" />
+    <Compile Include="IOpenpayAPI.cs" />
+    <Compile Include="IOpenpayFeesService.cs" />
+    <Compile Include="IPayoutReportService.cs" />
+    <Compile Include="IPayoutService.cs" />
+    <Compile Include="IPlanService.cs" />
+    <Compile Include="ISubscriptionService.cs" />
+    <Compile Include="ITransferService.cs" />
+    <Compile Include="IWebhookService.cs" />
     <Compile Include="MerchantService.cs" />
     <Compile Include="Entities\CardPoints.cs" />
     <Compile Include="Entities\Store.cs" />
@@ -106,6 +120,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,62 +23,56 @@
  *
  */
 using Openpay.Entities;
-using Openpay.Entities.Request;
-using Openpay.Utils;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Openpay
 {
-	/**
+    /**
 	 * <summary>
 	 * Clase base que contiene las operaciones disponibles para la administracion de los webhooks
 	 * </summary>
 	 */
-	public class WebhookService : OpenpayResourceService<Webhook, Webhook>
-	{
+    public class WebhookService : OpenpayResourceService<Webhook, Webhook>, IWebhookService
+    {
 
-		public WebhookService(string api_key, string merchant_id, bool production = false)
-			: base(api_key, merchant_id, production)
-		{
-			ResourceName = "webhooks";
-		}
+        public WebhookService(string api_key, string merchant_id, bool production = false)
+            : base(api_key, merchant_id, production)
+        {
+            ResourceName = "webhooks";
+        }
 
-		internal WebhookService(OpenpayHttpClient opHttpClient)
-			: base(opHttpClient)
-		{
-			ResourceName = "webhooks";
-		}
+        internal WebhookService(OpenpayHttpClient opHttpClient)
+            : base(opHttpClient)
+        {
+            ResourceName = "webhooks";
+        }
 
-		public Webhook Create(Webhook webhook)
-		{
-			return base.Create(null, webhook);
-		}
+        public Webhook Create(Webhook webhook)
+        {
+            return base.Create(null, webhook);
+        }
 
-		public void Verify(string webhook_id, string verification_code)
-		{
-			string url = GetEndPoint(null, webhook_id) + "/verify" + "/" + verification_code;
-			this.httpClient.Post<Webhook>(url);
-		}
-		
-		public Webhook Get(string webhook_id)
-		{
-			return base.Get(null, webhook_id);
-		}
+        public void Verify(string webhook_id, string verification_code)
+        {
+            string url = GetEndPoint(null, webhook_id) + "/verify" + "/" + verification_code;
+            this.httpClient.Post<Webhook>(url);
+        }
 
-		public void Delete(string webhook_id)
-		{
-			base.Delete(null, webhook_id);
-		}
+        public Webhook Get(string webhook_id)
+        {
+            return base.Get(null, webhook_id);
+        }
 
-		public List<Webhook> List()
-		{
-			return base.List(null, null);
-		}
+        public void Delete(string webhook_id)
+        {
+            base.Delete(null, webhook_id);
+        }
 
-	}
+        public List<Webhook> List()
+        {
+            return base.List(null, null);
+        }
+
+    }
 }
 

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Openpay.Entities;
+﻿using Openpay.Entities;
 using Openpay.Entities.Request;
+using System.Collections.Generic;
 
 namespace Openpay
 {
-    public class PayoutService : OpenpayResourceService<PayoutRequest, Payout>
+    public class PayoutService : OpenpayResourceService<PayoutRequest, Payout>, IPayoutService
     {
 
         public PayoutService(string api_key, string merchant_id, bool production = false)
@@ -42,15 +39,15 @@ namespace Openpay
             return base.Get(null, payout_id);
         }
 
-		public void Cancel(string customer_id, string payout_id)
-		{
-			base.Delete(customer_id, payout_id);
-		}
+        public void Cancel(string customer_id, string payout_id)
+        {
+            base.Delete(customer_id, payout_id);
+        }
 
-		public void Cancel(string payout_id)
-		{
-			base.Delete(null, payout_id);
-		}
+        public void Cancel(string payout_id)
+        {
+            base.Delete(null, payout_id);
+        }
 
         public new List<Payout> List(string customer_id, SearchParams filters = null)
         {
@@ -61,6 +58,6 @@ namespace Openpay
         {
             return base.List(null, filters);
         }
-      
+
     }
 }
