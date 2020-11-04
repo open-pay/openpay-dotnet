@@ -82,5 +82,11 @@ namespace Openpay.Entities.Request
        [JsonProperty(PropertyName = "cvv2", NullValueHandling = NullValueHandling.Ignore)]
        public String Cvv2 { set; get; }
 
+	   [JsonProperty(PropertyName = "i18n", NullValueHandling=NullValueHandling.Ignore)]
+       public Internationalization Internationalization { set; get; }
+
+	   [JsonProperty(PropertyName = "gateway", NullValueHandling=NullValueHandling.Ignore)]
+       public Gateway Gateway { set; get; }
+
 	}
 }
