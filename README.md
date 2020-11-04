@@ -140,6 +140,15 @@ string charge_id = "ttcg5roe2py2bur38cx2";
 
 Charge chargeRefunded = openpayAPI.ChargeService.Refund(customer_id, charge.Id, "refund desc");
 ```
+Or:
+```cs
+string customer_id = "adyytoegxm6boiusecxm";
+string charge_id = "ttcg5roe2py2bur38cx2";
+RefundRequest refundRequest = new RefundRequest();
+refundRequest.Description = "refund desc";
+
+Charge chargeRefunded = openpayAPI.ChargeService.RefundWithRequest(customer_id, charge.Id, refundRequest);
+```
 Create a charge to be paid by bank transfer
 ```cs
 string customer_id = "adyytoegxm6boiusecxm";
