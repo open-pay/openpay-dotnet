@@ -15,5 +15,8 @@ namespace Openpay.Entities.Request
 		[JsonProperty(PropertyName = "amount")]
 		public Decimal? Amount { set; get; }
 
+		[JsonProperty(PropertyName = "gateway", NullValueHandling = NullValueHandling.Ignore)]
+		public Gateway Gateway { set; get; }
+
 	}
 }
