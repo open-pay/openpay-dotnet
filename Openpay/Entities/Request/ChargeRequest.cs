@@ -88,5 +88,7 @@ namespace Openpay.Entities.Request
 	   [JsonProperty(PropertyName = "gateway", NullValueHandling=NullValueHandling.Ignore)]
        public Gateway Gateway { set; get; }
 
+	   [JsonProperty(PropertyName = "provider", NullValueHandling=NullValueHandling.Ignore)]
+       public Provider Provider { set; get; }
 	}
 }
