@@ -39,6 +39,11 @@ namespace Openpay
 
 		public Charge Refund(string customer_id, string charge_id, string description, Decimal? amount)
 		{
+			return this.Refund(customer_id, charge_id, description, amount, null);
+		}
+
+		public Charge Refund(string customer_id, string charge_id, string description, Decimal? amount, Gateway gateway)
+		{
 			if (charge_id == null)
 				throw new ArgumentNullException("charge_id cannot be null");
 			string ep = GetEndPoint(customer_id, charge_id) + "/refund";
@@ -47,8 +52,23 @@ namespace Openpay
 
 			if (amount != null)
 				request.Amount = amount;
+			if (gateway != null)
+				request.Gateway = gateway;
 			
 			return this.httpClient.Post<Charge>(ep, request);
+		}
+
+		public Charge RefundWithRequest(string charge_id, RefundRequest refund_request)
+		{
+			return this.RefundWithRequest(null, charge_id, refund_request);
+		}
+
+		public Charge RefundWithRequest(string customer_id, string charge_id, RefundRequest refund_request)
+		{
+			if (charge_id == null)
+				throw new ArgumentNullException("charge_id cannot be null");
+			string ep = GetEndPoint(customer_id, charge_id) + "/refund";
+			return this.httpClient.Post<Charge>(ep, refund_request);
 		}
 
         public Charge Capture(string charge_id, Decimal? amount)

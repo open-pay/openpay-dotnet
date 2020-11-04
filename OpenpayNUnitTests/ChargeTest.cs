@@ -149,6 +149,48 @@ namespace OpenpayNUnitTests
 			Assert.AreEqual("completed", refund.Status);
 		}
 
+        [Test()]
+		public void TestRefundChargeWithRequest()
+		{
+
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
+
+			SearchParams searh = new SearchParams();
+			List<Customer> customers = openpayAPI.CustomerService.List(searh);
+			Customer customer = customers[0];
+			customer.ExternalId = null;
+
+			ChargeRequest request = new ChargeRequest();
+			request.Method = "card";
+			request.SourceId = card.Id;
+			request.Description = "Testing from .Net";
+			request.Amount = new Decimal(111.00);
+			request.DeviceSessionId = "sah2e76qfdqa72ef2e2q";
+			request.Customer = customer;
+
+			Charge charge = openpayAPI.ChargeService.Create(request);
+			Assert.IsNotNull(charge);
+			Assert.IsNotNull(charge.Id);
+			Assert.IsNotNull(charge.CreationDate);
+			Assert.AreEqual("completed", charge.Status);
+
+			Decimal refundAmount = charge.Amount;
+			string description = "reembolso desce .Net de " + refundAmount;
+
+			RefundRequest refundRequest = new RefundRequest();
+			refundRequest.Description = description;
+			refundRequest.Amount = refundAmount;
+			// refundRequest.Gateway = 
+
+			Charge refund = openpayAPI.ChargeService.RefundWithRequest(charge.Id, refundRequest);
+
+			Assert.IsNotNull(refund);
+			Assert.IsNotNull(refund.Id);
+			Assert.IsNotNull(refund.CreationDate);
+			Assert.AreEqual("completed", refund.Status);
+		}
+
 		[Test()]
 		public void TestRedirectCharge()
 		{
