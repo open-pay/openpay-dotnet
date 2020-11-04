@@ -101,6 +101,9 @@
     <Compile Include="Entities\PointsType.cs" />
     <Compile Include="Entities\Affiliation.cs" />
     <Compile Include="Entities\TransactionStatus.cs" />
+    <Compile Include="Entities\Gateway.cs" />
+    <Compile Include="Entities\Provider.cs" />
+    <Compile Include="Entities\Internationalization.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
