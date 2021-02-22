@@ -10,12 +10,13 @@ namespace Openpay.Utils
     {
         public static string ApplyParameterToUrl(string url, string argument, string value)
         {
+            UrlUtils urlUtils = new UrlUtils();
             var token = "&";
 
             if (!url.Contains("?"))
                 token = "?";
 
-            return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
+            return urlUtils.ScapeSquareBrackets(string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value)));
         }
     }
 }
