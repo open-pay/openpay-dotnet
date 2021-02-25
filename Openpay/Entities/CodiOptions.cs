@@ -1,9 +1,10 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 
 namespace Openpay.Entities
 {
-    public class CodiOptions: OpenpayResourceObject
+
+    public class CodiOptions
     {
         [JsonProperty(PropertyName = "mode", NullValueHandling=NullValueHandling.Ignore)]
         public String Mode { get; set; }
@@ -13,6 +14,5 @@ namespace Openpay.Entities
         
         [JsonProperty(PropertyName = "phone_number", NullValueHandling=NullValueHandling.Ignore)]
         public int PhoneNumber { get; set; }
-        
     }
 }
