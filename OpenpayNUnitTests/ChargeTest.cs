@@ -42,13 +42,42 @@ namespace OpenpayNUnitTests
             request.SourceId = card.Id;
             request.Description = "Testing from .Net";
             request.Amount = new Decimal(111.00);
-
+            Customer customer = new Customer();
+            customer.Name = "marco";
+            customer.LastName = "morales";
+            customer.PhoneNumber = "111111111";
+            customer.Email = "marco@me.com";
+            request.Customer = customer;
             Charge charge = openpayAPI.ChargeService.Create(request);
+            Console.WriteLine("before charge: ");
+            Console.WriteLine("charge: " + charge);
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
             Assert.IsNotNull(charge.CreationDate);
             Assert.AreEqual("completed", charge.Status);
+            
+            Charge charge2 = openpayAPI.ChargeService.Get(charge.Id);
+            Console.Write(charge2);
         }
+        
+        [Test()]
+        public void GetCharge()
+        {
+            OpenpayAPI api = new OpenpayAPI("sk_e568c42a6c384b7ab02cd47d2e407cab", "mzdtln0bmtms6o3kck8f");
+            // ChargeRequest request = new ChargeRequest();
+            // request.Method = "bank_account";
+            // request.Amount = new Decimal(100.00);
+            // request.Description = "Cargo con banco";
+            // request.OrderId = "qrsof-002";
+            // Charge charge = api.ChargeService.Create(request);
+            // Console.Write(charge);
+            
+            List<Charge> charges = api.ChargeService.List();
+            Console.Write(charges.Count);
+
+        }
+        
+        
 
         [Test()]
         public void TestCancelCharge()
