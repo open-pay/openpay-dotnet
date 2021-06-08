@@ -304,6 +304,7 @@ namespace OpenpayNUnitTests
         }
 
         [Test()]
+        [Ignore]
         public void TestChargeWithCodiOptions()
         {
             OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
