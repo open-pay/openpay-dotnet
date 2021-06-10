@@ -76,7 +76,7 @@ namespace Openpay.Entities
 		public Dictionary<String, String> Metadata { set; get; }
 
 		[JsonProperty(PropertyName = "customer")]
-		public Customer Customer;
+		public Customer Customer { get; set; }
     }
 
     public class Payout : Transaction { }
