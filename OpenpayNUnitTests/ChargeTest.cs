@@ -304,15 +304,13 @@ namespace OpenpayNUnitTests
         }
 
         [Test()]
-        [Ignore]
         public void TestChargeWithCodiOptions()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI("sk_5ed6b8da2ace43db89efa8706b3b6e7f","m4ler8bdfpwnttgflt5n");
             ChargeRequest request = new ChargeRequest();
             request.Method = "codi";
             request.Amount = new Decimal(200.00);
             request.Description = "Testing from .Net Codi";
-            request.OrderId = "codi-00001";
             DateTime time = new DateTime(2021, 12, 20);
             request.DueDate = time;
             CodiOptions codiOptions = getCodiOptions();
@@ -325,7 +323,7 @@ namespace OpenpayNUnitTests
             Assert.IsNotNull(charge);
             Assert.IsNotNull(charge.Id);
             Assert.IsNotNull(charge.CreationDate);
-            Assert.AreEqual("completed", charge.Status);
+            Assert.AreEqual("charge_pending", charge.Status);
             Assert.AreEqual("codi", charge.PaymentMethod.Type);
             Assert.AreEqual("codi", charge.Method);
             Assert.IsNotNull(charge.PaymentMethod.BarcodeURL);
