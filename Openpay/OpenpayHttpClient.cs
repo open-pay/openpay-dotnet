@@ -11,8 +11,8 @@ namespace Openpay
 {
     public class OpenpayHttpClient
     {
-        private static readonly string api_endpoint = "https://api.openpay.mx/v1/";
-        private static readonly string api_endpoint_sandbox = "https://sandbox-api.openpay.mx/v1/";
+        private static string api_endpoint = "https://api.openpay.mx/v1/";
+        private static string api_endpoint_sandbox = "https://sandbox-api.openpay.mx/v1/";
         private static readonly string user_agent = "Openpay .NET v1";
         private static readonly Encoding encoding = Encoding.UTF8;
         private Boolean _isProduction = false;
@@ -25,8 +25,24 @@ namespace Openpay
 
         public String APIKey { get; set; }
 
-        public OpenpayHttpClient(string api_key, string merchant_id, bool production = false)
+        public OpenpayHttpClient(string api_key, string merchant_id, Countries country = Countries.MX, bool production = false)
         {
+            if (country == null)
+            {
+                throw new ArgumentNullException("country");
+            }
+            
+            switch (country)
+            {
+                case Countries.PE:
+                    api_endpoint = "https://api.openpay.pe/v1/";
+                    api_endpoint_sandbox = "https://sandbox-api.openpay.pe/v1/";
+                    break;
+                default:
+                    api_endpoint = "https://api.openpay.mx/v1/";
+                    api_endpoint_sandbox = "https://sandbox-api.openpay.mx/v1/";
+                    break;
+            }
             if (String.IsNullOrEmpty(api_endpoint_sandbox))
                 throw new ArgumentNullException("api_key");
             if (String.IsNullOrEmpty(merchant_id))

@@ -12,9 +12,9 @@ namespace Openpay
 	{
 		internal OpenpayHttpClient httpClient;
 
-		public OpenpayFeesService(string api_key, string merchant_id, bool production = false)
+		public OpenpayFeesService(string api_key, string merchant_id, Countries country = Countries.MX, bool production = false)
 		{
-			this.httpClient = new OpenpayHttpClient(api_key, merchant_id, production);
+			this.httpClient = new OpenpayHttpClient(api_key, merchant_id, country, production);
 		}
 
 		internal OpenpayFeesService(OpenpayHttpClient opHttpClient)

@@ -49,8 +49,12 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckoutService.cs" />
+    <Compile Include="Countries.cs" />
+    <Compile Include="Entities\Checkout.cs" />
     <Compile Include="Entities\CodiOptions.cs" />
     <Compile Include="Entities\Merchant.cs" />
+    <Compile Include="Entities\Request\CheckoutRequest.cs" />
     <Compile Include="MerchantService.cs" />
     <Compile Include="Entities\CardPoints.cs" />
     <Compile Include="Entities\Store.cs" />

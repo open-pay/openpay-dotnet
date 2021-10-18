@@ -11,8 +11,8 @@ namespace Openpay
     public class TransferService : OpenpayResourceService<TransferRequest, Transfer>
     {
 
-        public TransferService(string api_key, string merchant_id, bool production = false)
-            : base(api_key, merchant_id, production)
+        public TransferService(string api_key, string merchant_id, Countries country, bool production = false)
+            : base(api_key, merchant_id, country, production)
         {
             ResourceName = "transfers";
         }
