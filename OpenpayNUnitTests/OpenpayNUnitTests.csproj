@@ -51,6 +51,7 @@
     <Compile Include="TestPeru\CheckoutTests.cs" />
     <Compile Include="TestPeru\CustomersTests.cs" />
     <Compile Include="TestPeru\TokenTests.cs" />
+    <Compile Include="TestPeru\WebhookTests.cs" />
     <Compile Include="Utils\UrlUtilsTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
