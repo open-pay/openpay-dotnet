@@ -47,6 +47,7 @@
     <Compile Include="FeeTest.cs" />
     <Compile Include="SubscriptionTest.cs" />
     <Compile Include="AlipayChargeTest.cs" />
+    <Compile Include="TestPeru\CardsTests.cs" />
     <Compile Include="TestPeru\ChargeTests.cs" />
     <Compile Include="TestPeru\CheckoutTests.cs" />
     <Compile Include="TestPeru\CustomersTests.cs" />
