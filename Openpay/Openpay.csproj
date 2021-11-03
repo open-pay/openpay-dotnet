@@ -56,6 +56,7 @@
     <Compile Include="Entities\Merchant.cs" />
     <Compile Include="Entities\Request\CheckoutRequest.cs" />
     <Compile Include="Entities\Request\TokenRequest.cs" />
+    <Compile Include="Entities\Request\UpdateCheckoutRequest.cs" />
     <Compile Include="Entities\Token.cs" />
     <Compile Include="MerchantService.cs" />
     <Compile Include="Entities\CardPoints.cs" />

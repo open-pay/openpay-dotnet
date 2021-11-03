@@ -40,9 +40,9 @@ namespace Openpay
             return base.Get(null, checkout_id);
         }
         
-        public Checkout Update(string customer_id,Checkout checkout)
+        public Checkout Update(Checkout checkout, string status, UpdateCheckoutRequest new_data)
         {
-            return base.Update(customer_id, checkout);
+            return base.UpdateCheckout(status, new_data, checkout);
         }
 
         public new List<Checkout> List(string customer_id, SearchParams filters = null)

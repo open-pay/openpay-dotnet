@@ -76,6 +76,18 @@ namespace Openpay
             string ep = GetEndPoint(customer_id, obj.Id);
             return this.httpClient.Put<R>(ep, obj);
         }
+        
+        protected R UpdateCheckout(string status, UpdateCheckoutRequest new_data, R obj)
+        {
+            if (String.IsNullOrEmpty(obj.Id))
+                throw new ArgumentNullException("resource_id");
+            if (obj == null)
+                throw new ArgumentNullException("Object is null");
+
+            string ep = GetEndPoint(null, obj.Id);
+            ep = ep + "?status=" + status;
+            return this.httpClient.Put<R>(ep, new_data);
+        }
 
         protected virtual R Cancel(string customer_id, string charge_id, T obj)
         {

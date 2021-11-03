@@ -48,6 +48,8 @@
     <Compile Include="SubscriptionTest.cs" />
     <Compile Include="AlipayChargeTest.cs" />
     <Compile Include="TestPeru\ChargeTests.cs" />
+    <Compile Include="TestPeru\CheckoutTests.cs" />
+    <Compile Include="TestPeru\CustomersTests.cs" />
     <Compile Include="TestPeru\TokenTests.cs" />
     <Compile Include="Utils\UrlUtilsTest.cs" />
   </ItemGroup>
