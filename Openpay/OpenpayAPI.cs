@@ -34,6 +34,8 @@ namespace Openpay
         public MerchantService MerchantService { get; set; }
         
         public CheckoutService CheckoutService { get; set; }
+        
+        public TokenService TokenService { get; set; }
 
         private OpenpayHttpClient httpClient;
 
@@ -59,6 +61,7 @@ namespace Openpay
 			PayoutReportService = new PayoutReportService (this.httpClient);
             MerchantService = new MerchantService (this.httpClient);
             CheckoutService = new CheckoutService(this.httpClient);
+            TokenService = new TokenService(this.httpClient);
         }
 
         public bool Production {
