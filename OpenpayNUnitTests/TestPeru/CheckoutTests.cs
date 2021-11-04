@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using Openpay;
 using Openpay.Entities;
+using Openpay.Entities.Request;
 
 namespace OpenpayNUnitTests.TestPeru
 {
@@ -73,6 +75,17 @@ namespace OpenpayNUnitTests.TestPeru
             newData.ExpirationDate = DateTime.Now.AddDays(2).ToString("yyyy-MM-dd HH:mm");
             Checkout updatedCheckout = openpayAPI.CheckoutService.Update(checkout, "available", newData);
             Assert.NotNull(updatedCheckout);
+        }
+
+        [Test()]
+        public void List()
+        {
+            SearchParams searchParams = new SearchParams();
+            searchParams.Limit = 10;
+            searchParams.StartDate = "20211001";
+            searchParams.EndDate = "20211011";
+            List<Checkout> checkouts = openpayAPI.CheckoutService.List(searchParams);
+            Assert.NotNull(checkouts);
         }
         
         private string GetId()

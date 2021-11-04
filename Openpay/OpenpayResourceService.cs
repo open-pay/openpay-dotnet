@@ -144,6 +144,12 @@ namespace Openpay
 
 				if (searchParams.Status != null)
 					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "status", searchParams.Status.ToString());
+                
+                if (searchParams.StartDate != null)
+                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "startDate", searchParams.StartDate);
+                
+                if (searchParams.EndDate != null)
+                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "endDate", searchParams.EndDate);
 
                 if (searchParams.Creation != DateTime.MinValue)
                     url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "creation", searchParams.Creation.ToString(filter_date_format));

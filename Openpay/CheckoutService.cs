@@ -30,11 +30,6 @@ namespace Openpay
             return base.Create(customer_id, checkout_request);
         }
 
-        public new Checkout Get(string customer_id, string checkout_id)
-        {
-            return base.Get(customer_id, checkout_id);
-        }
-
         public Checkout Get(string checkout_id)
         {
             return base.Get(null, checkout_id);
