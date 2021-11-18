@@ -42,10 +42,17 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="ChargeTest.cs" />
+    <Compile Include="CreateCheckout.cs" />
     <Compile Include="PayoutReportTest.cs" />
     <Compile Include="FeeTest.cs" />
     <Compile Include="SubscriptionTest.cs" />
     <Compile Include="AlipayChargeTest.cs" />
+    <Compile Include="TestPeru\CardsTests.cs" />
+    <Compile Include="TestPeru\ChargeTests.cs" />
+    <Compile Include="TestPeru\CheckoutTests.cs" />
+    <Compile Include="TestPeru\CustomersTests.cs" />
+    <Compile Include="TestPeru\TokenTests.cs" />
+    <Compile Include="TestPeru\WebhookTests.cs" />
     <Compile Include="Utils\UrlUtilsTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

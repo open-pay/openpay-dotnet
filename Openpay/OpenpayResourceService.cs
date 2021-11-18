@@ -18,9 +18,9 @@ namespace Openpay
 
         private static readonly string filter_amount_format = "0.00";
 
-        public OpenpayResourceService(string api_key, string merchant_id, bool production = false)
+        public OpenpayResourceService(string api_key, string merchant_id, Countries country, bool production = false)
         {
-            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, production);
+            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, country, production);
         }
 
         internal OpenpayResourceService(OpenpayHttpClient opHttpClient)
@@ -75,6 +75,18 @@ namespace Openpay
 
             string ep = GetEndPoint(customer_id, obj.Id);
             return this.httpClient.Put<R>(ep, obj);
+        }
+        
+        protected R UpdateCheckout(string status, UpdateCheckoutRequest new_data, R obj)
+        {
+            if (String.IsNullOrEmpty(obj.Id))
+                throw new ArgumentNullException("resource_id");
+            if (obj == null)
+                throw new ArgumentNullException("Object is null");
+
+            string ep = GetEndPoint(null, obj.Id);
+            ep = ep + "?status=" + status;
+            return this.httpClient.Put<R>(ep, new_data);
         }
 
         protected virtual R Cancel(string customer_id, string charge_id, T obj)
@@ -132,6 +144,12 @@ namespace Openpay
 
 				if (searchParams.Status != null)
 					url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "status", searchParams.Status.ToString());
+                
+                if (searchParams.StartDate != null)
+                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "startDate", searchParams.StartDate);
+                
+                if (searchParams.EndDate != null)
+                    url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "endDate", searchParams.EndDate);
 
                 if (searchParams.Creation != DateTime.MinValue)
                     url_params = ParameterBuilder.ApplyParameterToUrl(url_params, "creation", searchParams.Creation.ToString(filter_date_format));

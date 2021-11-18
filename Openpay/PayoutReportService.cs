@@ -11,8 +11,8 @@ namespace Openpay
 	public class PayoutReportService : OpenpayGenericService
     {
 
-		public PayoutReportService(string api_key, string merchant_id, bool production = false)
-            : base(api_key, merchant_id, production) { }
+		public PayoutReportService(string api_key, string merchant_id, Countries country, bool production = false)
+            : base(api_key, merchant_id, country, production) { }
 
 		internal PayoutReportService(OpenpayHttpClient opHttpClient)
             : base(opHttpClient) { }

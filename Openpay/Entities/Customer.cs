@@ -33,13 +33,13 @@ namespace Openpay.Entities
         public String CLABE { get; set; }
 
 		[JsonProperty(PropertyName = "balance", NullValueHandling=NullValueHandling.Ignore)]
-        public Decimal Balance { get; set; }
+        public Decimal? Balance { get; set; }
 
 		[JsonProperty(PropertyName = "creation_date", NullValueHandling=NullValueHandling.Ignore)]
         public DateTime? CreationDate { get; set; }
         
 		[JsonProperty(PropertyName = "requires_account", NullValueHandling=NullValueHandling.Ignore)]
-        public Boolean RequiresAccount { get; set; }
+        public Boolean? RequiresAccount { get; set; }
 
 		[JsonProperty(PropertyName = "store", NullValueHandling=NullValueHandling.Ignore)]
         public Store Store  { get; set; }

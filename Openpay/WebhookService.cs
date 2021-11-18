@@ -41,8 +41,8 @@ namespace Openpay
 	public class WebhookService : OpenpayResourceService<Webhook, Webhook>
 	{
 
-		public WebhookService(string api_key, string merchant_id, bool production = false)
-			: base(api_key, merchant_id, production)
+		public WebhookService(string api_key, string merchant_id, Countries country, bool production = false)
+			: base(api_key, merchant_id, country, production)
 		{
 			ResourceName = "webhooks";
 		}

@@ -32,12 +32,21 @@ namespace Openpay
 		public WebhookService WebhooksService { get; set; }
 
         public MerchantService MerchantService { get; set; }
+        
+        public CheckoutService CheckoutService { get; set; }
+        
+        public TokenService TokenService { get; set; }
 
         private OpenpayHttpClient httpClient;
 
-        public OpenpayAPI( string api_key, string merchant_id,bool production = false)
+        public OpenpayAPI( string api_key, string merchant_id, string country = "MX", bool production = false)
         {
-            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, production);
+            if (!Enum.IsDefined(typeof(Countries), country))
+            {
+                throw new ArgumentException("Invalid country");
+            }
+            var countryEnum = (Countries)System.Enum.Parse(typeof(Countries), country);
+            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, countryEnum, production);
             CustomerService = new CustomerService(this.httpClient);
             CardService = new CardService(this.httpClient);
             BankAccountService = new BankAccountService(this.httpClient);
@@ -51,6 +60,8 @@ namespace Openpay
 			WebhooksService = new WebhookService (this.httpClient);
 			PayoutReportService = new PayoutReportService (this.httpClient);
             MerchantService = new MerchantService (this.httpClient);
+            CheckoutService = new CheckoutService(this.httpClient);
+            TokenService = new TokenService(this.httpClient);
         }
 
         public bool Production {
