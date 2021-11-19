@@ -12,7 +12,7 @@ namespace Openpay.Entities
 		[JsonProperty(PropertyName = "creation_date", NullValueHandling=NullValueHandling.Ignore)]
         public DateTime? CreationDate { get; set; }
 
-		[JsonProperty(PropertyName = "alias, NullValueHandling=NullValueHandling.Ignore")]
+		[JsonProperty(PropertyName = "alias", NullValueHandling=NullValueHandling.Ignore)]
         public String Alias { get; set; }
 
         [JsonProperty(PropertyName = "clabe")]
