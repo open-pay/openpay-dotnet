@@ -34,6 +34,10 @@ namespace Openpay
             
             switch (country)
             {
+                case Countries.CO:
+                    api_endpoint = "https://api.openpay.co/v1/";
+                    api_endpoint_sandbox = "https://sandbox-api.openpay.co/v1/";
+                    break;
                 case Countries.PE:
                     api_endpoint = "https://api.openpay.pe/v1/";
                     api_endpoint_sandbox = "https://sandbox-api.openpay.pe/v1/";
