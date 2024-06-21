@@ -16,7 +16,7 @@ namespace OpenpayNUnitTests
 		{
 			Decimal amount = new Decimal(111.11);
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
 			Plan request = new Plan();
 			request.Name = "Plan Mono Gold";
@@ -46,7 +46,7 @@ namespace OpenpayNUnitTests
 			string cardId = "kepao7hxxluykjhxq2yq";
 			DateTime trialEndDate = new DateTime(2017,10,21);
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
 			Subscription subscriptionRequest = new Subscription();
 			subscriptionRequest.PlanId = planId;
@@ -69,7 +69,7 @@ namespace OpenpayNUnitTests
 			string cardId = "kepao7hxxluykjhxq2yq";
 			DateTime trialEndDate = new DateTime(2016, 10, 19);
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
 			Subscription subscriptionRequest = new Subscription();
 			subscriptionRequest.PlanId = planId;

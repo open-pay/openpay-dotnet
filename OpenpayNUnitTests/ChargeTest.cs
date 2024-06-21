@@ -16,7 +16,7 @@ namespace OpenpayNUnitTests
         {
             string orderId = "mono3-scoti-oid-00006";
 
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
             SearchParams search = new SearchParams();
             search.OrderId = orderId;
@@ -34,7 +34,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestCharge()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();
@@ -53,7 +53,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestChargeToComerceWithCustomer()
         {
-            OpenpayAPI openpayApi = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayApi = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             Card card = openpayApi.CardService.Create(GetCardInfo());
             ChargeRequest request = new ChargeRequest();
             request.Method = "card";
@@ -80,7 +80,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void GetCharge()
         {
-            OpenpayAPI api = new OpenpayAPI("sk_e568c42a6c384b7ab02cd47d2e407cab", "mzdtln0bmtms6o3kck8f");
+            OpenpayAPI api = new OpenpayAPI("sk_e568c42a6c384b7ab02cd47d2e407cab", "mzdtln0bmtms6o3kck8f", Constants.PublicIp);
             // ChargeRequest request = new ChargeRequest();
             // request.Method = "bank_account";
             // request.Amount = new Decimal(100.00);
@@ -107,7 +107,7 @@ namespace OpenpayNUnitTests
             customer.Email = "noemail@openpay.mx";
             customer.Id = customer_id;
 
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();
@@ -137,7 +137,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestCharge3DSecure()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();
@@ -160,7 +160,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestRefundCharge()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
 
             SearchParams searh = new SearchParams();
@@ -196,7 +196,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestRefundChargeWithRequest()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
 
             SearchParams searh = new SearchParams();
@@ -237,7 +237,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestRedirectCharge()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
             SearchParams searh = new SearchParams();
             List<Customer> customers = openpayAPI.CustomerService.List(searh);
@@ -269,7 +269,7 @@ namespace OpenpayNUnitTests
             String customer_id = "asda4znfoxhvpgcsui3q";
             String card_id = "keqctdqbro2b7jtcnz7d";
 
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
             //Card card = openpayAPI.CardService.Create(GetScotiaCardInfo());
 
             PointsBalance pointsBalance = openpayAPI.CardService.Points(customer_id, card_id);
@@ -286,7 +286,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestSantanderPoints()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();
@@ -306,7 +306,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestChargeWithCodiOptions()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI("sk_5ed6b8da2ace43db89efa8706b3b6e7f","m4ler8bdfpwnttgflt5n");
+            OpenpayAPI openpayAPI = new OpenpayAPI("sk_5ed6b8da2ace43db89efa8706b3b6e7f","m4ler8bdfpwnttgflt5n", Constants.PublicIp);
             ChargeRequest request = new ChargeRequest();
             request.Method = "codi";
             request.Amount = new Decimal(200.00);
@@ -333,7 +333,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestChargeToCustomerWithCard_metdatata_USD()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             ChargeRequest request = new ChargeRequest();
             request.Method = "card";
             request.Card = GetCardInfo();
@@ -356,7 +356,7 @@ namespace OpenpayNUnitTests
         [Test()]
         public void TestChargeToCustomerWithStore()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             ChargeRequest request = new ChargeRequest();
             request.Method = "store";
             request.Description = "Testing from .Net [STORE]";
@@ -373,7 +373,7 @@ namespace OpenpayNUnitTests
         
         public void TestChargeWithAffiliation()
         {
-            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+            OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
             Card card = openpayAPI.CardService.Create(GetCardInfo());
 
             ChargeRequest request = new ChargeRequest();

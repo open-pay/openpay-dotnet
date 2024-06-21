@@ -15,7 +15,7 @@ namespace OpenpayNUnitTests
 		[Test()]
 		public void TestAlipayRedirectCharge()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
 			SearchParams searh = new SearchParams();
 			List<Customer> customers = openpayAPI.CustomerService.List(searh);
