@@ -18,9 +18,9 @@ namespace Openpay
 
         private static readonly string filter_amount_format = "0.00";
 
-        public OpenpayResourceService(string api_key, string merchant_id, Countries country, bool production = false)
+        public OpenpayResourceService(string api_key, string merchant_id, string publicIp, Countries country, bool production = false)
         {
-            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, country, production);
+            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, publicIp ,country, production);
         }
 
         internal OpenpayResourceService(OpenpayHttpClient opHttpClient)

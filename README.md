@@ -25,7 +25,8 @@ Before use the library will be necessary to set up your Merchant ID and
 Private key. Use:
 
 ```net
-OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID);
+var publicIp = "138.84.62.109";
+OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID, publicIp);
 ```
 
 #### Sandbox/Production Mode #####
@@ -34,11 +35,13 @@ By convenience and security, the sandbox mode is activated by default in the cli
 
 ```c#
 Boolean production = true;
-OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID, production);
+var publicIp = "138.84.62.109";
+OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID, publicIp, production);
 ```
 or use Production property:
 ```c#
-OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID);
+var publicIp = "138.84.62.109";
+OpenpayAPI openpayAPI = new OpenpayAPI(API_KEY, MERCHANT_ID, publicIp);
 openpayAPI.Production = true;
 ```
 

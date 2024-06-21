@@ -39,14 +39,15 @@ namespace Openpay
 
         private OpenpayHttpClient httpClient;
 
-        public OpenpayAPI( string api_key, string merchant_id, string country = "MX", bool production = false)
+        public OpenpayAPI( string api_key, string merchant_id, string publicIp, string country = "MX", bool production = false)
         {
             if (!Enum.IsDefined(typeof(Countries), country))
             {
                 throw new ArgumentException("Invalid country");
             }
+
             var countryEnum = (Countries)System.Enum.Parse(typeof(Countries), country);
-            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, countryEnum, production);
+            this.httpClient = new OpenpayHttpClient(api_key, merchant_id, publicIp, countryEnum, production);
             CustomerService = new CustomerService(this.httpClient);
             CardService = new CardService(this.httpClient);
             BankAccountService = new BankAccountService(this.httpClient);

@@ -10,8 +10,8 @@ namespace Openpay
     public class ChargeService : OpenpayResourceService<ChargeRequest, Charge>
     {
 
-        public ChargeService(string api_key, string merchant_id, Countries country, bool production = false)
-            : base(api_key, merchant_id, country, production)
+        public ChargeService(string api_key, string merchant_id, string publicIp, Countries country, bool production = false)
+            : base(api_key, merchant_id, publicIp, country, production)
         {
             ResourceName = "charges";
         }
