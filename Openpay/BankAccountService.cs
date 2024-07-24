@@ -10,8 +10,8 @@ namespace Openpay
     public class BankAccountService : OpenpayResourceService<BankAccount, BankAccount>
     {
 
-        public BankAccountService(string api_key, string merchant_id, Countries country, bool production = false)
-            : base(api_key, merchant_id, country, production)
+        public BankAccountService(string api_key, string merchant_id, string publicIp, Countries country, bool production = false)
+            : base(api_key, merchant_id,publicIp, country, production)
         {
             ResourceName = "bankaccounts";
         }

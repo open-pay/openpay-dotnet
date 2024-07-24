@@ -15,7 +15,7 @@ namespace OpenpayNUnitTests.TestPeru
             TokenRequest tokenRequest = new TokenRequest();
             tokenRequest.CardNumber = "4111111111111111";
             tokenRequest.HolderName = "Juan Perez Ramirez";
-            tokenRequest.ExpirationYear = "21";
+            tokenRequest.ExpirationYear = "29";
             tokenRequest.ExpirationMonth = "12";
             tokenRequest.Cvv2 = "110";
             Address address = new Address();
@@ -38,7 +38,7 @@ namespace OpenpayNUnitTests.TestPeru
             TokenRequest tokenRequest = new TokenRequest();
             tokenRequest.CardNumber = "4111111111111111";
             tokenRequest.HolderName = "Juan Perez Ramirez";
-            tokenRequest.ExpirationYear = "21";
+            tokenRequest.ExpirationYear = "29";
             tokenRequest.ExpirationMonth = "12";
             tokenRequest.Cvv2 = "110";
             Address address = new Address();

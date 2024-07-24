@@ -24,14 +24,19 @@ namespace Openpay
         public String APIEndpoint { get; set; }
 
         public String APIKey { get; set; }
+        
+        public string PublicIp { get; set; }
 
-        public OpenpayHttpClient(string api_key, string merchant_id, Countries country = Countries.MX, bool production = false)
+        public OpenpayHttpClient(string api_key, string merchant_id,string publicIp, Countries country = Countries.MX, bool production = false)
         {
             if (country == null)
             {
                 throw new ArgumentNullException("country");
             }
-            
+            if (string.IsNullOrEmpty(publicIp))
+            {
+                throw new ArgumentException("Public Ip can't be null or empty");
+            }
             switch (country)
             {
                 case Countries.CO:
@@ -55,6 +60,7 @@ namespace Openpay
             APIKey = api_key;
             TimeoutSeconds = 120;
             Production = production;
+            PublicIp = publicIp;
         }
 
         public bool Production { 
@@ -79,6 +85,7 @@ namespace Openpay
             string authInfo = APIKey + ":";
             authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
             req.Headers["Authorization"] = "Basic " + authInfo;
+            req.Headers["X-Forwarded-For"] = PublicIp;
             req.PreAuthenticate = false;
             req.Timeout = TimeoutSeconds * 1000;
             if (method == "POST" || method == "PUT")

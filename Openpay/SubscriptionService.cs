@@ -11,8 +11,8 @@ namespace Openpay
     public class SubscriptionService : OpenpayResourceService<Subscription, Subscription>
     {
 
-        public SubscriptionService(string api_key, string merchant_id, Countries country, bool production = false)
-            : base(api_key, merchant_id, country, production)
+        public SubscriptionService(string api_key, string merchant_id, string publicIp, Countries country, bool production = false)
+            : base(api_key, merchant_id,publicIp, country, production)
         {
             ResourceName = "subscriptions";
         }

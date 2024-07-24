@@ -19,7 +19,7 @@ namespace OpenpayNUnitTests
 			string description = "comisión de .Net de "+ amount;
 			string refundDescription = "reembolso de comisión de .Net de "+ amount;
 
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.NEW_API_KEY, Constants.NEW_MERCHANT_ID, Constants.PublicIp);
 
 			FeeRequest feeRequest = new FeeRequest();
 			feeRequest.CustomerId = customerId;

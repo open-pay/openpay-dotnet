@@ -13,7 +13,7 @@ namespace OpenpayNUnitTests
 		[Test ()]
 		public void TestReport_ReportSummary ()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
 			PayoutSummary payoutSummary = openpayAPI.PayoutReportService.Get("tro7nlbckqqdecep7par");
 			Assert.AreEqual (payoutSummary.In, new Decimal (87969.1));
 			Assert.AreEqual (payoutSummary.Out, new Decimal (8767.23));
@@ -22,7 +22,7 @@ namespace OpenpayNUnitTests
 		[Test ()]
 		public void TestReport_ReportDetails_In ()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
 			PayoutReportDetailSearchParams search = new PayoutReportDetailSearchParams("in");
 			List<Transaction> detail = openpayAPI.PayoutReportService.Detail("tro7nlbckqqdecep7par", search);
 			Assert.AreEqual (10, detail.Count);
@@ -45,7 +45,7 @@ namespace OpenpayNUnitTests
 		[Test ()]
 		public void TestReport_ReportDetails_In_Pagination_Offset ()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
 			PayoutReportDetailSearchParams search = new PayoutReportDetailSearchParams("in");
 			search.Limit = 5;
 			search.Offset = 3;
@@ -65,7 +65,7 @@ namespace OpenpayNUnitTests
 		[Test ()]
 		public void TestReport_ReportDetails_Out ()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
 			PayoutReportDetailSearchParams search = new PayoutReportDetailSearchParams("out");
 			List<Transaction> detail = openpayAPI.PayoutReportService.Detail("tro7nlbckqqdecep7par", search);
 			Assert.AreEqual (10, detail.Count);
@@ -88,7 +88,7 @@ namespace OpenpayNUnitTests
 		[Test ()]
 		public void TestReport_ReportDetails_ChargedAdjustments ()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
 			PayoutReportDetailSearchParams search = new PayoutReportDetailSearchParams("charged_adjustments");
 			List<Transaction> detail = openpayAPI.PayoutReportService.Detail("tro7nlbckqqdecep7par", search);
 			Assert.AreEqual (0, detail.Count);
@@ -97,7 +97,7 @@ namespace OpenpayNUnitTests
 		[Test ()]
 		public void TestReport_ReportDetails_RefundedAdjustments ()
 		{
-			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID);
+			OpenpayAPI openpayAPI = new OpenpayAPI(Constants.API_KEY, Constants.MERCHANT_ID, Constants.PublicIp);
 			PayoutReportDetailSearchParams search = new PayoutReportDetailSearchParams("refunded_adjustments");
 			List<Transaction> detail = openpayAPI.PayoutReportService.Detail("tro7nlbckqqdecep7par", search);
 			Assert.AreEqual (1, detail.Count);
